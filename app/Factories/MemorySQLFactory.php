@@ -311,7 +311,6 @@ class MemorySQLFactory
 
                 // --- Passage correct des arguments pour Particulier ---
                 if (ReferentielImportConfig::isValidType($type)) {
-                    echo "$type est une clé valide.";
                     $year    = $params['year'] ?? '';
                     $cycle   = $params['cycle'] ?? '';
                     $regroup = $params['regroup'] ?? '';
@@ -337,6 +336,36 @@ class MemorySQLFactory
                     }
                 } else {
                     throw new \RuntimeException("Résultat du builder {$method} invalide");
+                }
+            }
+        }
+
+        // Heuristique : détecter les placeholders sans binds et des variables PHP interpolées
+        foreach ($queries as $i => $q) {
+            $sqlText = $q['sql'] ?? '';
+            $binds   = $q['binds'] ?? [];
+            if (!is_array($binds)) {
+                $binds = [];
+            }
+
+            if (preg_match_all('/:([a-zA-Z0-9_]+):/', $sqlText, $matches)) {
+                foreach (array_unique($matches[1]) as $placeholder) {
+                    if (!array_key_exists($placeholder, $binds)) {
+                        log_message('warning', "MemorySQLFactory: requête #{$i} pour type '{$type}' contient le placeholder :{$placeholder}: sans bind correspondant.");
+                    }
+                }
+            }
+
+            if (empty($binds) && is_string($sqlText)) {
+                $suspectPatterns = [
+                    '/\$[a-zA-Z_][a-zA-Z0-9_]*/', // $var
+                    '/\.[\s]*\$[a-zA-Z_]/', // . $var
+                ];
+                foreach ($suspectPatterns as $pat) {
+                    if (preg_match($pat, $sqlText)) {
+                        log_message('warning', "MemorySQLFactory: requête #{$i} pour type '{$type}' semble contenir des variables non liées; envisager d'utiliser des binds.");
+                        break;
+                    }
                 }
             }
         }

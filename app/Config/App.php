@@ -200,5 +200,5 @@ class App extends BaseConfig
      */
     public bool $CSPEnabled = false;
 
-    public bool $displayErrors = true;
+    public bool $displayErrors = false;
 }

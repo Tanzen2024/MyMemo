@@ -16,8 +16,8 @@ class LoadingQueriesForMemoryRegionsModel
                     SELECT /*+ PARALLEL(8) */ DISTINCT
                     s.nom_area AS region,
                     s.nom_unicom,
-                    '{$year}' AS calendar_year,
-                    '{$cycle}' AS reading_cycle,
+                    :year: AS calendar_year,
+                    :cycle: AS reading_cycle,
                     s.regroup_id,
                     s.regroup_name,
                     r.nis_rad,
@@ -55,10 +55,15 @@ class LoadingQueriesForMemoryRegionsModel
                 JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
                 LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
                 WHERE r.tip_rec = 'TR010'
-                    AND r.f_prev_puesta BETWEEN TO_DATE('{$debut}', 'YYYY-MM-DD') AND TO_DATE('{$fin}', 'YYYY-MM-DD')
+                    AND r.f_prev_puesta BETWEEN TO_DATE(:debut:, 'YYYY-MM-DD') AND TO_DATE(:fin:, 'YYYY-MM-DD')
                 )
             ",
-            'binds' => []
+            'binds' => [
+                'year' => $year,
+                'cycle' => $cycle,
+                'debut' => $debut,
+                'fin' => $fin,
+            ]
         ];
     }
     
@@ -93,10 +98,15 @@ class LoadingQueriesForMemoryRegionsModel
                     LEFT JOIN cmsadmin.apmedida_co ap ON rc.id_apco_ant = ap.id_reg
                     LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_act = ac.id_reg
                     WHERE r.tip_rec = 'TR010'
-                        AND r.f_prev_puesta BETWEEN TO_DATE('{$debut}', 'YYYY-MM-DD') AND TO_DATE('{$fin}', 'YYYY-MM-DD')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:debut:, 'YYYY-MM-DD') AND TO_DATE(:fin:, 'YYYY-MM-DD')
                     )
             ",
-            'binds' => []
+            'binds' => [
+                'year' => $year,
+                'cycle' => $cycle,
+                'debut' => $debut,
+                'fin' => $fin,
+            ]
         ];
     }
 

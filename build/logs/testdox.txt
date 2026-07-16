@@ -1,10 +1,5 @@
-Audit Reader Service
- [x] Reads only requested days and applies filters
-
-Example Session
- [x] Session simple
-
-Health
- [x] Is defined app path
- [x] Base url has been set
+Memory SQLFactory
+ [x] Build returns sql and binds for prepaid with contrat
+ [x] Build normalizes string result to sql binds array
+ [x] Build throws for unknown type
 

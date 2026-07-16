@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="C:\xampp\htdocs\MyMemo\phpunit.xml.dist">
-    <testsuite name="App" tests="4" assertions="6" errors="0" failures="0" skipped="0" time="0.210750">
-      <testsuite name="ExampleDatabaseTest" file="C:\xampp\htdocs\MyMemo\tests\database\ExampleDatabaseTest.php" tests="4" assertions="6" errors="0" failures="0" skipped="0" time="0.210750">
-        <testsuite name="ExampleSessionTest" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.125319">
-          <testcase name="testSessionSimple" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" line="10" class="ExampleSessionTest" classname="ExampleSessionTest" assertions="1" time="0.125319"/>
-        </testsuite>
-        <testsuite name="AuditReaderServiceTest" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.024232">
-          <testcase name="testReadsOnlyRequestedDaysAndAppliesFilters" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" line="4" class="AuditReaderServiceTest" classname="AuditReaderServiceTest" assertions="2" time="0.024232"/>
-        </testsuite>
-        <testsuite name="HealthTest" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.061198">
-          <testcase name="testIsDefinedAppPath" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="12" class="HealthTest" classname="HealthTest" assertions="1" time="0.005568"/>
-          <testcase name="testBaseUrlHasBeenSet" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="17" class="HealthTest" classname="HealthTest" assertions="2" time="0.055630"/>
-        </testsuite>
+  <testsuite name="C:\xampp\htdocs\MyMemo\phpunit.xml.dist" tests="3" assertions="20" errors="0" failures="0" skipped="0" time="0.217126">
+    <testsuite name="App" tests="3" assertions="20" errors="0" failures="0" skipped="0" time="0.217126">
+      <testsuite name="MemorySQLFactoryTest" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" tests="3" assertions="20" errors="0" failures="0" skipped="0" time="0.217126">
+        <testcase name="testBuildReturnsSqlAndBindsForPrepaidWithContrat" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="8" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="9" time="0.192485"/>
+        <testcase name="testBuildNormalizesStringResultToSqlBindsArray" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="40" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="10" time="0.013923"/>
+        <testcase name="testBuildThrowsForUnknownType" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="61" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="1" time="0.010719"/>
       </testsuite>
     </testsuite>
   </testsuite>

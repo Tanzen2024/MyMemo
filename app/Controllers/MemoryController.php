@@ -129,7 +129,9 @@ class MemoryController extends BaseController
             $data = $this->oracle->fetchAll($query['sql'], $query['binds']);
 
             log_message('debug', 'DonneesMemoire result count: ' . count($data));
-            log_message('debug', 'First row: ' . json_encode($data[0] ?? []));
+            // Ne pas logger les données brutes pour éviter fuite d'information
+            $firstRowKeys = array_keys($data[0] ?? []);
+            log_message('debug', 'DonneesMemoire first row keys: ' . implode(',', $firstRowKeys));
 
             if (!empty($data) && is_array($data)) {
 
@@ -165,13 +167,11 @@ class MemoryController extends BaseController
     $regroupId    = '';
     $regroupName  = '';
 
-    if (!empty($rows)) {
-        // 🔍 DEBUG BRUT (À AJOUTER ICI)
-        log_message('debug', json_encode($rows[0], JSON_PRETTY_PRINT));
-        $headerData = $rows[0] ?? [];
-
-        // 🔹 Log pour afficher toutes les valeurs du header
-        log_message('debug', 'HeaderData récupéré : ' . json_encode($headerData));
+        if (!empty($rows)) {
+            $headerData = $rows[0] ?? [];
+            // Logger uniquement les clés de l'en-tête pour éviter d'exposer des données
+            $headerKeys = array_keys($headerData);
+            log_message('debug', 'Header keys retrieved: ' . implode(',', $headerKeys));
 
         $calendarYear = $headerData['CALENDAR_YEAR'] ?? '';
         $readingCycle = $headerData['READING_CYCLE'] ?? '';

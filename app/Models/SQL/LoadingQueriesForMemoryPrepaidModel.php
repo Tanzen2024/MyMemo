@@ -7,25 +7,32 @@ class LoadingQueriesForMemoryPrepaidModel
     /* ================= PREPAID ================= */
 
     public static function LOADING_TMP_DETAILS_4_MEMOIRES_PREPAID_WITH_CONTRAT_ONLY(
-    int $year,
-    int $cycle,
-    string $regroupName,
-    string $dateDebut,
-    string $dateFin
-) : array
-{
-    // Sécurisation minimale du nom du regroupement
-    $regroupName = str_replace("'", "''", $regroupName);
+        int $year,
+        int $cycle,
+        string $regroupName,
+        string $dateDebut,
+        string $dateFin
+    ): array
+    {
+        $dtDebut = \DateTime::createFromFormat('d/m/Y', $dateDebut);
+        $dtFin   = \DateTime::createFromFormat('d/m/Y', $dateFin);
 
-    // ⚡ Conversion des dates d'entrée au format AAAA-MM-JJ HH24:MI:SS
-    $dtDebut = \DateTime::createFromFormat('d/m/Y', $dateDebut);
-    $dtFin   = \DateTime::createFromFormat('d/m/Y', $dateFin);
+        if (!$dtDebut || !$dtFin) {
+            throw new \InvalidArgumentException(
+                "Dates invalides : dateDebut={ $dateDebut }, dateFin={ $dateFin }"
+            );
+        }
 
-    $dateDebutOracle = "TO_DATE('" . $dtDebut->format('Y-m-d') . " 00:00:00','YYYY-MM-DD HH24:MI:SS')";
-    $dateFinOracle   = "TO_DATE('" . $dtFin->format('Y-m-d')   . " 00:00:00','YYYY-MM-DD HH24:MI:SS')";
+        $binds = [
+            'year' => $year,
+            'cycle' => $cycle,
+            'regroupName' => $regroupName,
+            'dateDebut' => $dtDebut->format('Y-m-d') . ' 00:00:00',
+            'dateFin' => $dtFin->format('Y-m-d') . ' 00:00:00',
+        ];
 
-    return [
-        'sql' => "
+        return [
+            'sql' => "
             INSERT INTO cmsreport.tmp_details_4_memoires_prepaid (
                 calendar_year,
                 reading_cycle,
@@ -105,8 +112,8 @@ class LoadingQueriesForMemoryPrepaidModel
                     ON c.czyid = om.operator
 
                 -- ✅ Filtrage correct avec constantes au format compatible
-                WHERE TO_DATE(vom.optime, 'YYYY-MM-DD HH24:MI:SS') >= $dateDebutOracle
-                  AND TO_DATE(vom.optime, 'YYYY-MM-DD HH24:MI:SS') <  $dateFinOracle
+                WHERE TO_DATE(vom.optime, 'YYYY-MM-DD HH24:MI:SS') >= TO_DATE(:dateDebut:, 'YYYY-MM-DD HH24:MI:SS')
+                  AND TO_DATE(vom.optime, 'YYYY-MM-DD HH24:MI:SS') < TO_DATE(:dateFin:, 'YYYY-MM-DD HH24:MI:SS')
                   AND EXISTS (
                         SELECT 1
                         FROM cmsreport.tmp_ref_confacresu r
@@ -115,8 +122,8 @@ class LoadingQueriesForMemoryPrepaidModel
             )
 
             SELECT
-                {$year} AS calendar_year,
-                {$cycle} AS reading_cycle,
+                :year: AS calendar_year,
+                :cycle: AS reading_cycle,
 
                 CASE
                     WHEN LENGTH(token) = 20 THEN
@@ -134,7 +141,7 @@ class LoadingQueriesForMemoryPrepaidModel
                 xm,
                 bz,
 
-                '{$regroupName}' AS regroup_code_or_name,
+                :regroupName: AS regroup_code_or_name,
 
                 meterno,
 
@@ -168,34 +175,40 @@ class LoadingQueriesForMemoryPrepaidModel
                 NVL(customer_name,'0')
 
             FROM base_data
-            where company_charge_amount > 0 or NVL(cduname, '') LIKE '%{$regroupName}%'
+            where company_charge_amount > 0 or NVL(cduname, '') LIKE '%' || :regroupName: || '%'
         ",
-        'binds' => []
+        'binds' => $binds
     ];
 }
 
     public static function LOADING_TMP_DETAILS_4_MEMOIRES_PREPAID_WITH_RECU_ONLY(
-    int $year,
-    int $cycle,
-    string $regroupName,
-    ?string $dateDebut,
-    ?string $dateFin
-): array
-{
-    $regroupName = str_replace("'", "''", $regroupName);
+        int $year,
+        int $cycle,
+        string $regroupName,
+        ?string $dateDebut,
+        ?string $dateFin
+    ): array
+    {
+        $binds = [
+            'year' => $year,
+            'cycle' => $cycle,
+            'regroupName' => $regroupName,
+        ];
 
-    $dateCondition = "";
+        $dateCondition = "";
 
-    if (!empty($dateDebut)) {
-        $dateCondition .= " AND vom.optime >= DATE '{$dateDebut}' ";
-    }
+        if (!empty($dateDebut)) {
+            $binds['dateDebut'] = $dateDebut;
+            $dateCondition .= " AND vom.optime >= TO_DATE(:dateDebut:, 'YYYY-MM-DD') ";
+        }
 
-    if (!empty($dateFin)) {
-        $dateCondition .= " AND vom.optime < DATE '{$dateFin}' + 1 ";
-    }
+        if (!empty($dateFin)) {
+            $binds['dateFin'] = $dateFin;
+            $dateCondition .= " AND vom.optime < TO_DATE(:dateFin:, 'YYYY-MM-DD') + 1 ";
+        }
 
-    return [
-        'sql' => "
+        return [
+            'sql' => "
             INSERT /*+ APPEND PARALLEL(4) */
             INTO cmsreport.tmp_details_4_memoires_prepaid (
                 calendar_year,
@@ -276,8 +289,8 @@ class LoadingQueriesForMemoryPrepaidModel
             )
 
             SELECT
-                {$year},
-                {$cycle},
+                :year:,
+                :cycle:,
 
                 CASE
                     WHEN LENGTH(token) = 20 THEN
@@ -297,7 +310,7 @@ class LoadingQueriesForMemoryPrepaidModel
                 xm,
                 bz,
 
-                '{$regroupName}',
+                :regroupName:,
 
                 meterno,
 
@@ -331,9 +344,9 @@ class LoadingQueriesForMemoryPrepaidModel
                 NVL(customer_name,'0')
 
             FROM base_data
-            where company_charge_amount > 0 or NVL(cduname, '') LIKE '%{$regroupName}%'
+            where company_charge_amount > 0 or NVL(cduname, '') LIKE '%' || :regroupName: || '%'
         ",
-        'binds' => []
+        'binds' => $binds
     ];
 }
 

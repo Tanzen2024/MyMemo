@@ -44,7 +44,7 @@ class MemoirePrepaidExcel extends BaseConfig
      */
     public array $headersAdditionnal = [
         ['cell' => 'E2', 'merge' => 'E2:I2', 'value' => 'FACTURE D\'ELECTRICITE / ELECTRICITY BILL', 'fontSize' => 18, 'fontColor' => '014BA0', 'bold' => true, 'align' => Alignment::HORIZONTAL_CENTER, 'border' => true],
-        ['cell' => 'G3', 'merge' => 'F3:H3', 'value' => 'Mémoire / Memory', 'fontSize' => 10, 'bold' => true, 'italic' => true, 'align' => Alignment::HORIZONTAL_LEFT],
+        ['cell' => 'F3', 'merge' => 'F3:H3', 'value' => 'Mémoire / Memory', 'fontSize' => 10, 'bold' => true, 'italic' => true, 'align' => Alignment::HORIZONTAL_LEFT],
         ['cell' => 'E6',  'value' => 'Client / Customer :', 'fontSize' => 10, 'bold' => true, 'align' => Alignment::HORIZONTAL_LEFT],
         ['cell' => 'E7',  'value' => 'NIU / NUI :', 'fontSize' => 10, 'bold' => true, 'align' => Alignment::HORIZONTAL_LEFT],
         ['cell' => 'E8',  'value' => 'RCCM / RCCM :', 'fontSize' => 10, 'bold' => true, 'align' => Alignment::HORIZONTAL_LEFT],

@@ -35,10 +35,13 @@ $routes->get('postpaid/etat', 'Views\DisplayViewsController::etat');
 $routes->get('prepaid', 'Views\DisplayViewsController::prepaid');
 
 
-$routes->post('postpaid/particulier', 'MemoryController::importAndExport');
-$routes->post('postpaid/general', 'MemoryController::importAndExport');
-$routes->post('postpaid/etat', 'MemoryController::importAndExport');
-$routes->post('prepaid', 'MemoryController::importAndExport');
+// Grouper les routes POST sensibles derrière le filtre d'authentification
+$routes->group('', ['filter' => 'autologout'], static function($routes){
+	$routes->post('postpaid/particulier', 'MemoryController::importAndExport');
+	$routes->post('postpaid/general', 'MemoryController::importAndExport');
+	$routes->post('postpaid/etat', 'MemoryController::importAndExport');
+	$routes->post('prepaid', 'MemoryController::importAndExport');
+});
 
 
 // Paramètres
