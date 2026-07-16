@@ -1,0 +1,33 @@
+# D‚pendances
+/vendor/
+/node_modules/
+
+# Fichiers d'environnement
+.env
+
+# Dossiers g‚n‚r‚s par CodeIgniter
+/writable/cache/*
+/writable/logs/*
+/writable/session/*
+/writable/uploads/*
+
+# Conserver la structure des dossiers vides
+!/writable/cache/index.html
+!/writable/logs/index.html
+!/writable/session/index.html
+!/writable/uploads/index.html
+
+# Fichiers temporaires
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# Windows
+Thumbs.db
+
+# macOS
+.DS_Store
+/vendor/

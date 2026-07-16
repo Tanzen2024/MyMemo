@@ -1,0 +1,10 @@
+Audit Reader Service
+ [x] Reads only requested days and applies filters
+
+Example Session
+ [x] Session simple
+
+Health
+ [x] Is defined app path
+ [x] Base url has been set
+

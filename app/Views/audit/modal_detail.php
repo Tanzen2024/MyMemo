@@ -1,0 +1,1 @@
+<div class="modal fade" id="auditDetail" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Détail de l’événement</h5><button class="close" data-dismiss="modal">×</button></div><div class="modal-body"><dl id="auditDetailBody" class="row mb-0"></dl></div></div></div></div>

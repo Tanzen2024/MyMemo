@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\MyMemo\phpunit.xml.dist">
+    <testsuite name="App" tests="4" assertions="6" errors="0" failures="0" skipped="0" time="0.210750">
+      <testsuite name="ExampleDatabaseTest" file="C:\xampp\htdocs\MyMemo\tests\database\ExampleDatabaseTest.php" tests="4" assertions="6" errors="0" failures="0" skipped="0" time="0.210750">
+        <testsuite name="ExampleSessionTest" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.125319">
+          <testcase name="testSessionSimple" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" line="10" class="ExampleSessionTest" classname="ExampleSessionTest" assertions="1" time="0.125319"/>
+        </testsuite>
+        <testsuite name="AuditReaderServiceTest" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.024232">
+          <testcase name="testReadsOnlyRequestedDaysAndAppliesFilters" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" line="4" class="AuditReaderServiceTest" classname="AuditReaderServiceTest" assertions="2" time="0.024232"/>
+        </testsuite>
+        <testsuite name="HealthTest" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.061198">
+          <testcase name="testIsDefinedAppPath" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="12" class="HealthTest" classname="HealthTest" assertions="1" time="0.005568"/>
+          <testcase name="testBaseUrlHasBeenSet" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="17" class="HealthTest" classname="HealthTest" assertions="2" time="0.055630"/>
+        </testsuite>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
