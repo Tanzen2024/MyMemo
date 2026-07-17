@@ -69,6 +69,17 @@ class LoadingQueriesForMemoryEtatModel
         return "TO_DATE('".$d->format('Y-m-d')."', 'YYYY-MM-DD')";
     }
 
+    protected static function createDateCondition(string $dateDebut, string $dateFin): array
+    {
+        return [
+            'sql' => "AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'DD/MM/YYYY') AND TO_DATE(:dateFin:, 'DD/MM/YYYY')",
+            'binds' => [
+                'dateDebut' => $dateDebut,
+                'dateFin' => $dateFin,
+            ],
+        ];
+    }
+
     protected static function validateDates(int $year, int $cycle, string $regroup, string $dateDebut, string $dateFin): array
     {
         $start = \DateTime::createFromFormat('d/m/Y', $dateDebut);
@@ -209,9 +220,12 @@ class LoadingQueriesForMemoryEtatModel
     }
 
 
-     public static function LOADING_TB_FACTURES_ETAT_POUR_MEMOIRES_WITH_CONTRAT (int $year, int $cycle, string $regroupName, string $dateDebut, string $dateFin) : string 
+     public static function LOADING_TB_FACTURES_ETAT_POUR_MEMOIRES_WITH_CONTRAT (int $year, int $cycle, string $regroupName, string $dateDebut, string $dateFin) : array 
     {
-        return "
+        $dateCondition = self::createDateCondition($dateDebut, $dateFin);
+
+        return [
+            'sql' => "
             INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_etat_pour_memoires t
 (
     region,
@@ -250,8 +264,8 @@ WITH tmp_state_bills_data AS (
     SELECT /*+ PARALLEL(8) */ DISTINCT
         s.nom_area AS region,
         s.nom_unicom,
-        '{$year}' AS calendar_year,
-        '{$cycle}' AS reading_cycle,
+        :year: AS calendar_year,
+        :cycle: AS reading_cycle,
         t.tutelle AS regroup_id,
         t.tutelle AS regroup_name,
         t.contrat AS nis_rad,
@@ -276,9 +290,7 @@ WITH tmp_state_bills_data AS (
     JOIN cmsadmin.recibos r ON t.contrat = r.nis_rad
     JOIN cmsreport.tb_customers_infos s ON t.contrat = s.nis_rad
     WHERE r.tip_rec = 'TR010'
-      AND r.f_prev_puesta BETWEEN
-            TO_DATE('{$dateDebut}','DD/MM/YYYY')
-        AND TO_DATE('{$dateFin}','DD/MM/YYYY')
+      {$dateCondition['sql']}
 ),
 
 tmp_state_bills_data_infos AS (
@@ -347,12 +359,20 @@ SELECT /*+ PARALLEL(6) */ DISTINCT
 FROM tmp_state_bills_data b
 LEFT JOIN tmp_state_bills_data_infos i
     ON b.num_rec = i.num_rec
-        ";
+        ",
+            'binds' => array_merge([
+                'year' => $year,
+                'cycle' => $cycle,
+            ], $dateCondition['binds'])
+        ];
         }
 
-     public static function LOADING_TB_FACTURES_ETAT_POUR_MEMOIRES_WITH_FACTURE (int $year, int $cycle, string $regroupName, string $dateDebut, string $dateFin) : string 
+     public static function LOADING_TB_FACTURES_ETAT_POUR_MEMOIRES_WITH_FACTURE (int $year, int $cycle, string $regroupName, string $dateDebut, string $dateFin) : array 
     {
-        return "
+        $dateCondition = self::createDateCondition($dateDebut, $dateFin);
+
+        return [
+            'sql' => "
             INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_etat_pour_memoires t
 (
     region,
@@ -391,8 +411,8 @@ WITH tmp_state_bills_data AS (
     SELECT /*+ PARALLEL(8) */ DISTINCT
         s.nom_area AS region,
         s.nom_unicom,
-        '{$year}' AS calendar_year,
-        '{$cycle}' AS reading_cycle,
+        :year: AS calendar_year,
+        :cycle: AS reading_cycle,
         t.tutelle AS regroup_id,
         t.tutelle AS regroup_name,
         r.nis_rad,
@@ -417,9 +437,7 @@ WITH tmp_state_bills_data AS (
     JOIN cmsadmin.recibos r ON t.contrat = r.num_rec
     JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
     WHERE r.tip_rec = 'TR010'
-      AND r.f_prev_puesta BETWEEN
-            TO_DATE('{$dateDebut}','DD/MM/YYYY')
-        AND TO_DATE('{$dateFin}','DD/MM/YYYY')
+      {$dateCondition['sql']}
 ),
 
 tmp_state_bills_data_infos AS (
@@ -488,7 +506,12 @@ SELECT /*+ PARALLEL(6) */ DISTINCT
 FROM tmp_state_bills_data b
 LEFT JOIN tmp_state_bills_data_infos i
     ON b.num_rec = i.num_rec
-    ";
+    ",
+            'binds' => array_merge([
+                'year' => $year,
+                'cycle' => $cycle,
+            ], $dateCondition['binds'])
+        ];
     }
 
 
@@ -637,8 +660,8 @@ WITH tmp_state_bills_data AS (
     SELECT /*+ PARALLEL(8) */ DISTINCT
         s.nom_area AS region,
         s.nom_unicom,
-        '{$year}' AS calendar_year,
-        '{$cycle}' AS reading_cycle,
+        :year: AS calendar_year,
+        :cycle: AS reading_cycle,
         t.tutelle AS regroup_id,
         t.tutelle AS regroup_name,
         t.contrat AS nis_rad,
@@ -733,7 +756,10 @@ LEFT JOIN tmp_state_bills_data_infos i
 
     return [
         'sql'   => $sql,
-        'binds' => []
+        'binds' => [
+            'year' => $year,
+            'cycle' => $cycle,
+        ]
     ];
 }
 
@@ -783,8 +809,8 @@ WITH tmp_state_bills_data AS (
     SELECT /*+ PARALLEL(8) */ DISTINCT
         s.nom_area AS region,
         s.nom_unicom,
-        '{$year}' AS calendar_year,
-        '{$cycle}' AS reading_cycle,
+        :year: AS calendar_year,
+        :cycle: AS reading_cycle,
         t.tutelle AS regroup_id,
         t.tutelle AS regroup_name,
         t.contrat AS nis_rad,
@@ -879,7 +905,10 @@ LEFT JOIN tmp_state_bills_data_infos i
 
     return [
         'sql'   => $sql,
-        'binds' => []
+        'binds' => [
+            'year' => $year,
+            'cycle' => $cycle,
+        ]
     ];
 }
 

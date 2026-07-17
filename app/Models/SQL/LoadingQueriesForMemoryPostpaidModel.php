@@ -56,7 +56,7 @@ class LoadingQueriesForMemoryPostpaidModel
         string $regroupName,
         string $dateDebut,
         string $dateFin
-    ): string {
+    ): array {
         $logger = \Config\Services::logger();
 
         $dateRange = self::validateDates($year, $cycle, $regroupName, $dateDebut, $dateFin);
@@ -67,6 +67,11 @@ class LoadingQueriesForMemoryPostpaidModel
         $r = service('request');
 
         $context = $r->getPost('referentiel_context');
+
+        $binds = [
+            'dateDebut' => $dateDebut,
+            'dateFin' => $dateFin,
+        ];
 
         switch ($context) {
             case 'postpaid_particulier':
@@ -79,26 +84,32 @@ class LoadingQueriesForMemoryPostpaidModel
 
                 if ($typeGeneral === 'facture') {
                     $logger->info("Retour vide (Facture sélectionné)");
-                    return "";
+                    return ['sql' => '', 'binds' => []];
                 }
 
                 if ($typeGeneral === 'contrat' && $typeEmission === 'emission') {
-                    return "AND r.f_prev_puesta BETWEEN ".self::date($start)." AND ".self::date($end);
+                    return [
+                        'sql' => "AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                        'binds' => $binds,
+                    ];
                 }
 
                 if ($typeGeneral === 'contrat' && $typeEmission === 'impayes') {
                     if ($start == $end) {
-                        $result = "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= ".self::date($end);
-                    } else {
-                        $result = "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta BETWEEN ".self::date($start)." AND ".self::date($end);
+                        return [
+                            'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                            'binds' => ['dateFin' => $dateFin],
+                        ];
                     }
-                    $logger->info("Condition retournée: " . $result);
-                    return $result;
+
+                    return [
+                        'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                        'binds' => $binds,
+                    ];
                 }
 
                 $logger->info("Retour vide par défaut");
-                return "";
-                break;
+                return ['sql' => '', 'binds' => []];
 
             case 'postpaid_general': // si vous aviez une autre valeur distincte
                 $typeGeneral  = $_POST['radio_referentiel_type_postpaid_general'] ?? null;
@@ -110,25 +121,32 @@ class LoadingQueriesForMemoryPostpaidModel
 
                 if ($typeGeneral === 'facture') {
                     $logger->info("Retour vide (Facture sélectionné)");
-                    return "";
+                    return ['sql' => '', 'binds' => []];
                 }
 
                 if ($typeGeneral === 'contrat' && $typeEmission === 'emission') {
-                    return "AND r.f_prev_puesta BETWEEN ".self::date($start)." AND ".self::date($end);
+                    return [
+                        'sql' => "AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                        'binds' => $binds,
+                    ];
                 }
 
                 if ($typeGeneral === 'contrat' && $typeEmission === 'impayes') {
                     if ($start == $end) {
-                        $result = "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= ".self::date($end);
-                    } else {
-                        $result = "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta BETWEEN ".self::date($start)." AND ".self::date($end);
+                        return [
+                            'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                            'binds' => ['dateFin' => $dateFin],
+                        ];
                     }
-                    $logger->info("Condition retournée: " . $result);
-                    return $result;
+
+                    return [
+                        'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                        'binds' => $binds,
+                    ];
                 }
 
                 $logger->info("Retour vide par défaut");
-                return "";
+                return ['sql' => '', 'binds' => []];
 
             case 'postpaid_etat':
                 $typeGeneral  = $_POST['radio_referentiel_type_postpaid_etat'] ?? null;
@@ -136,25 +154,33 @@ class LoadingQueriesForMemoryPostpaidModel
 
                 if ($typeGeneral === 'facture') {
                     $logger->info("Retour vide (Facture sélectionné)");
-                    return "";
+                    return ['sql' => '', 'binds' => []];
                 }
 
                 if ($typeGeneral === 'contrat' && $typeEmission === 'emission') {
-                    return "AND r.f_prev_puesta BETWEEN ".self::date($start)." AND ".self::date($end);
+                    return [
+                        'sql' => "AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                        'binds' => $binds,
+                    ];
                 }
 
                 if ($typeGeneral === 'contrat' && $typeEmission === 'impayes') {
                     if ($start == $end) {
-                        $result = "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= ".self::date($end);
-                    } else {
-                        $result = "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta BETWEEN ".self::date($start)." AND ".self::date($end);
+                        return [
+                            'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                            'binds' => ['dateFin' => $dateFin],
+                        ];
                     }
-                    $logger->info("Condition retournée: " . $result);
-                    return $result;
+
+                    return [
+                        'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')",
+                        'binds' => $binds,
+                    ];
                 }
-            }
+        }
+
         $logger->info("Retour vide par défaut");
-        return "";
+        return ['sql' => '', 'binds' => []];
     }
 
 
@@ -171,10 +197,10 @@ class LoadingQueriesForMemoryPostpaidModel
                         'CENTRALIZED LV' AS region,
                         s.nom_area AS cms_region,
                         s.nom_unicom,
-                        '{$year}' AS calendar_year,
-                        '{$cycle}' AS reading_cycle,
-                        '{$regroupName}' as regroup_id,
-                        '{$regroupName}' as regroup_name,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
                         r.nis_rad,
                         NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
                         s.pk_cust_id,
@@ -194,20 +220,24 @@ class LoadingQueriesForMemoryPostpaidModel
                         r.num_rec_anul,
                         s.cod_cnae,
                         s.co_an_vip,
-                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') amount_without_vat,
-                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}')) + r.imp_tot_rec) amount_vat,
-                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') govern_cont_without_vat,
-                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') govern_vat,
-                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') meter_rent
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
                     FROM cmsreport.tmp_ref_confacresu t
                     JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
                     JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
                     LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
                     WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
-                        {$dateCondition}
+                        {$dateCondition['sql']}
                 )
             ",
-            'binds' => []
+            'binds' => array_merge([
+                'year' => $year,
+                'cycle' => $cycle,
+                'regroupName' => $regroupName,
+            ], $dateCondition['binds'])
         ];
     }
 
@@ -251,10 +281,10 @@ class LoadingQueriesForMemoryPostpaidModel
                         'CENTRALIZED LV' AS region,
                         s.nom_area AS cms_region,
                         s.nom_unicom,
-                        '{$year}' AS calendar_year,
-                        '{$cycle}' AS reading_cycle,
-                        '{$regroupName}' as regroup_id,
-                        '{$regroupName}' as regroup_name,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
                         r.nis_rad,
                         NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
                         s.pk_cust_id,
@@ -274,20 +304,24 @@ class LoadingQueriesForMemoryPostpaidModel
                         r.num_rec_anul,
                         s.cod_cnae,
                         s.co_an_vip,
-                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') amount_without_vat,
-                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}')) + r.imp_tot_rec) amount_vat,
-                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') govern_cont_without_vat,
-                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') govern_vat,
-                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec,'{$regroupName}') meter_rent
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over (partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over (partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over (partition by r.num_rec, :regroupName:) meter_rent
                     FROM cmsreport.tmp_ref_confacresu t
                         JOIN cmsadmin.recibos r ON t.confacresu = r.num_rec
                         JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
                         LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
                     WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
-                        {$dateCondition}
+                        {$dateCondition['sql']}
                 )
             ",
-            'binds' => []
+            'binds' => array_merge([
+                'year' => $year,
+                'cycle' => $cycle,
+                'regroupName' => $regroupName,
+            ], $dateCondition['binds'])
         ];
     }
 
@@ -330,8 +364,8 @@ class LoadingQueriesForMemoryPostpaidModel
                         'CENTRALIZED LV' AS region,
                         s.nom_area AS cms_region,
                         s.nom_unicom,
-                        '{$year}' AS calendar_year,
-                        '{$cycle}' AS reading_cycle,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
                         t.tutelle as regroup_id,
                         t.tutelle as regroup_name,
                         r.nis_rad,
@@ -364,10 +398,13 @@ class LoadingQueriesForMemoryPostpaidModel
                     LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
                     WHERE r.tip_rec = 'TR010'
                         AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
-                        {$dateCondition}
+                        {$dateCondition['sql']}
                 )
             ",
-            'binds' => []
+            'binds' => array_merge([
+                'year' => $year,
+                'cycle' => $cycle,
+            ], $dateCondition['binds'])
         ];
     }
 
@@ -411,8 +448,8 @@ class LoadingQueriesForMemoryPostpaidModel
                         'CENTRALIZED LV' AS region,
                         s.nom_area AS cms_region,
                         s.nom_unicom,
-                        '{$year}' AS calendar_year,
-                        '{$cycle}' AS reading_cycle,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
                         t.tutelle as regroup_id,
                         t.tutelle as regroup_name,
                         r.nis_rad,
@@ -444,10 +481,13 @@ class LoadingQueriesForMemoryPostpaidModel
                         JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
                         LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
                     WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
-                        {$dateCondition}
+                        {$dateCondition['sql']}
                 )
             ",
-            'binds' => []
+            'binds' => array_merge([
+                'year' => $year,
+                'cycle' => $cycle,
+            ], $dateCondition['binds'])
         ];
     }
 
