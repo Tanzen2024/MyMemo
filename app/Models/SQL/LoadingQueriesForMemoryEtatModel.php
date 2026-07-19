@@ -71,16 +71,18 @@ class LoadingQueriesForMemoryEtatModel
 
     protected static function createDateCondition(string $dateDebut, string $dateFin): array
     {
+        [$start, $end] = self::validateDates($dateDebut, $dateFin);
+
         return [
             'sql' => "AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'DD/MM/YYYY') AND TO_DATE(:dateFin:, 'DD/MM/YYYY')",
             'binds' => [
-                'dateDebut' => $dateDebut,
-                'dateFin' => $dateFin,
+                'dateDebut' => $start->format('d/m/Y'),
+                'dateFin'   => $end->format('d/m/Y'),
             ],
         ];
     }
 
-    protected static function validateDates(int $year, int $cycle, string $regroup, string $dateDebut, string $dateFin): array
+    protected static function validateDates(string $dateDebut, string $dateFin): array
     {
         $start = \DateTime::createFromFormat('d/m/Y', $dateDebut);
         $end   = \DateTime::createFromFormat('d/m/Y', $dateFin);
@@ -622,6 +624,8 @@ LEFT JOIN tmp_state_bills_data_infos i
         string $dateFin
     ): array
 {
+    $dateCondition = self::createDateCondition($dateDebut, $dateFin);
+
     $sql = "
 INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_etat_mt_4_memoires t
 (
@@ -685,6 +689,8 @@ WITH tmp_state_bills_data AS (
     FROM cmsreport.tmp_ref_etat_with_facture t
     JOIN cmsadmin.recibos r ON t.contrat = r.num_rec
     JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+    WHERE r.tip_rec = 'TR010'
+      {$dateCondition['sql']}
 ),
 tmp_state_bills_data_infos AS (
     SELECT /*+ PARALLEL(6) */
@@ -757,9 +763,9 @@ LEFT JOIN tmp_state_bills_data_infos i
     return [
         'sql'   => $sql,
         'binds' => [
-            'year' => $year,
+            'year'  => $year,
             'cycle' => $cycle,
-        ]
+        ] + $dateCondition['binds'],
     ];
 }
 
@@ -771,6 +777,8 @@ LEFT JOIN tmp_state_bills_data_infos i
         string $dateFin
     ): array
 {
+    $dateCondition = self::createDateCondition($dateDebut, $dateFin);
+
     $sql = "
 INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_etat_mt_4_memoires t
 (
@@ -834,6 +842,8 @@ WITH tmp_state_bills_data AS (
     FROM cmsreport.tmp_ref_etat_with_contrat t
     JOIN cmsadmin.recibos r ON t.contrat = r.nis_rad
     JOIN cmsreport.tb_customers_infos s ON t.contrat = s.nis_rad
+    WHERE r.tip_rec = 'TR010'
+      {$dateCondition['sql']}
 ),
 tmp_state_bills_data_infos AS (
     SELECT /*+ PARALLEL(6) */
@@ -906,9 +916,9 @@ LEFT JOIN tmp_state_bills_data_infos i
     return [
         'sql'   => $sql,
         'binds' => [
-            'year' => $year,
+            'year'  => $year,
             'cycle' => $cycle,
-        ]
+        ] + $dateCondition['binds'],
     ];
 }
 
