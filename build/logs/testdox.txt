@@ -1,3 +1,20 @@
+Audit Reader Service
+ [x] Reads only requested days and applies filters
+
+Example Session
+ [x] Session simple
+
+Health
+ [x] Is defined app path
+ [x] Base url has been set
+
+Import Manager Security
+ [x] Filter refuses unauthorized user and audits the attempt
+ [x] Filter allows import manager role
+
+Memoire Excel Config
+ [x] Prepaid memory merge label uses the merge start cell
+
 Memory SQLFactory
  [x] Build returns sql and binds for prepaid with contrat
  [x] Build normalizes string result to sql binds array
