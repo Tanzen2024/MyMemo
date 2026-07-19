@@ -68,9 +68,12 @@ class LoadingQueriesForMemoryPostpaidModel
 
         $context = $r->getPost('referentiel_context');
 
+        // Les dates du formulaire sont au format d/m/Y, alors que les
+        // placeholders SQL sont convertis par Oracle avec le masque YYYY-MM-DD.
+        // On lie donc des valeurs déjà normalisées, sans interpolation SQL.
         $binds = [
-            'dateDebut' => $dateDebut,
-            'dateFin' => $dateFin,
+            'dateDebut' => $start?->format('Y-m-d'),
+            'dateFin'   => $end?->format('Y-m-d'),
         ];
 
         switch ($context) {
@@ -98,7 +101,7 @@ class LoadingQueriesForMemoryPostpaidModel
                     if ($start == $end) {
                         return [
                             'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= TO_DATE(:dateFin:, 'YYYY-MM-DD')",
-                            'binds' => ['dateFin' => $dateFin],
+                            'binds' => ['dateFin' => $end?->format('Y-m-d')],
                         ];
                     }
 
@@ -135,7 +138,7 @@ class LoadingQueriesForMemoryPostpaidModel
                     if ($start == $end) {
                         return [
                             'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= TO_DATE(:dateFin:, 'YYYY-MM-DD')",
-                            'binds' => ['dateFin' => $dateFin],
+                            'binds' => ['dateFin' => $end?->format('Y-m-d')],
                         ];
                     }
 
@@ -168,7 +171,7 @@ class LoadingQueriesForMemoryPostpaidModel
                     if ($start == $end) {
                         return [
                             'sql' => "AND r.imp_tot_rec - r.imp_cta > 0 AND r.f_prev_puesta <= TO_DATE(:dateFin:, 'YYYY-MM-DD')",
-                            'binds' => ['dateFin' => $dateFin],
+                            'binds' => ['dateFin' => $end?->format('Y-m-d')],
                         ];
                     }
 
