@@ -8,6 +8,7 @@ class LDAP
     public int $port = 636;
     public string $baseDn = '';
     public string $domain = '';
+    public string $importManagerGroup = '';
 
     public function __construct()
     {
@@ -15,5 +16,6 @@ class LDAP
         $this->port = (int) env('ldap.port', 636);
         $this->baseDn = (string) env('ldap.baseDn', '');
         $this->domain = (string) env('ldap.domain', '');
+        $this->importManagerGroup = (string) env('ldap.importManagerGroup', '');
     }
 }

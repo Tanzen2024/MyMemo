@@ -8,6 +8,7 @@ use App\Controllers\BaseController;
 use App\Services\ExcelExportService;
 use App\Services\ExcelImportService;
 use App\Services\OracleService;
+use App\Services\AuditLoggerService;
 use App\Factories\MemorySQLFactory;
 use Config\ReferentielImportConfig;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -21,6 +22,7 @@ class MemoryController extends BaseController
     protected OracleService $oracle;
     protected ExcelImportService $excelImporter;
     protected ExcelExportService $excelExporter;
+    protected AuditLoggerService $auditLogger;
     protected array $configMap = [];
 
     const REGION = 'CENTRALIZED LV';
@@ -30,6 +32,7 @@ class MemoryController extends BaseController
         $this->oracle        = new OracleService();
         $this->excelImporter = new ExcelImportService();
         $this->excelExporter = new ExcelExportService($this->oracle);
+        $this->auditLogger   = new AuditLoggerService();
 
         MemorySQLFactory::initOracle($this->oracle);
 
@@ -44,6 +47,7 @@ class MemoryController extends BaseController
      */
    public function importAndExport()
 {
+    $operationStartedAt = microtime(true);
     try {
         // ⚡ Définir les caractères numériques pour cette session
         if (! $this->oracle->setNumericCharacters(',', ' ')) {
@@ -83,7 +87,8 @@ class MemoryController extends BaseController
         ]));
         
 
-        MemorySQLFactory::runMemoryProcess(
+        $generationStartedAt = microtime(true);
+        $generationResult = MemorySQLFactory::runMemoryProcess(
             $type,
             [
                 'year'    => $importData['year'],
@@ -93,6 +98,13 @@ class MemoryController extends BaseController
                 'FIN'     => $importData['dateFin'],
             ],
             'loading'
+        );
+        $this->auditLogger->log(
+            'generate_memoires',
+            ($generationResult['failed'] ?? 0) === 0 ? 'SUCCESS' : 'FAILED',
+            microtime(true) - $generationStartedAt,
+            $this->request,
+            ['type' => $type]
         );
 
         /* ============================
@@ -219,8 +231,23 @@ class MemoryController extends BaseController
             throw new \Exception('Aucun fichier généré');
         }
 
+        $this->auditLogger->log(
+            'export_excel',
+            'SUCCESS',
+            microtime(true) - $operationStartedAt,
+            $this->request,
+            ['type' => $type, 'files' => count($generated)]
+        );
+
         return $this->downloadFiles($generated, $exportDir, $importData);
     } catch (\Throwable $e) {
+        $this->auditLogger->log(
+            'sensitive_operation',
+            'FAILED',
+            microtime(true) - $operationStartedAt,
+            $this->request,
+            ['message' => $e->getMessage()]
+        );
         log_message('error', 'Erreur : ' . $e->getMessage());
         log_message('error', 'Trace de l\'exception : ' . $e->getTraceAsString());
         return $this->response->setStatusCode(500)->setJSON([
@@ -248,11 +275,27 @@ class MemoryController extends BaseController
             log_message('debug', "Aucune table à tronquer pour '{$type}' ou type inconnu.");
         }
 
+        $truncateStartedAt = microtime(true);
         if (!$this->oracle->truncateReferentielType($type)) {
+            $this->auditLogger->log('truncate_temporary_tables', 'FAILED', microtime(true) - $truncateStartedAt, $request, ['type' => $type]);
             throw new \Exception("Erreur TRUNCATE {$type}");
         }
+        $this->auditLogger->log('truncate_temporary_tables', 'SUCCESS', microtime(true) - $truncateStartedAt, $request, ['type' => $type]);
         
-        $this->excelImporter->import($type, $params['file']->getTempName(), $this->oracle);
+        $importStartedAt = microtime(true);
+        try {
+            $importResult = $this->excelImporter->import($type, $params['file']->getTempName(), $this->oracle);
+        } catch (\Throwable $e) {
+            $this->auditLogger->log('import_excel', 'FAILED', microtime(true) - $importStartedAt, $request, ['type' => $type]);
+            throw $e;
+        }
+        $this->auditLogger->log(
+            'import_excel',
+            'SUCCESS',
+            microtime(true) - $importStartedAt,
+            $request,
+            ['type' => $type, 'inserted' => $importResult['inserted'] ?? 0, 'skipped' => $importResult['skipped'] ?? 0]
+        );
 
         return array_merge($params, ['type' => $type]);
     }

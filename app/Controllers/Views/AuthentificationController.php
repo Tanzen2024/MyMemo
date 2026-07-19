@@ -3,6 +3,7 @@
 namespace App\Controllers\Views;
 
 use App\Controllers\BaseController;
+use App\Services\AuditLoggerService;
 
 class AuthentificationController extends BaseController
 {
@@ -50,17 +51,28 @@ class AuthentificationController extends BaseController
             }
 
             $filter = '(sAMAccountName=' . ldap_escape($username, '', LDAP_ESCAPE_FILTER) . ')';
-            $search = ldap_search($connection, $ldap->baseDn, $filter, ['objectGUID', 'cn']);
+            $search = ldap_search($connection, $ldap->baseDn, $filter, ['objectGUID', 'cn', 'memberOf']);
             $entries = $search === false ? false : ldap_get_entries($connection, $search);
             if ($entries === false || $entries['count'] < 1) {
                 return redirect()->to('/authentification/login')->with('msg', 'Compte introuvable.');
             }
 
             $session->regenerate(true);
+            $groups = isset($entries[0]['memberof']) ? (array) $entries[0]['memberof'] : [];
+            $roles = [];
+            if (
+                in_array(AuditLoggerService::ROLE_IMPORT_MANAGER, $groups, true)
+                || ($ldap->importManagerGroup !== '' && in_array($ldap->importManagerGroup, $groups, true))
+            ) {
+                $roles[] = AuditLoggerService::ROLE_IMPORT_MANAGER;
+            }
+
             $session->set([
                 'id_user' => bin2hex($entries[0]['objectguid'][0] ?? $username),
                 'username' => $username,
                 'display_name' => $entries[0]['cn'][0] ?? $username,
+                'groups' => $groups,
+                'roles' => $roles,
                 'last_activity' => time(),
             ]);
 

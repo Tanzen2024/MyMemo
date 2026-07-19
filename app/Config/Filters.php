@@ -36,6 +36,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'autologout'     => \App\Filters\AutoLogoutFilter::class,
         'auditadmin'     => \App\Filters\AdminAuditFilter::class,
+        'importmanager' => \App\Filters\ImportManagerFilter::class,
     ];
 
     /**
