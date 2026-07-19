@@ -8,6 +8,8 @@ use App\Controllers\BaseController;
 use App\Services\ExcelExportService;
 use App\Services\ExcelImportService;
 use App\Services\OracleService;
+use App\Services\AuditLoggerService;
+use App\Services\ImportLockService;
 use App\Factories\MemorySQLFactory;
 use Config\ReferentielImportConfig;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -21,6 +23,8 @@ class MemoryController extends BaseController
     protected OracleService $oracle;
     protected ExcelImportService $excelImporter;
     protected ExcelExportService $excelExporter;
+    protected AuditLoggerService $auditLogger;
+    protected ImportLockService $importLocks;
     protected array $configMap = [];
 
     const REGION = 'CENTRALIZED LV';
@@ -30,6 +34,8 @@ class MemoryController extends BaseController
         $this->oracle        = new OracleService();
         $this->excelImporter = new ExcelImportService();
         $this->excelExporter = new ExcelExportService($this->oracle);
+        $this->auditLogger   = new AuditLoggerService();
+        $this->importLocks   = new ImportLockService();
 
         MemorySQLFactory::initOracle($this->oracle);
 
@@ -44,6 +50,8 @@ class MemoryController extends BaseController
      */
    public function importAndExport()
 {
+    $lock = null;
+    $startedAt = microtime(true);
     try {
         // ⚡ Définir les caractères numériques pour cette session
         if (! $this->oracle->setNumericCharacters(',', ' ')) {
@@ -61,6 +69,21 @@ class MemoryController extends BaseController
         $result = $this->excelImporter->determineReferentielType($this->request);
         $context = $result['context'];
         $type    = $result['type'];
+
+        $lock = $this->importLocks->acquire($type);
+        if ($lock === null) {
+            $this->auditLogger->log(
+                'import_lock',
+                'REFUSED',
+                microtime(true) - $startedAt,
+                $this->request,
+                ['type' => $type, 'message' => 'Un import du même référentiel est déjà en cours.']
+            );
+
+            return $this->response->setStatusCode(409)->setJSON([
+                'error' => 'Un import de ce référentiel est déjà en cours. Veuillez réessayer plus tard.'
+            ]);
+        }
 
         log_message('debug', "Contexte en cours = {$context}, Type référentiel = {$type}");
 
@@ -226,6 +249,8 @@ class MemoryController extends BaseController
         return $this->response->setStatusCode(500)->setJSON([
             'error' => 'Une erreur est survenue pendant le traitement. Consultez les journaux serveur.'
         ]);
+    } finally {
+        $lock?->release();
     }
 }
 
@@ -252,7 +277,16 @@ class MemoryController extends BaseController
             throw new \Exception("Erreur TRUNCATE {$type}");
         }
         
-        $this->excelImporter->import($type, $params['file']->getTempName(), $this->oracle);
+        // Oracle TRUNCATE implique un commit : la transaction protège donc les
+        // insertions du référentiel, tandis que le verrou couvre tout le flux.
+        $this->oracle->begin();
+        try {
+            $this->excelImporter->import($type, $params['file']->getTempName(), $this->oracle);
+            $this->oracle->commit();
+        } catch (\Throwable $e) {
+            $this->oracle->rollback();
+            throw $e;
+        }
 
         return array_merge($params, ['type' => $type]);
     }

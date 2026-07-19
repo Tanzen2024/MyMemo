@@ -1,3 +1,20 @@
+Audit Reader Service
+ [x] Reads only requested days and applies filters
+
+Example Session
+ [x] Session simple
+
+Health
+ [x] Is defined app path
+ [x] Base url has been set
+
+Import Lock Service
+ [x] Only one concurrent import can acquire the same type lock
+ [x] Expired lock is automatically replaced
+
+Memoire Excel Config
+ [x] Prepaid memory merge label uses the merge start cell
+
 Memory SQLFactory
  [x] Build returns sql and binds for prepaid with contrat
  [x] Build normalizes string result to sql binds array
