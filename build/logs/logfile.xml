@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
   <testsuite name="C:\xampp\htdocs\MyMemo\phpunit.xml.dist">
-    <testsuite name="App" tests="10" assertions="34" errors="0" failures="0" skipped="0" time="0.055664">
-      <testsuite name="ExampleDatabaseTest" file="C:\xampp\htdocs\MyMemo\tests\database\ExampleDatabaseTest.php" tests="10" assertions="34" errors="0" failures="0" skipped="0" time="0.055664">
-        <testsuite name="ExampleSessionTest" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.019983">
-          <testcase name="testSessionSimple" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" line="10" class="ExampleSessionTest" classname="ExampleSessionTest" assertions="1" time="0.019983"/>
+    <testsuite name="App" tests="10" assertions="34" errors="0" failures="0" skipped="0" time="0.085523">
+      <testsuite name="ExampleDatabaseTest" file="C:\xampp\htdocs\MyMemo\tests\database\ExampleDatabaseTest.php" tests="10" assertions="34" errors="0" failures="0" skipped="0" time="0.085523">
+        <testsuite name="ExampleSessionTest" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.025934">
+          <testcase name="testSessionSimple" file="C:\xampp\htdocs\MyMemo\tests\session\ExampleSessionTest.php" line="10" class="ExampleSessionTest" classname="ExampleSessionTest" assertions="1" time="0.025934"/>
         </testsuite>
-        <testsuite name="AuditReaderServiceTest" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.004247">
-          <testcase name="testReadsOnlyRequestedDaysAndAppliesFilters" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" line="4" class="AuditReaderServiceTest" classname="AuditReaderServiceTest" assertions="2" time="0.004247"/>
+        <testsuite name="AuditReaderServiceTest" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.009053">
+          <testcase name="testReadsOnlyRequestedDaysAndAppliesFilters" file="C:\xampp\htdocs\MyMemo\tests\unit\AuditReaderServiceTest.php" line="4" class="AuditReaderServiceTest" classname="AuditReaderServiceTest" assertions="2" time="0.009053"/>
         </testsuite>
-        <testsuite name="HealthTest" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.011780">
-          <testcase name="testIsDefinedAppPath" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="12" class="HealthTest" classname="HealthTest" assertions="1" time="0.001025"/>
-          <testcase name="testBaseUrlHasBeenSet" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="17" class="HealthTest" classname="HealthTest" assertions="2" time="0.010755"/>
+        <testsuite name="HealthTest" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.013460">
+          <testcase name="testIsDefinedAppPath" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="12" class="HealthTest" classname="HealthTest" assertions="1" time="0.001316"/>
+          <testcase name="testBaseUrlHasBeenSet" file="C:\xampp\htdocs\MyMemo\tests\unit\HealthTest.php" line="17" class="HealthTest" classname="HealthTest" assertions="2" time="0.012144"/>
         </testsuite>
-        <testsuite name="ImportLockServiceTest" file="C:\xampp\htdocs\MyMemo\tests\unit\ImportLockServiceTest.php" tests="2" assertions="5" errors="0" failures="0" skipped="0" time="0.008529">
-          <testcase name="testOnlyOneConcurrentImportCanAcquireTheSameTypeLock" file="C:\xampp\htdocs\MyMemo\tests\unit\ImportLockServiceTest.php" line="26" class="ImportLockServiceTest" classname="ImportLockServiceTest" assertions="4" time="0.005163"/>
-          <testcase name="testExpiredLockIsAutomaticallyReplaced" file="C:\xampp\htdocs\MyMemo\tests\unit\ImportLockServiceTest.php" line="41" class="ImportLockServiceTest" classname="ImportLockServiceTest" assertions="1" time="0.003367"/>
+        <testsuite name="ImportLockServiceTest" file="C:\xampp\htdocs\MyMemo\tests\unit\ImportLockServiceTest.php" tests="2" assertions="5" errors="0" failures="0" skipped="0" time="0.023369">
+          <testcase name="testOnlyOneConcurrentImportCanAcquireTheSameTypeLock" file="C:\xampp\htdocs\MyMemo\tests\unit\ImportLockServiceTest.php" line="26" class="ImportLockServiceTest" classname="ImportLockServiceTest" assertions="4" time="0.015411"/>
+          <testcase name="testExpiredLockIsAutomaticallyReplaced" file="C:\xampp\htdocs\MyMemo\tests\unit\ImportLockServiceTest.php" line="41" class="ImportLockServiceTest" classname="ImportLockServiceTest" assertions="1" time="0.007958"/>
         </testsuite>
-        <testsuite name="MemoireExcelConfigTest" file="C:\xampp\htdocs\MyMemo\tests\unit\MemoireExcelConfigTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.003081">
-          <testcase name="testPrepaidMemoryMergeLabelUsesTheMergeStartCell" file="C:\xampp\htdocs\MyMemo\tests\unit\MemoireExcelConfigTest.php" line="7" class="MemoireExcelConfigTest" classname="MemoireExcelConfigTest" assertions="3" time="0.003081"/>
+        <testsuite name="MemoireExcelConfigTest" file="C:\xampp\htdocs\MyMemo\tests\unit\MemoireExcelConfigTest.php" tests="1" assertions="3" errors="0" failures="0" skipped="0" time="0.003835">
+          <testcase name="testPrepaidMemoryMergeLabelUsesTheMergeStartCell" file="C:\xampp\htdocs\MyMemo\tests\unit\MemoireExcelConfigTest.php" line="7" class="MemoireExcelConfigTest" classname="MemoireExcelConfigTest" assertions="3" time="0.003835"/>
         </testsuite>
-        <testsuite name="MemorySQLFactoryTest" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" tests="3" assertions="20" errors="0" failures="0" skipped="0" time="0.008043">
-          <testcase name="testBuildReturnsSqlAndBindsForPrepaidWithContrat" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="8" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="9" time="0.005698"/>
-          <testcase name="testBuildNormalizesStringResultToSqlBindsArray" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="40" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="10" time="0.001239"/>
-          <testcase name="testBuildThrowsForUnknownType" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="61" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="1" time="0.001105"/>
+        <testsuite name="MemorySQLFactoryTest" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" tests="3" assertions="20" errors="0" failures="0" skipped="0" time="0.009871">
+          <testcase name="testBuildReturnsSqlAndBindsForPrepaidWithContrat" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="8" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="9" time="0.006566"/>
+          <testcase name="testBuildNormalizesStringResultToSqlBindsArray" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="40" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="10" time="0.002286"/>
+          <testcase name="testBuildThrowsForUnknownType" file="C:\xampp\htdocs\MyMemo\tests\unit\MemorySQLFactoryTest.php" line="61" class="MemorySQLFactoryTest" classname="MemorySQLFactoryTest" assertions="1" time="0.001020"/>
         </testsuite>
       </testsuite>
     </testsuite>

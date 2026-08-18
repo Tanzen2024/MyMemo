@@ -11,13 +11,13 @@
     </li>
   </ul>
 
-  <!-- <ul class="navbar-nav ml-auto">
+  <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" href="<?= site_url('authentification/logout') ?>">
+      <a class="nav-link logout-link" href="<?= site_url('authentification/logout') ?>">
         <i class="fas fa-sign-out-alt"></i> Déconnexion
       </a>
     </li>
-  </ul> -->
+  </ul>
 </nav>
 
 <div class="content-wrapper">
@@ -31,8 +31,8 @@
         <!-- ===============================
              INFORMATIONS GÉNÉRALES
         =============================== -->
-        <div class="card shadow-sm mb-3">
-          <div class="card-header" style="background-color: #3498db; color: white;"><h5>Informations générales</h5></div>
+        <div class="card card-primary shadow-sm mb-3 animate__animated animate__fadeIn">
+          <div class="card-header"><h5>Informations générales</h5></div>
           <div class="card-body row">
             <div class="col-md-6 mb-3">
             <label>Année</label>
@@ -48,8 +48,8 @@
         <!-- ===============================
              CLIENT
         =============================== -->
-        <div class="card shadow-sm mb-3">
-          <div class="card-header" style="background-color: #2ecc71; color: white;"><h5>Client</h5></div>
+        <div class="card card-secondary shadow-sm mb-3 animate__animated animate__fadeIn">
+          <div class="card-header"><h5>Client</h5></div>
           <div class="card-body">
             <input type="text" name="regroupName_postpaid_particulier" class="form-control" placeholder="Nom du client" required>
           </div>
@@ -132,8 +132,8 @@
          <!-- ===============================
              IMPORT EXCEL
         =============================== -->
-        <div class="card shadow-sm mb-3">
-          <div class="card-header" style="background-color: #8e44ad; color: white;"><h5>Importer le référentiel</h5></div>
+        <div class="card card-success shadow-sm mb-3 animate__animated animate__fadeIn">
+          <div class="card-header"><h5>Importer le référentiel</h5></div>
           <div class="card-body">
             <input type="file" name="referentiel_file_postpaid_particulier" class="form-control" accept=".xls,.xlsx" required>
             <small class="text-muted">Excel accepté</small>
@@ -173,8 +173,8 @@
         <!-- ===============================
              DOCUMENT
         =============================== -->
-        <div class="card shadow-sm mb-4">
-          <div class="card-header" style="background-color: #808080; color: white;"><h5>Document</h5></div>  <!-- Couleur grise -->
+        <div class="card card-info mb-4 card-soft">
+          <div class="card-header"><h5>Document</h5></div>
           <div class="card-body">
             <!-- Flex horizontal centré -->
             <div class="d-flex justify-content-center" style="gap: 2rem; flex-wrap: nowrap;">

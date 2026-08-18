@@ -29,6 +29,28 @@ class MemoryController extends BaseController
 
     const REGION = 'CENTRALIZED LV';
 
+    /** Police unique pour tous les documents imprimés (remplace l'ancien "Arial Narrow"). */
+    private const PRINT_FONT_NAME = 'Arial';
+
+    /**
+     * Hauteur de ligne (en points) utilisée pour estimer combien de lignes de
+     * données tiennent sur une page A4 imprimée à 100% (voir computeMaxLinesPerPage()).
+     * À ajuster si un test d'impression réel montre un écart.
+     */
+    private const PRINT_DATA_ROW_HEIGHT_PT = 15.0;
+
+    /**
+     * Nombre de lignes occupées par le bloc d'en-tête (société + titre +
+     * libellés dynamiques) redessiné en haut de chaque page, avant la
+     * première ligne de données (cf. le `$rowIndex += 11` des méthodes
+     * exportMemoirePostpaid/exportMemoirePrepaid, +1 pour la ligne d'en-tête
+     * du tableau elle-même).
+     */
+    private const PRINT_HEADER_BLOCK_ROWS = 12;
+
+    /** Hauteur de ligne (points) du bloc d'en-tête, cf. renderCompanyInfoStyles(). */
+    private const PRINT_HEADER_BLOCK_ROW_HEIGHT_PT = 16.0;
+
     public function __construct()
     {
         $this->oracle        = new OracleService();
@@ -56,7 +78,9 @@ class MemoryController extends BaseController
         // ⚡ Définir les caractères numériques pour cette session
         if (! $this->oracle->setNumericCharacters(',', ' ')) {
             log_message('error', 'Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.');
-            return;
+            return $this->response->setStatusCode(500)->setJSON([
+                'error' => 'Impossible d\'initialiser la session Oracle. Consultez les journaux serveur.'
+            ]);
         }
 
         // Augmenter le temps et la mémoire pour gros fichiers
@@ -90,8 +114,24 @@ class MemoryController extends BaseController
         /* ============================
          * 2. Import Excel
          * ============================ */
+        $importStartedAt = microtime(true);
         $importData = $this->importProcess($this->request, $context, $type);
         log_message('debug', 'Import terminé : ' . json_encode($importData));
+
+        $this->auditLogger->log(
+            'import',
+            'SUCCESS',
+            microtime(true) - $importStartedAt,
+            $this->request,
+            [
+                'type'     => $type,
+                'file'     => $importData['file']?->getClientName() ?? 'inconnu',
+                'inserted' => $importData['importStats']['inserted'] ?? null,
+                'skipped'  => $importData['importStats']['skipped'] ?? null,
+            ]
+        );
+
+        $exportStartedAt = microtime(true);
 
         /* ============================
          * 3. Chargement Oracle
@@ -242,10 +282,31 @@ class MemoryController extends BaseController
             throw new \Exception('Aucun fichier généré');
         }
 
+        $this->auditLogger->log(
+            'export',
+            'SUCCESS',
+            microtime(true) - $exportStartedAt,
+            $this->request,
+            ['type' => $type, 'files' => array_map('basename', $generated)]
+        );
+
         return $this->downloadFiles($generated, $exportDir, $importData);
     } catch (\Throwable $e) {
         log_message('error', 'Erreur : ' . $e->getMessage());
         log_message('error', 'Trace de l\'exception : ' . $e->getTraceAsString());
+
+        $this->auditLogger->log(
+            'php_error',
+            'ERROR',
+            microtime(true) - $startedAt,
+            $this->request,
+            [
+                'exception' => get_class($e),
+                'message'   => $e->getMessage(),
+                'file'      => $e->getFile() . ':' . $e->getLine(),
+            ]
+        );
+
         return $this->response->setStatusCode(500)->setJSON([
             'error' => 'Une erreur est survenue pendant le traitement. Consultez les journaux serveur.'
         ]);
@@ -273,7 +334,7 @@ class MemoryController extends BaseController
             log_message('debug', "Aucune table à tronquer pour '{$type}' ou type inconnu.");
         }
 
-        if (!$this->oracle->truncateReferentielType($type)) {
+        if (!$this->oracle->truncateReferentielType($type, $this->configMap)) {
             throw new \Exception("Erreur TRUNCATE {$type}");
         }
         
@@ -281,14 +342,14 @@ class MemoryController extends BaseController
         // insertions du référentiel, tandis que le verrou couvre tout le flux.
         $this->oracle->begin();
         try {
-            $this->excelImporter->import($type, $params['file']->getTempName(), $this->oracle);
+            $importStats = $this->excelImporter->import($type, $params['file']->getTempName(), $this->oracle);
             $this->oracle->commit();
         } catch (\Throwable $e) {
             $this->oracle->rollback();
             throw $e;
         }
 
-        return array_merge($params, ['type' => $type]);
+        return array_merge($params, ['type' => $type, 'importStats' => $importStats]);
     }
 
     /* ========================================================= */
@@ -318,17 +379,6 @@ class MemoryController extends BaseController
     }
 
     /* ========================================================= */
-
-    protected function computeTotals(array $rows): array
-    {
-        $ht = $tax = $ttc = 0;
-        foreach ($rows as $r) {
-            $ht  += (float)($r['HT'] ?? 0);
-            $tax += (float)($r['TAX'] ?? 0);
-            $ttc += (float)($r['TTC'] ?? 0);
-        }
-        return [$ht, $tax, $ttc];
-    }
 
         protected function downloadFiles(array $files, string $dir, array $importData)
         {
@@ -360,6 +410,231 @@ class MemoryController extends BaseController
     {
         $safe = preg_replace('/[^A-Za-z0-9_-]+/', '_', $value) ?? '';
         return trim($safe, '_') ?: 'export';
+    }
+
+    /**
+     * Écrit une valeur potentiellement issue d'un import/d'Oracle dans une cellule
+     * en empêchant PhpSpreadsheet de l'interpréter comme une formule Excel
+     * (une chaîne commençant par =, +, - ou @ serait sinon auto-détectée comme
+     * formule par le DefaultValueBinder, y compris dans un fichier .xlsx natif).
+     */
+    private function setSafeCellValue(\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet, string $cell, $value): void
+    {
+        if (is_string($value) && $value !== '' && strpbrk($value[0], "=+-@") !== false) {
+            $sheet->setCellValueExplicit($cell, $value, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+            return;
+        }
+
+        $sheet->setCellValue($cell, $value);
+    }
+
+    /**
+     * Applique le format numérique et l'alignement (constants par colonne,
+     * cf. $colSettings) une seule fois sur toute la plage de lignes d'une page,
+     * au lieu de répéter l'appel à chaque cellule. Le résultat visuel est
+     * identique ; seul le nombre d'appels à l'API de style change.
+     */
+    private function applyColumnStylesForRange(\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet, array $colSettings, int $firstRow, int $lastRow): void
+    {
+        if ($lastRow < $firstRow) {
+            return;
+        }
+
+        foreach ($colSettings as $col => $s) {
+            $range = "{$col}{$firstRow}:{$col}{$lastRow}";
+
+            if (isset($s['format'])) {
+                $sheet->getStyle($range)->getNumberFormat()->setFormatCode($s['format']);
+            }
+
+            $sheet->getStyle($range)->getAlignment()->setHorizontal($s['align']);
+        }
+    }
+
+    /**
+     * Configure une mise en page d'impression professionnelle pour un tableau
+     * large destiné à être imprimé sur A4.
+     *
+     * Choix volontaire : aucune compression artificielle (pas de "fit to
+     * page"), échelle 100%, pagination naturelle d'Excel sur autant de pages
+     * (largeur et hauteur) que nécessaire. C'est ce qui évite le texte
+     * illisible produit par l'ancien réglage setFitToWidth(1), qui forçait
+     * un unique facteur d'échelle (appliqué à la fois en largeur ET en
+     * hauteur) pour faire tenir un tableau de plusieurs centaines d'unités
+     * de largeur de colonnes sur une seule page.
+     *
+     * @param array $colSettings Tableau des colonnes ['A' => ['width' => int, ...], ...]
+     * @param array $margins     ['top' => float, 'bottom' => float, 'left' => float, 'right' => float, 'header' => float, 'footer' => float] en pouces
+     *
+     * @return string L'orientation retenue (\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_*),
+     *                à réutiliser pour computeMaxLinesPerPage().
+     */
+    private function configurePrintLayout(\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet, array $colSettings, array $margins): string
+    {
+        $totalWidthUnits = array_sum(array_column($colSettings, 'width'));
+
+        // Portrait pour un tableau étroit, paysage au-delà (seuil ~ largeur
+        // exploitable d'une page A4 portrait, en unités de colonne Excel).
+        $orientation = $totalWidthUnits > 90
+            ? \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE
+            : \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_PORTRAIT;
+
+        $sheet->getPageSetup()
+            ->setOrientation($orientation)
+            ->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A4)
+            ->setFitToPage(false)
+            ->setScale(100)
+            ->setHorizontalCentered(true)
+            ->setVerticalCentered(false)
+            // Pages de continuation (tableau réparti sur plusieurs pages en
+            // largeur) : répète la première colonne pour garder le contexte
+            // de la ligne (nom client), comme sur une facture professionnelle.
+            ->setColumnsToRepeatAtLeftByStartAndEnd('A', 'A');
+
+        $sheet->getPageMargins()
+            ->setTop($margins['top'])
+            ->setBottom($margins['bottom'])
+            ->setLeft($margins['left'])
+            ->setRight($margins['right'])
+            ->setHeader($margins['header'])
+            ->setFooter($margins['footer']);
+
+        // Grille masquée à l'impression, configuré explicitement plutôt que
+        // de dépendre du réglage par défaut de PhpSpreadsheet.
+        $sheet->setShowGridlines(false);
+        $sheet->setPrintGridlines(false);
+
+        // Zoom d'aperçu cohérent avec l'échelle d'impression réelle (100%).
+        $sheet->getSheetView()->setZoomScale(100);
+
+        return $orientation;
+    }
+
+    /**
+     * Définit la zone d'impression une fois le contenu entièrement généré
+     * (nécessaire car la dernière ligne n'est connue qu'à la fin de la
+     * pagination). Sans cela, Excel utilise la zone utilisée par défaut, qui
+     * peut inclure des artefacts (ex. objets flottants) au-delà du contenu réel.
+     */
+    private function finalizePrintArea(\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet, string $lastColumn, int $lastRow): void
+    {
+        $sheet->getPageSetup()->setPrintArea("A1:{$lastColumn}{$lastRow}");
+    }
+
+    /**
+     * Estime combien de lignes de données tiennent sur une page A4 imprimée
+     * à 100% (sans compression), compte tenu de la hauteur du bloc d'en-tête
+     * déjà dessiné en haut de page. Remplace un nombre de lignes par page
+     * codé en dur qui ne correspondait plus à la réalité une fois l'échelle
+     * forcée à 1 page de large supprimée.
+     *
+     * @param string $orientation \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_*
+     * @param float  $headerBlockHeightPt Hauteur estimée (en points) du bloc d'en-tête
+     *                                    redessiné en haut de chaque page (société, titre, etc.)
+     */
+    private function computeMaxLinesPerPage(string $orientation, float $headerBlockHeightPt, array $margins): int
+    {
+        $pageHeightIn = $orientation === \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE
+            ? 8.27  // A4 paysage
+            : 11.69; // A4 portrait
+
+        $usableHeightPt = ($pageHeightIn - $margins['top'] - $margins['bottom'] - $margins['header'] - $margins['footer']) * 72;
+        $availableForDataPt = max(0.0, $usableHeightPt - $headerBlockHeightPt);
+
+        return max(5, (int) floor($availableForDataPt / self::PRINT_DATA_ROW_HEIGHT_PT));
+    }
+
+    /**
+     * Bloc de style identique entre exportMemoirePostpaid et exportMemoirePrepaid :
+     * applique le style dynamique du bloc "société" (colonne A uniquement,
+     * indépendant du nombre de colonnes du tableau de données).
+     */
+    private function renderCompanyInfoStyles(\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet, array $companyInfo, int $rowIndex): void
+    {
+        $start = $rowIndex + 4;
+        $currentRow = $start;
+
+        foreach ($companyInfo as $info) {
+            $sheet->getStyle("A{$currentRow}")->applyFromArray([
+                'font' => [
+                    'name'  => self::PRINT_FONT_NAME,
+                    'size'  => $info['fontSize'] ?? 10,
+                    'bold'  => $info['bold'] ?? false,
+                    'color' => ['rgb' => $info['fontColor'] ?? '000000']
+                ],
+                'alignment' => [
+                    'horizontal' => $info['align'] ?? \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
+                    'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                ]
+            ]);
+
+            $sheet->getRowDimension($currentRow)->setRowHeight(16);
+
+            $currentRow++;
+        }
+
+        // Première ligne légèrement plus grande
+        $sheet->getStyle("A{$start}")->getFont()->setSize(11);
+    }
+
+    /**
+     * Bloc de style identique entre exportMemoirePostpaid et exportMemoirePrepaid :
+     * place et met en forme les en-têtes additionnels dynamiques définis en config
+     * (cellule/fusion/police par entrée), indépendamment du nombre de colonnes.
+     */
+    private function renderAdditionalHeaders(\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet, array $headersAdditionnal, int $rowIndex): void
+    {
+        foreach ($headersAdditionnal as $header) {
+            preg_match('/([A-Z]+)(\d+)/', $header['cell'], $matches);
+            $column  = $matches[1];
+            $baseRow = (int) $matches[2];
+            $newRow  = $rowIndex + ($baseRow - 1);
+            $newCell = $column . $newRow;
+
+            // Merge dynamique
+            if (!empty($header['merge'])) {
+                preg_match('/([A-Z]+)(\d+):([A-Z]+)(\d+)/', $header['merge'], $mergeMatch);
+                $colStart = $mergeMatch[1];
+                $colEnd   = $mergeMatch[3];
+                $sheet->mergeCells("{$colStart}{$newRow}:{$colEnd}{$newRow}");
+
+                // Appliquer le style sur toute la plage fusionnée
+                $styleCell = "{$colStart}{$newRow}:{$colEnd}{$newRow}";
+            } else {
+                $styleCell = $newCell;
+            }
+
+            // Valeur
+            $sheet->setCellValue($newCell, $header['value']);
+
+            // Style de base
+            $styleArray = [
+                'font' => [
+                    'name'  => self::PRINT_FONT_NAME,
+                    'size'  => $header['fontSize'] ?? 10,
+                    'bold'  => $header['bold'] ?? false,
+                    'italic'=> $header['italic'] ?? false,
+                    'color' => ['rgb' => $header['fontColor'] ?? '000000']
+                ],
+                'alignment' => [
+                    'horizontal' => $header['align'] ?? \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
+                    'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
+                ]
+            ];
+
+            // Bordure uniquement si demandé
+            if (!empty($header['border']) && $header['border'] === true) {
+                $styleArray['borders'] = [
+                    'outline' => [
+                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                        'color' => ['rgb' => $header['borderColor'] ?? '014BA0'],
+                    ],
+                ];
+            }
+
+            // Appliquer le style sur la bonne plage
+            $sheet->getStyle($styleCell)->applyFromArray($styleArray);
+        }
     }
 
     protected function cleanupOldExports(string $dir, int $maxAge): void
@@ -426,7 +701,7 @@ public function exportPrintDataForMemoireMT(array $rows, string $filePath) {
 
         foreach ($headers as $header) {
             $cell = Coordinate::stringFromColumnIndex($col) . $rowIndex;
-            $sheet->setCellValue($cell, $row[$header] ?? '');
+            $this->setSafeCellValue($sheet, $cell, $row[$header] ?? '');
             $col++;
         }
 
@@ -434,25 +709,43 @@ public function exportPrintDataForMemoireMT(array $rows, string $filePath) {
     }
 
     // =========================
-    // 3. AUTO SIZE COLUMNS
+    // 3. LARGEUR DE COLONNES
     // =========================
+    // Largeur fixe au lieu de setAutoSize(true) : évite à PhpSpreadsheet de
+    // parcourir le contenu de chaque cellule pour estimer une largeur, ce qui
+    // devient coûteux sur les fichiers à beaucoup de lignes.
+    $colSettings = [];
     for ($i = 1; $i <= count($headers); $i++) {
         $colLetter = Coordinate::stringFromColumnIndex($i);
-        $sheet->getColumnDimension($colLetter)->setAutoSize(true);
+        $sheet->getColumnDimension($colLetter)->setWidth(18);
+        $colSettings[$colLetter] = ['width' => 18];
     }
+    $lastColumn = Coordinate::stringFromColumnIndex(count($headers));
 
     // =========================
-    // 4. FREEZE HEADER
+    // 4. FREEZE HEADER (écran) + RÉPÉTITION D'EN-TÊTE (impression)
     // =========================
     $sheet->freezePane('A2');
+    // Contrairement à postpaid/prepaid (en-tête redessiné à chaque page), ce
+    // tableau n'a qu'une seule ligne d'en-tête fixe : on utilise donc la
+    // répétition native d'Excel pour qu'elle apparaisse sur chaque page imprimée.
+    $sheet->getPageSetup()->setRowsToRepeatAtTopByStartAndEnd(1, 1);
 
     // =========================
     // 5. HEADER STYLE (OPTIONNEL MAIS PROPRE)
     // =========================
-    $headerRange = 'A1:' . Coordinate::stringFromColumnIndex(count($headers)) . '1';
+    $headerRange = 'A1:' . $lastColumn . '1';
 
     $sheet->getStyle($headerRange)->getFont()->setBold(true);
     $sheet->getStyle($headerRange)->getAlignment()->setHorizontal('center');
+
+    // =========================
+    // 5bis. MISE EN PAGE D'IMPRESSION
+    // =========================
+    $this->configurePrintLayout($sheet, $colSettings, [
+        'top' => 0.6, 'bottom' => 0.6, 'left' => 0.5, 'right' => 0.5, 'header' => 0.3, 'footer' => 0.3,
+    ]);
+    $this->finalizePrintArea($sheet, $lastColumn, $rowIndex - 1);
 
     // =========================
     // 6. SAVE FILE
@@ -536,22 +829,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
 
     $sheetIndex++;
 
-    $sheet->getPageSetup()
-        ->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE)
-        ->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A4)
-        ->setFitToWidth(1)
-        ->setFitToHeight(false)
-        ->setHorizontalCentered(true);
-
-    $sheet->getPageMargins()
-        ->setTop(0.6)
-        ->setBottom(0.6)
-        ->setLeft(0.3)
-        ->setRight(0.3)
-        ->setHeader(0.8)
-        ->setFooter(0.8);
-
-    $spreadsheet->getDefaultStyle()->getFont()->setName('Arial Narrow')->setSize(9);
+    $spreadsheet->getDefaultStyle()->getFont()->setName(self::PRINT_FONT_NAME)->setSize(9);
 
     $columns = range('A', 'O');
     $colSettings = [
@@ -583,8 +861,16 @@ foreach ($groupedRows as $groupId => $groupRows) {
         'M'=>'AMOUNT_VAT','N'=>'AMOUNT_WITH_TAX','O'=>'DUE_AMOUNT'
     ];
 
+    // ===== MISE EN PAGE D'IMPRESSION =====
+    $printMargins = ['top' => 0.6, 'bottom' => 0.6, 'left' => 0.5, 'right' => 0.5, 'header' => 0.3, 'footer' => 0.3];
+    $printOrientation = $this->configurePrintLayout($sheet, $colSettings, $printMargins);
+
     // ===== PARAMÈTRES DE PAGINATION =====
-    $maxLinesPerPage = 30; // ajuster selon ton besoin
+    $maxLinesPerPage = $this->computeMaxLinesPerPage(
+        $printOrientation,
+        self::PRINT_HEADER_BLOCK_ROWS * self::PRINT_HEADER_BLOCK_ROW_HEIGHT_PT,
+        $printMargins
+    );
     $chunks = array_chunk($rows, $maxLinesPerPage);
     $totalPages = count($chunks);
     $globalTotals = ['AMOUNT_WITHOUT_VAT'=>0,'AMOUNT_VAT'=>0,'AMOUNT_WITH_TAX'=>0,'DUE_AMOUNT'=>0];
@@ -623,33 +909,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
         $sheet->setCellValue("A".($rowIndex + 9), $config->companyInfo[5]['value']);
         $sheet->mergeCells("A".($rowIndex + 9).":B".($rowIndex + 9));
 
-       /* ================= STYLE DYNAMIQUE ================= */
-
-        $start = $rowIndex + 4;
-        $currentRow = $start;
-
-        foreach ($config->companyInfo as $info) {
-            // 🔹 Style dynamique depuis config
-            $sheet->getStyle("A{$currentRow}")->applyFromArray([
-                'font' => [
-                    'name'  => 'Arial Narrow',
-                    'size'  => $info['fontSize'] ?? 10,
-                    'bold'  => $info['bold'] ?? false,
-                    'color' => ['rgb' => $info['fontColor'] ?? '000000']
-                ],
-                'alignment' => [
-                    'horizontal' => $info['align'] ?? \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
-                    'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
-                ]
-            ]);
-
-            $sheet->getRowDimension($currentRow)->setRowHeight(16);
-
-            $currentRow++;
-        }
-
-        // Première ligne légèrement plus grande
-        $sheet->getStyle("A{$start}")->getFont()->setSize(11);
+        $this->renderCompanyInfoStyles($sheet, $config->companyInfo, $rowIndex);
 
         $sheet->setCellValue("D".($rowIndex + 1), $config->headersAdditionnal[0]['value']);
         $sheet->setCellValue("F".($rowIndex + 2), $config->headersAdditionnal[1]['value']);
@@ -666,7 +926,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -674,13 +934,13 @@ foreach ($groupedRows as $groupId => $groupRows) {
                 'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
             ],
         ]);
-        $sheet->setCellValue("G".($rowIndex + 6), $regroupId);
+        $this->setSafeCellValue($sheet, "G".($rowIndex + 6), $regroupId);
         $sheet->mergeCells("G".($rowIndex + 6).":I".($rowIndex + 6));
         $sheet->getStyle("G".($rowIndex + 6).":I".($rowIndex + 6))->applyFromArray([
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -689,13 +949,13 @@ foreach ($groupedRows as $groupId => $groupRows) {
             ],
         ]);
 
-        $sheet->setCellValue("G".($rowIndex + 7), $regroupName);
+        $this->setSafeCellValue($sheet, "G".($rowIndex + 7), $regroupName);
         $sheet->mergeCells("G".($rowIndex + 7).":I".($rowIndex + 7));
         $sheet->getStyle("G".($rowIndex + 7).":I".($rowIndex + 7))->applyFromArray([
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -710,7 +970,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -726,7 +986,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -736,13 +996,13 @@ foreach ($groupedRows as $groupId => $groupRows) {
         ]);
 
         $readingCycleFormatted = str_pad($readingCycle, 2, '0', STR_PAD_LEFT);
-        $sheet->setCellValue("N".($rowIndex + 6), $regroupId . " - " . $readingCycleFormatted . " - " . $calendarYear);
+        $this->setSafeCellValue($sheet, "N".($rowIndex + 6), $regroupId . " - " . $readingCycleFormatted . " - " . $calendarYear);
         $sheet->mergeCells("N".($rowIndex + 6).":O".($rowIndex + 6));
         $sheet->getStyle("N".($rowIndex + 6).":O".($rowIndex + 6))->applyFromArray([
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -753,57 +1013,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
 
 
 
-        foreach ($config->headersAdditionnal as $header) {
-            preg_match('/([A-Z]+)(\d+)/', $header['cell'], $matches);
-            $column  = $matches[1];
-            $baseRow = (int) $matches[2];
-            $newRow  = $rowIndex + ($baseRow - 1);
-            $newCell = $column . $newRow;
-
-            // Merge dynamique
-            if (!empty($header['merge'])) {
-                preg_match('/([A-Z]+)(\d+):([A-Z]+)(\d+)/', $header['merge'], $mergeMatch);
-                $colStart = $mergeMatch[1];
-                $colEnd   = $mergeMatch[3];
-                $sheet->mergeCells("{$colStart}{$newRow}:{$colEnd}{$newRow}");
-
-                // Appliquer le style sur toute la plage fusionnée
-                $styleCell = "{$colStart}{$newRow}:{$colEnd}{$newRow}";
-            } else {
-                $styleCell = $newCell;
-            }
-
-            // Valeur
-            $sheet->setCellValue($newCell, $header['value']);
-
-            // Style de base
-            $styleArray = [
-                'font' => [
-                    'name'  => 'Arial Narrow',
-                    'size'  => $header['fontSize'] ?? 10,
-                    'bold'  => $header['bold'] ?? false,
-                    'italic'=> $header['italic'] ?? false,
-                    'color' => ['rgb' => $header['fontColor'] ?? '000000']
-                ],
-                'alignment' => [
-                    'horizontal' => $header['align'] ?? \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
-                    'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
-                ]
-            ];
-
-            // Bordure uniquement si demandé
-            if (!empty($header['border']) && $header['border'] === true) {
-                $styleArray['borders'] = [
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['rgb' => $header['borderColor'] ?? '014BA0'],
-                    ],
-                ];
-            }
-
-            // Appliquer le style sur la bonne plage
-            $sheet->getStyle($styleCell)->applyFromArray($styleArray);
-        }
+        $this->renderAdditionalHeaders($sheet, $config->headersAdditionnal, $rowIndex);
 
         $rowIndex += 11;
 
@@ -825,13 +1035,10 @@ foreach ($groupedRows as $groupId => $groupRows) {
 
         // === DONNÉES + ZÉBRAGE + SOUS-TOTAL PAGE ===
         $pageTotals = ['AMOUNT_WITHOUT_VAT'=>0,'AMOUNT_VAT'=>0,'AMOUNT_WITH_TAX'=>0,'DUE_AMOUNT'=>0];
+        $pageDataFirstRow = $rowIndex;
         foreach ($pageRows as $i=>$data) {
             foreach ($map as $col=>$field) {
-                $sheet->setCellValue($col.$rowIndex, $data[$field] ?? 0);
-                if(isset($colSettings[$col]['format'])){
-                    $sheet->getStyle($col.$rowIndex)->getNumberFormat()->setFormatCode($colSettings[$col]['format']);
-                }
-                $sheet->getStyle($col.$rowIndex)->getAlignment()->setHorizontal($colSettings[$col]['align']);
+                $this->setSafeCellValue($sheet, $col.$rowIndex, $data[$field] ?? 0);
             }
             $sheet->getStyle("A{$rowIndex}:O{$rowIndex}")->applyFromArray([
                 'borders'=>['allBorders'=>['borderStyle'=>'thin','color'=>['rgb'=>$borderColor]]],
@@ -843,6 +1050,9 @@ foreach ($groupedRows as $groupId => $groupRows) {
             }
             $rowIndex++;
         }
+        // Format/alignement par colonne appliqués une seule fois sur toute la
+        // page plutôt qu'à chaque cellule (voir applyColumnStylesForRange).
+        $this->applyColumnStylesForRange($sheet, $colSettings, $pageDataFirstRow, $rowIndex - 1);
 
         // === TOTAL PAGE ===
         $sheet->mergeCells("E{$rowIndex}:K{$rowIndex}");
@@ -852,7 +1062,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -873,7 +1083,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -894,7 +1104,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -915,7 +1125,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -936,7 +1146,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -981,7 +1191,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -1002,7 +1212,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1023,7 +1233,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1044,7 +1254,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1065,7 +1275,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1102,7 +1312,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
@@ -1134,7 +1344,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     $sheet->getStyle("A{$current}")->applyFromArray([
                         'font' => [
                             'size' => 9,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -1159,7 +1369,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                     $sheet->getStyle("A{$current}")->applyFromArray([
                         'font' => [
                             'size' => 9,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'fill' => [
                             'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
@@ -1190,7 +1400,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                             'size' => 9,
                             'italic' => true,
                             'color' => ['rgb' => '014BA0'],
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'fill' => [
                             'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
@@ -1221,7 +1431,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                             'size' => 8,
                             'italic' => true,
                             'color' => ['rgb' => '014BA0'],
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                             'bold' => true,
                         ],
                         'alignment' => [
@@ -1250,7 +1460,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                         'font' => [
                             'size' => 8,
                             'bold' => true,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -1262,7 +1472,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                         'font' => [
                             'size' => 8,
                             'bold' => true,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1292,7 +1502,7 @@ foreach ($groupedRows as $groupId => $groupRows) {
                             'size' => 10,
                             'bold' => true,
                             'color' => ['rgb' => '000000'],
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
@@ -1323,6 +1533,10 @@ foreach ($groupedRows as $groupId => $groupRows) {
         }
         $currentPage++;
     }
+
+    // Zone d'impression définie une fois le contenu de CETTE feuille connu
+    // (un "grand compte" peut générer une feuille par REGROUP_ID).
+    $this->finalizePrintArea($sheet, 'O', $rowIndex);
 }
 
     // ===== EXPORT =====
@@ -1346,22 +1560,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
     $sheet = $spreadsheet->getActiveSheet();
     $sheet->setTitle($regroupName);
 
-    $sheet->getPageSetup()
-        ->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE)
-        ->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A4)
-        ->setFitToWidth(1)
-        ->setFitToHeight(false)
-        ->setHorizontalCentered(true);
-
-    $sheet->getPageMargins()
-        ->setTop(0.6)
-        ->setBottom(0.6)
-        ->setLeft(0.3)
-        ->setRight(0.3)
-        ->setHeader(0.8)
-        ->setFooter(0.8);
-
-    $spreadsheet->getDefaultStyle()->getFont()->setName('Arial Narrow')->setSize(9);
+    $spreadsheet->getDefaultStyle()->getFont()->setName(self::PRINT_FONT_NAME)->setSize(9);
 
     $columns = range('A', 'N');
     $colSettings = [
@@ -1390,8 +1589,16 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
         'K'=>'TRANSACTION_DATE','L'=>'AMOUNT_WITHOUT_VAT','M'=>'AMOUNT_VAT','N'=>'AMOUNT_WITH_TAX'
     ];
 
+    // ===== MISE EN PAGE D'IMPRESSION =====
+    $printMargins = ['top' => 0.6, 'bottom' => 0.6, 'left' => 0.5, 'right' => 0.5, 'header' => 0.3, 'footer' => 0.3];
+    $printOrientation = $this->configurePrintLayout($sheet, $colSettings, $printMargins);
+
     // ===== PARAMÈTRES DE PAGINATION =====
-    $maxLinesPerPage = 40; // ajuster selon ton besoin
+    $maxLinesPerPage = $this->computeMaxLinesPerPage(
+        $printOrientation,
+        self::PRINT_HEADER_BLOCK_ROWS * self::PRINT_HEADER_BLOCK_ROW_HEIGHT_PT,
+        $printMargins
+    );
     $chunks = array_chunk($rows, $maxLinesPerPage);
     $totalPages = count($chunks);
     $globalTotals = ['AMOUNT_WITHOUT_VAT'=>0,'AMOUNT_VAT'=>0,'AMOUNT_WITH_TAX'=>0];
@@ -1431,13 +1638,13 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
         $sheet->mergeCells("A".($rowIndex + 9).":C".($rowIndex + 9));
 
 
-        $sheet->setCellValue("F".($rowIndex + 5), $regroupId);
+        $this->setSafeCellValue($sheet, "F".($rowIndex + 5), $regroupId);
         $sheet->mergeCells("F".($rowIndex + 5).":G".($rowIndex + 5));
         $sheet->getStyle("F".($rowIndex + 5).":G".($rowIndex + 5))->applyFromArray([
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -1452,7 +1659,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -1468,7 +1675,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -1478,13 +1685,13 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
         ]);
 
         $readingCycleFormatted = str_pad($readingCycle, 2, '0', STR_PAD_LEFT);
-        $sheet->setCellValue("M".($rowIndex + 6), $regroupName . " - " . $readingCycleFormatted . " - " . $calendarYear);
+        $this->setSafeCellValue($sheet, "M".($rowIndex + 6), $regroupName . " - " . $readingCycleFormatted . " - " . $calendarYear);
         $sheet->mergeCells("M".($rowIndex + 6).":N".($rowIndex + 6));
         $sheet->getStyle("M".($rowIndex + 6).":N".($rowIndex + 6))->applyFromArray([
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -1499,13 +1706,13 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
             $regroupId = 'M071612552236J';
         }
 
-        $sheet->setCellValue("F".($rowIndex + 6), $regroupId);
+        $this->setSafeCellValue($sheet, "F".($rowIndex + 6), $regroupId);
         $sheet->mergeCells("F".($rowIndex + 6).":G".($rowIndex + 6));
         $sheet->getStyle("F".($rowIndex + 6).":G".($rowIndex + 6))->applyFromArray([
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -1520,13 +1727,13 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
             $regroupName = 'RC/YAO/2024/M/143';
         }
 
-        $sheet->setCellValue("F".($rowIndex + 7), $regroupName);
+        $this->setSafeCellValue($sheet, "F".($rowIndex + 7), $regroupName);
         $sheet->mergeCells("F".($rowIndex + 7).":G".($rowIndex + 7));
         $sheet->getStyle("F".($rowIndex + 7).":G".($rowIndex + 7))->applyFromArray([
             'font' => [
                 'size' => 10,
                 'color' => ['rgb' => '014BA0'],
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
                 'bold' => true,
             ],
             'alignment' => [
@@ -1536,33 +1743,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
         ]);
 
 
-       /* ================= STYLE DYNAMIQUE ================= */
-
-        $start = $rowIndex + 4;
-        $currentRow = $start;
-
-        foreach ($config->companyInfo as $info) {
-            // 🔹 Style dynamique depuis config
-            $sheet->getStyle("A{$currentRow}")->applyFromArray([
-                'font' => [
-                    'name'  => 'Arial Narrow',
-                    'size'  => $info['fontSize'] ?? 10,
-                    'bold'  => $info['bold'] ?? false,
-                    'color' => ['rgb' => $info['fontColor'] ?? '000000']
-                ],
-                'alignment' => [
-                    'horizontal' => $info['align'] ?? \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
-                    'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
-                ]
-            ]);
-
-            $sheet->getRowDimension($currentRow)->setRowHeight(16);
-
-            $currentRow++;
-        }
-
-        // Première ligne légèrement plus grande
-        $sheet->getStyle("A{$start}")->getFont()->setSize(11);
+        $this->renderCompanyInfoStyles($sheet, $config->companyInfo, $rowIndex);
 
         $sheet->setCellValue("E".($rowIndex + 1), $config->headersAdditionnal[0]['value']);
         $sheet->setCellValue("G".($rowIndex + 2), $config->headersAdditionnal[1]['value']);
@@ -1573,57 +1754,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
         $sheet->setCellValue("J".($rowIndex + 7), $config->headersAdditionnal[6]['value']);
         $sheet->setCellValue("N".($rowIndex + 5), $config->headersAdditionnal[7]['value']);
 
-        foreach ($config->headersAdditionnal as $header) {
-            preg_match('/([A-Z]+)(\d+)/', $header['cell'], $matches);
-            $column  = $matches[1];
-            $baseRow = (int) $matches[2];
-            $newRow  = $rowIndex + ($baseRow - 1);
-            $newCell = $column . $newRow;
-
-            // Merge dynamique
-            if (!empty($header['merge'])) {
-                preg_match('/([A-Z]+)(\d+):([A-Z]+)(\d+)/', $header['merge'], $mergeMatch);
-                $colStart = $mergeMatch[1];
-                $colEnd   = $mergeMatch[3];
-                $sheet->mergeCells("{$colStart}{$newRow}:{$colEnd}{$newRow}");
-
-                // Appliquer le style sur toute la plage fusionnée
-                $styleCell = "{$colStart}{$newRow}:{$colEnd}{$newRow}";
-            } else {
-                $styleCell = $newCell;
-            }
-
-            // Valeur
-            $sheet->setCellValue($newCell, $header['value']);
-
-            // Style de base
-            $styleArray = [
-                'font' => [
-                    'name'  => 'Arial Narrow',
-                    'size'  => $header['fontSize'] ?? 10,
-                    'bold'  => $header['bold'] ?? false,
-                    'italic'=> $header['italic'] ?? false,
-                    'color' => ['rgb' => $header['fontColor'] ?? '000000']
-                ],
-                'alignment' => [
-                    'horizontal' => $header['align'] ?? \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
-                    'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER
-                ]
-            ];
-
-            // Bordure uniquement si demandé
-            if (!empty($header['border']) && $header['border'] === true) {
-                $styleArray['borders'] = [
-                    'outline' => [
-                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                        'color' => ['rgb' => $header['borderColor'] ?? '014BA0'],
-                    ],
-                ];
-            }
-
-            // Appliquer le style sur la bonne plage
-            $sheet->getStyle($styleCell)->applyFromArray($styleArray);
-        }
+        $this->renderAdditionalHeaders($sheet, $config->headersAdditionnal, $rowIndex);
 
         $rowIndex += 11;
 
@@ -1645,13 +1776,10 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
 
         // === DONNÉES + ZÉBRAGE + SOUS-TOTAL PAGE ===
         $pageTotals = ['AMOUNT_WITHOUT_VAT'=>0,'AMOUNT_VAT'=>0,'AMOUNT_WITH_TAX'=>0];
+        $pageDataFirstRow = $rowIndex;
         foreach ($pageRows as $i=>$data) {
             foreach ($map as $col=>$field) {
-                $sheet->setCellValue($col.$rowIndex, $data[$field] ?? 0);
-                if(isset($colSettings[$col]['format'])){
-                    $sheet->getStyle($col.$rowIndex)->getNumberFormat()->setFormatCode($colSettings[$col]['format']);
-                }
-                $sheet->getStyle($col.$rowIndex)->getAlignment()->setHorizontal($colSettings[$col]['align']);
+                $this->setSafeCellValue($sheet, $col.$rowIndex, $data[$field] ?? 0);
             }
             $sheet->getStyle("A{$rowIndex}:N{$rowIndex}")->applyFromArray([
                 'borders'=>['allBorders'=>['borderStyle'=>'thin','color'=>['rgb'=>$borderColor]]],
@@ -1663,6 +1791,9 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
             }
             $rowIndex++;
         }
+        // Format/alignement par colonne appliqués une seule fois sur toute la
+        // page plutôt qu'à chaque cellule (voir applyColumnStylesForRange).
+        $this->applyColumnStylesForRange($sheet, $colSettings, $pageDataFirstRow, $rowIndex - 1);
 
         // === TOTAL PAGE ===
         $sheet->mergeCells("F{$rowIndex}:K{$rowIndex}");
@@ -1672,7 +1803,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -1693,7 +1824,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1714,7 +1845,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1735,7 +1866,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                 'bold'=>true,
                 'color'=>['rgb'=>$textBlueColor],
                 'size' => 10,
-                'name' => 'Arial Narrow',
+                'name' => self::PRINT_FONT_NAME,
             ],
             'alignment' => [
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1781,7 +1912,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -1802,7 +1933,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1823,7 +1954,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1844,7 +1975,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -1880,7 +2011,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                     'bold'=>true,
                     'color'=>['rgb'=>$textBlueColor],
                     'size' => 10,
-                    'name' => 'Arial Narrow',
+                    'name' => self::PRINT_FONT_NAME,
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
@@ -1912,7 +2043,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                     $sheet->getStyle("A{$current}")->applyFromArray([
                         'font' => [
                             'size' => 9,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -1937,7 +2068,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                     $sheet->getStyle("A{$current}")->applyFromArray([
                         'font' => [
                             'size' => 9,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'fill' => [
                             'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
@@ -1968,7 +2099,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                             'size' => 9,
                             'italic' => true,
                             'color' => ['rgb' => '014BA0'],
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'fill' => [
                             'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
@@ -1999,7 +2130,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                             'size' => 8,
                             'italic' => true,
                             'color' => ['rgb' => '014BA0'],
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                             'bold' => true,
                         ],
                         'alignment' => [
@@ -2028,7 +2159,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                         'font' => [
                             'size' => 8,
                             'bold' => true,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT,
@@ -2040,7 +2171,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                         'font' => [
                             'size' => 8,
                             'bold' => true,
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,
@@ -2071,7 +2202,7 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                             'size' => 10,
                             'bold' => true,
                             'color' => ['rgb' => '014BA0'],
-                            'name' => 'Arial Narrow',
+                            'name' => self::PRINT_FONT_NAME,
                         ],
                         'alignment' => [
                             'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
@@ -2102,6 +2233,8 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
         }
         $currentPage++;
     }
+
+    $this->finalizePrintArea($sheet, 'N', $rowIndex);
 
     // ===== EXPORT =====
     (new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet))->save($filePath);

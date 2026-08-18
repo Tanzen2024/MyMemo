@@ -394,18 +394,41 @@ class MemorySQLFactory
             'failed'  => 0,
         ];
 
+        // Les requêtes de chargement doivent être atomiques : un échec partiel
+        // laisserait les tables de rapport (tronquées en amont) à moitié
+        // peuplées, avec un export généré ensuite sur des données incomplètes.
+        self::$oracle->begin();
+
         foreach ($queries as $index => $q) {
             try {
-                self::$oracle->executeSql($q['sql'], $q['binds'] ?? []);
+                $ok = self::$oracle->executeSql($q['sql'], $q['binds'] ?? []);
+
+                if ($ok === false) {
+                    throw new \RuntimeException('executeSql a échoué (voir les logs Oracle pour le détail).');
+                }
+
                 log_message('debug', "Requête #{$index} exécutée avec succès : {$q['sql']}");
                 $results['success']++;
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
                 log_message('error', "Erreur SQL sur requête #{$index} : " . $e->getMessage() . " | SQL : " . $q['sql']);
                 $results['failed']++;
+                break;
             }
         }
 
+        if ($results['failed'] > 0) {
+            self::$oracle->rollback();
+        } else {
+            self::$oracle->commit();
+        }
+
         log_message('debug', "MemorySQLFactory terminé pour type={$type}, section={$section} : {$results['success']}/{$results['total']} réussies, {$results['failed']} échouées");
+
+        if ($results['failed'] > 0) {
+            throw new \RuntimeException(
+                "Échec du traitement '{$type}' ({$section}) : {$results['failed']} requête(s) en erreur sur {$results['total']}. Aucune donnée n'a été conservée (rollback effectué)."
+            );
+        }
 
         return $results;
     }

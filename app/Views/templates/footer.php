@@ -19,16 +19,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
 
 <style>
-/* Style pour éléments désactivés */
-input:disabled,
-input:disabled + label {
-    background-color: #e9ecef !important;
-    color: #6c757d !important;
-    border-color: #ced4da !important;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
 /* Spinner overlay global */
 #overlay-spinner {
     display: none;
@@ -329,6 +319,55 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 </script>
+
+<!-- ===============================
+     DÉCONNEXION : confirmation + état de chargement
+=============================== -->
+<div class="modal fade" id="logoutConfirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sign-out-alt"></i> Déconnexion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-0">Êtes-vous sûr de vouloir vous déconnecter ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-danger" id="logoutConfirmBtn">
+          <i class="fas fa-sign-out-alt"></i> <span class="logout-btn-label">Déconnexion</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let logoutHref = null;
+
+    document.querySelectorAll('.logout-link').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            logoutHref = this.getAttribute('href');
+            $('#logoutConfirmModal').modal('show');
+        });
+    });
+
+    const logoutConfirmBtn = document.getElementById('logoutConfirmBtn');
+    if (logoutConfirmBtn) {
+        logoutConfirmBtn.addEventListener('click', function () {
+            if (!logoutHref) return;
+            logoutConfirmBtn.disabled = true;
+            logoutConfirmBtn.classList.add('is-loading');
+            logoutConfirmBtn.querySelector('.logout-btn-label').textContent = 'Déconnexion…';
+            window.location.href = logoutHref;
+        });
+    }
+});
+</script>
+
 
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Services;
 use Config\Database;
 use CodeIgniter\Database\BaseConnection;
 use Config\ReferentielImportConfig;
+use App\Services\AuditLoggerService;
 
 class OracleService
 {
@@ -40,16 +41,38 @@ class OracleService
 
     public function executeSql(string $sql, array $binds = [])
     {
+        $startedAt = microtime(true);
         $query = $this->db->query($sql, $binds);
+        $duration = microtime(true) - $startedAt;
 
         if ($query === false) {
-            log_message('error', 'Oracle SQL error: ' . json_encode($this->db->error()));
+            $error = $this->db->error();
+            log_message('error', 'Oracle SQL error: ' . json_encode($error));
+            $this->logOracleError('oracle_error', $duration, $error, $sql);
             return false;
         }
 
         // Détecte si SELECT pour retourner les résultats
         $isSelect = stripos(ltrim($sql), 'SELECT') === 0;
         return $isSelect ? $query->getResultArray() : true;
+    }
+
+    /**
+     * Journalise une erreur Oracle dans le journal d'audit (utilisateur, IP,
+     * durée de la requête fautive) en plus du log technique déjà écrit par
+     * l'appelant. Ne doit jamais faire échouer l'appelant si l'audit échoue.
+     */
+    private function logOracleError(string $action, float $duration, array $error, string $sql): void
+    {
+        try {
+            (new AuditLoggerService())->log($action, 'ERROR', $duration, service('request'), [
+                'code'    => $error['code'] ?? null,
+                'message' => $error['message'] ?? 'Erreur Oracle inconnue',
+                'sql'     => substr(preg_replace('/\s+/', ' ', trim($sql)), 0, 300),
+            ]);
+        } catch (\Throwable $e) {
+            log_message('error', 'Échec de journalisation d\'audit (oracle_error) : ' . $e->getMessage());
+        }
     }
 
     public function affectedRows(): int
@@ -63,16 +86,31 @@ class OracleService
 
     public function truncate(string $table): bool
     {
+        $startedAt = microtime(true);
         try {
-            $this->db->query("CALL cmsreport.cmsreport_do_truncate(?)", [$table]);
+            $result = $this->db->query("CALL cmsreport.cmsreport_do_truncate(?)", [$table]);
+
+            if ($result === false) {
+                $error = $this->db->error();
+                log_message('error', 'Truncate error: ' . json_encode($error));
+                $this->logOracleError('oracle_error', microtime(true) - $startedAt, $error, "TRUNCATE {$table}");
+                return false;
+            }
+
             return true;
         } catch (\Throwable $e) {
             log_message('error', 'Truncate error: ' . $e->getMessage());
+            $this->logOracleError('oracle_error', microtime(true) - $startedAt, ['message' => $e->getMessage()], "TRUNCATE {$table}");
             return false;
         }
     }
 
-    public function truncateReferentielType(string $referentielType): bool
+    /**
+     * @param array|null $configs Config déjà chargée (ex. MemoryController::$configMap) pour
+     *                            éviter de reconstruire ReferentielImportConfig::get() une
+     *                            seconde fois dans la même requête. Rechargée si absente.
+     */
+    public function truncateReferentielType(string $referentielType, ?array $configs = null): bool
 {
     $startTime = microtime(true);
     $traceId = 'truncate_' . uniqid('', true);
@@ -85,7 +123,7 @@ class OracleService
     ]));
 
     // 1. Chargement config
-    $configs = ReferentielImportConfig::get();
+    $configs ??= ReferentielImportConfig::get();
 
     log_message('debug', json_encode([
         'trace_id' => $traceId,
@@ -200,12 +238,52 @@ class OracleService
 
     public function setNumericCharacters(string $decimal = '.', string $group = ' '): bool
     {
+        $startedAt = microtime(true);
         try {
-            $this->db->query("ALTER SESSION SET NLS_NUMERIC_CHARACTERS = ?", [$decimal . $group]);
+            $this->assertConnectionConfiguration();
+            $result = $this->db->query("ALTER SESSION SET NLS_NUMERIC_CHARACTERS = ?", [$decimal . $group]);
+
+            if ($result === false) {
+                $error = $this->db->error();
+                log_message('error', 'NLS error: ' . json_encode($error));
+                $this->logOracleError('oracle_error', microtime(true) - $startedAt, $error, 'ALTER SESSION SET NLS_NUMERIC_CHARACTERS');
+                return false;
+            }
+
             return true;
         } catch (\Throwable $e) {
             log_message('error', 'NLS error: ' . $e->getMessage());
+            $this->logOracleError('oracle_error', microtime(true) - $startedAt, ['message' => $e->getMessage()], 'ALTER SESSION SET NLS_NUMERIC_CHARACTERS');
             return false;
+        }
+    }
+
+    /**
+     * Fails before OCI8 receives an empty username or connect descriptor.
+     * The thrown message is intentionally free of credentials and is caught
+     * by the caller, which records it in the server log.
+     */
+    private function assertConnectionConfiguration(): void
+    {
+        if (! function_exists('oci_connect')) {
+            throw new \RuntimeException('L’extension PHP OCI8 est indisponible.');
+        }
+
+        $oracle = config('Database')->oracle;
+        if (trim((string) ($oracle['username'] ?? '')) === '') {
+            throw new \RuntimeException('La configuration Oracle ne définit pas database.oracle.username.');
+        }
+
+        if (trim((string) ($oracle['password'] ?? '')) === '') {
+            throw new \RuntimeException('La configuration Oracle ne définit pas database.oracle.password.');
+        }
+
+        $hasDsn = trim((string) ($oracle['DSN'] ?? '')) !== '';
+        $hasHostAndService = trim((string) ($oracle['hostname'] ?? '')) !== ''
+            && trim((string) ($oracle['database'] ?? '')) !== '';
+
+        if (! $hasDsn && ! $hasHostAndService) {
+            throw new \RuntimeException('La configuration Oracle ne définit ni DSN ni paire hostname/database.');
         }
     }
 

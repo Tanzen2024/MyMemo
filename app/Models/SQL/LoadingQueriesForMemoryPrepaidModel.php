@@ -19,7 +19,7 @@ class LoadingQueriesForMemoryPrepaidModel
 
         if (!$dtDebut || !$dtFin) {
             throw new \InvalidArgumentException(
-                "Dates invalides : dateDebut={ $dateDebut }, dateFin={ $dateFin }"
+                "Dates invalides : dateDebut={$dateDebut}, dateFin={$dateFin}"
             );
         }
 

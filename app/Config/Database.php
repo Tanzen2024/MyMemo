@@ -139,7 +139,9 @@ class Database extends Config
     //     *
     //     * @var array<string, mixed>
     //     */
-         public array $oracle = [
+    public array $oracle = [
+            // DSN may be a TNS alias or an Easy Connect string. When absent,
+            // CodeIgniter builds one from hostname, port and database.
             'DSN'        => '',
             'hostname'   => '',
             'username'   => '',
@@ -152,8 +154,8 @@ class Database extends Config
             'charset'    => 'AL32UTF8',
             'swapPre'    => '',
             'failover'   => [],
+            'port'       => 1521,
         ];
-
 
     /**
      * This database connection is used when running PHPUnit database tests.
@@ -191,6 +193,15 @@ class Database extends Config
     public function __construct()
     {
         parent::__construct();
+
+        $this->oracle['DSN'] = (string) env('database.oracle.DSN', '');
+        $this->oracle['hostname'] = (string) env('database.oracle.hostname', '');
+        $this->oracle['username'] = (string) env('database.oracle.username', '');
+        $this->oracle['password'] = (string) env('database.oracle.password', '');
+        $this->oracle['database'] = (string) env('database.oracle.database', '');
+        $this->oracle['port'] = (int) env('database.oracle.port', 1521);
+        $this->oracle['pConnect'] = filter_var(env('database.oracle.pConnect', false), FILTER_VALIDATE_BOOL);
+        $this->oracle['DBDebug'] = filter_var(env('database.oracle.DBDebug', false), FILTER_VALIDATE_BOOL);
 
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that

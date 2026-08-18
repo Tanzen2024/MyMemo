@@ -18,6 +18,22 @@ class ExcelExportService
         $this->oracle = $oracle;
     }
 
+    /**
+     * Écrit une valeur issue d'Oracle/d'un import dans une cellule en empêchant
+     * PhpSpreadsheet de l'auto-détecter comme une formule Excel (une chaîne
+     * commençant par =, +, - ou @ serait sinon interprétée comme formule par
+     * le DefaultValueBinder, y compris dans un fichier .xlsx natif).
+     */
+    private function setSafeCellValue($sheet, string $cell, $value): void
+    {
+        if (is_string($value) && $value !== '' && strpbrk($value[0], "=+-@") !== false) {
+            $sheet->setCellValueExplicit($cell, $value, \PhpOffice\PhpSpreadsheet\Cell\DataType::TYPE_STRING);
+            return;
+        }
+
+        $sheet->setCellValue($cell, $value);
+    }
+
     // =========================================================
     // 📊 EXPORT SIMPLE AUTO
     // =========================================================
@@ -47,7 +63,7 @@ class ExcelExportService
         foreach ($data as $row) {
             foreach ($headers as $i => $key) {
                 $cell = Coordinate::stringFromColumnIndex($i + 1) . $rowNum;
-                $sheet->setCellValue($cell, $row[$key] ?? '');
+                $this->setSafeCellValue($sheet, $cell, $row[$key] ?? '');
             }
             $rowNum++;
         }
@@ -55,11 +71,12 @@ class ExcelExportService
         $sheet->getStyle("A2:{$lastCol}" . ($rowNum - 1))
               ->applyFromArray($this->styleBody());
 
-        // 🔹 AUTOSIZE SAFE
+        // 🔹 Largeur fixe : évite le coût de setAutoSize(true), qui doit
+        // parcourir le contenu de chaque cellule pour estimer une largeur.
         for ($i = 1; $i <= count($headers); $i++) {
             $sheet->getColumnDimension(
                 Coordinate::stringFromColumnIndex($i)
-            )->setAutoSize(true);
+            )->setWidth(18);
         }
 
         (new Xlsx($spreadsheet))->save($filePath);
@@ -121,7 +138,7 @@ class ExcelExportService
         foreach ($data as $line) {
             foreach ($headers as $i => $key) {
                 $cell = Coordinate::stringFromColumnIndex($i + 1) . $row;
-                $sheet->setCellValue($cell, $line[$key] ?? '');
+                $this->setSafeCellValue($sheet, $cell, $line[$key] ?? '');
             }
             $row++;
         }

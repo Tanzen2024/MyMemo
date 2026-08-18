@@ -14,12 +14,20 @@ class ExcelImportService
     protected array $lastImportedData = [];
 
     /**
+     * Nombre de lignes regroupées par requête Oracle (INSERT ALL) lors de
+     * l'insertion. Réduit le nombre d'aller-retours réseau/parse par rapport
+     * à une insertion ligne par ligne, sans changer les données insérées.
+     */
+    private const BATCH_SIZE = 200;
+
+    /**
      * Importe un fichier Excel dans la table Oracle
      * Toutes les valeurs sont converties en texte (VARCHAR2)
      */
     public function import(string $type, string $filePath, OracleService $oracle): array
     {
-        log_message('debug', "Import Excel type={$type}");
+        $startedAt = microtime(true);
+        log_message('info', "Import Excel démarré : type={$type}, fichier=" . basename($filePath));
 
         $configs = ReferentielImportConfig::get();
         if (!isset($configs[$type])) {
@@ -28,50 +36,72 @@ class ExcelImportService
 
         $config = $configs[$type];
 
-        // Lecture du fichier Excel
-        $spreadsheet = IOFactory::load($filePath);
+        // Lecture du fichier Excel. setReadDataOnly() évite de charger les
+        // styles/mises en forme/dessins (non utilisés ici, seules les valeurs
+        // le sont via toArray()) : gain notable de vitesse et de mémoire sur
+        // les gros fichiers, sans changer les valeurs lues.
+        try {
+            $reader = IOFactory::createReaderForFile($filePath);
+            $reader->setReadDataOnly(true);
+            $spreadsheet = $reader->load($filePath);
+        } catch (\Throwable $e) {
+            log_message('error', "Import Excel : fichier illisible ({$filePath}) : " . $e->getMessage());
+            throw new RuntimeException('Le fichier Excel est illisible ou corrompu.', 0, $e);
+        }
+
         $sheet = $spreadsheet->getActiveSheet();
         $rows  = $sheet->toArray(null, true, true, true);
 
         if (count($rows) <= 1) {
-            return ['inserted' => 0, 'skipped' => 0, 'message' => 'Fichier vide'];
+            log_message('warning', "Import Excel : fichier vide (type={$type}).");
+            throw new RuntimeException('Le fichier Excel est vide (aucune ligne de données après l\'en-tête).');
         }
 
-        $data = [];
-        $skipped = 0;
+        $data       = [];
+        $skipped    = 0;
+        $duplicates = 0;
+        $seenKeys   = [];
 
         // Parcours des lignes Excel
         foreach ($rows as $i => $row) {
-            if ($i === 1) continue; // ignorer l’en-tête
+            if ($i === 1) continue; // ignorer l'en-tête
 
-            $mapped = [];
-            $valid = true;
+            try {
+                $mapped = [];
+                $valid = true;
 
-            // Mapper les colonnes Excel vers la base
-            foreach ($config['map'] as $excelIndex => $dbField) {
-                $col = chr(65 + $excelIndex);
-                $raw = $row[$col] ?? null;
+                // Mapper les colonnes Excel vers la base
+                foreach ($config['map'] as $excelIndex => $dbField) {
+                    $col = chr(65 + $excelIndex);
+                    $raw = $row[$col] ?? null;
 
-                // Conversion en texte
-                $value = $this->formatValue(
-                    $raw,
-                    $config['types'][$dbField] ?? 'string'
-                );
+                    // Conversion en texte
+                    $value = $this->formatValue(
+                        $raw,
+                        $config['types'][$dbField] ?? 'string'
+                    );
 
-                if ($value === '__INVALID__') {
-                    $valid = false;
-                    break;
+                    if ($value === '__INVALID__') {
+                        $valid = false;
+                        break;
+                    }
+
+                    $mapped[$dbField] = $value;
                 }
 
-                $mapped[$dbField] = $value;
-            }
-
-            // Vérification des champs obligatoires
-            foreach ($config['required'] as $req) {
-                if (!isset($mapped[$req]) || $mapped[$req] === '') {
-                    $valid = false;
-                    break;
+                // Vérification des champs obligatoires
+                foreach ($config['required'] as $req) {
+                    if (!isset($mapped[$req]) || $mapped[$req] === '') {
+                        $valid = false;
+                        break;
+                    }
                 }
+            } catch (\Throwable $e) {
+                // Une valeur de cellule inattendue (ex. date Excel invalide) ne doit
+                // pas interrompre tout l'import : la ligne est simplement rejetée.
+                $skipped++;
+                log_message('debug', "Import Excel : ligne {$i} ignorée (erreur de conversion) : " . $e->getMessage());
+                continue;
             }
 
             if (!$valid) {
@@ -84,31 +114,129 @@ class ExcelImportService
                     }
                 }
 
-                log_message('debug', json_encode([
-                    'line' => $i,
-                    'reason' => $reason,
-                    'row' => $row,
-                    'mapped' => $mapped
-                ]));
+                log_message('debug', "Import Excel : ligne {$i} rejetée" . ($reason !== [] ? ' (' . implode(', ', $reason) . ')' : ' (valeur invalide)') . '.');
                 continue;
             }
 
+            // Prévention des doublons : une même clé métier (champs obligatoires
+            // du référentiel) ne doit pas être insérée plusieurs fois pour un
+            // même import, sous peine de fausser les agrégats calculés en aval.
+            $key = implode('|', array_map(
+                static fn (string $f) => strtoupper(trim((string) ($mapped[$f] ?? ''))),
+                $config['required']
+            ));
+
+            if (isset($seenKeys[$key])) {
+                $duplicates++;
+                log_message('warning', "Import Excel : ligne {$i} ignorée, doublon de la ligne {$seenKeys[$key]} (clé: {$key}).");
+                continue;
+            }
+
+            $seenKeys[$key] = $i;
             $data[] = $mapped;
         }
 
         if (!$data) {
-            return ['inserted' => 0, 'skipped' => $skipped, 'message' => 'Aucune ligne valide'];
+            $message = $duplicates > 0
+                ? "Aucune ligne valide : {$skipped} rejetée(s), {$duplicates} doublon(s)."
+                : "Aucune ligne valide : {$skipped} rejetée(s) (champs obligatoires manquants ou invalides).";
+
+            log_message('warning', "Import Excel : {$message}");
+            throw new RuntimeException($message);
         }
 
+        $this->lastImportedData = $data;
+
+        // Insertion Oracle par lots (INSERT ALL) : en cas d'échec d'un lot,
+        // repli automatique sur une insertion ligne par ligne pour isoler
+        // précisément la ou les lignes fautives (mêmes résultats qu'une
+        // insertion ligne par ligne, en beaucoup moins d'aller-retours réseau).
         $inserted = 0;
 
-        // Insertion Oracle
-        foreach ($data as $row) {
+        foreach (array_chunk($data, self::BATCH_SIZE) as $batch) {
+            [$batchInserted, $batchSkipped] = $this->insertBatch($oracle, $config['table'], $batch);
+            $inserted += $batchInserted;
+            $skipped  += $batchSkipped;
+        }
+
+        $duration = round(microtime(true) - $startedAt, 2);
+        $message  = "{$inserted} ligne(s) importée(s), {$skipped} rejetée(s), {$duplicates} doublon(s) ignoré(s).";
+
+        log_message('info', "Import Excel terminé (type={$type}, table={$config['table']}) en {$duration}s : {$message}");
+
+        return [
+            'inserted'   => $inserted,
+            'skipped'    => $skipped,
+            'duplicates' => $duplicates,
+            'message'    => $message,
+        ];
+    }
+
+    /**
+     * Insère un lot de lignes en une seule requête Oracle (INSERT ALL ... SELECT 1 FROM DUAL).
+     * Si le lot échoue (contrainte, valeur invalide, etc.), il est rejoué ligne
+     * par ligne afin d'isoler exactement la ou les lignes fautives et de
+     * conserver le même niveau de granularité d'erreur qu'une insertion unitaire.
+     *
+     * @param list<array<string, mixed>> $rows
+     *
+     * @return array{0: int, 1: int} [inséré, rejeté]
+     */
+    private function insertBatch(OracleService $oracle, string $table, array $rows): array
+    {
+        if (count($rows) === 1) {
+            return $this->insertRows($oracle, $table, $rows);
+        }
+
+        $cols        = implode(',', array_keys($rows[0]));
+        $intoClauses = [];
+        $binds       = [];
+
+        foreach (array_values($rows) as $r => $row) {
+            $placeholders = [];
+
+            foreach ($row as $col => $value) {
+                $bindKey        = "b{$r}_{$col}";
+                $placeholders[] = ":{$bindKey}:";
+                $binds[$bindKey] = $value;
+            }
+
+            $intoClauses[] = "INTO {$table} ({$cols}) VALUES (" . implode(',', $placeholders) . ')';
+        }
+
+        $sql = "INSERT ALL\n" . implode("\n", $intoClauses) . "\nSELECT 1 FROM DUAL";
+
+        try {
+            if ($oracle->executeSql($sql, $binds) === false) {
+                throw new RuntimeException('Oracle batch insert failed.');
+            }
+
+            return [count($rows), 0];
+        } catch (\Throwable $e) {
+            log_message('warning', 'Import Excel : échec du lot (' . count($rows) . ' lignes), nouvelle tentative ligne par ligne : ' . $e->getMessage());
+
+            return $this->insertRows($oracle, $table, $rows);
+        }
+    }
+
+    /**
+     * Insertion ligne par ligne (lot de taille 1, ou repli après échec d'un lot groupé).
+     *
+     * @param list<array<string, mixed>> $rows
+     *
+     * @return array{0: int, 1: int} [inséré, rejeté]
+     */
+    private function insertRows(OracleService $oracle, string $table, array $rows): array
+    {
+        $inserted = 0;
+        $skipped  = 0;
+
+        foreach ($rows as $row) {
             $cols = implode(',', array_keys($row));
 
             // Toutes les valeurs sont insérées en VARCHAR2
             $placeholders = implode(',', array_fill(0, count($row), '?'));
-            $sql = "INSERT INTO {$config['table']} ({$cols}) VALUES ({$placeholders})";
+            $sql = "INSERT INTO {$table} ({$cols}) VALUES ({$placeholders})";
 
             try {
                 if ($oracle->executeSql($sql, array_values($row)) === false) {
@@ -116,18 +244,12 @@ class ExcelImportService
                 }
                 $inserted++;
             } catch (\Throwable $e) {
-                log_message('error', "Erreur insertion : ".$e->getMessage());
+                log_message('error', 'Import Excel : échec insertion (' . json_encode($row) . ') : ' . $e->getMessage());
                 $skipped++;
             }
         }
 
-        log_message('debug', "Import terminé : inserted={$inserted}, skipped={$skipped}");
-
-        return [
-            'inserted' => $inserted,
-            'skipped'  => $skipped,
-            'message'  => "{$inserted} lignes insérées, {$skipped} rejetées",
-        ];
+        return [$inserted, $skipped];
     }
 
     /**

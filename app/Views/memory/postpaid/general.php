@@ -10,13 +10,13 @@
       </li>
     </ul>
 
-    <!-- <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('authentification/logout') ?>">
+        <a class="nav-link logout-link" href="<?= site_url('authentification/logout') ?>">
           <i class="fas fa-sign-out-alt"></i> Déconnexion
         </a>
       </li>
-    </ul> -->
+    </ul>
   </nav>
 
 <div class="content-wrapper">

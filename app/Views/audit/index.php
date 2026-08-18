@@ -1,7 +1,24 @@
 <?= $this->include('templates/header') ?>
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="<?= site_url('administration/audit') ?>" class="nav-link active">Journal d'audit</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link logout-link" href="<?= site_url('authentification/logout') ?>">
+        <i class="fas fa-sign-out-alt"></i> Déconnexion
+      </a>
+    </li>
+  </ul>
+</nav>
 <div class="content-wrapper"><section class="content pt-3"><div class="container-fluid"><div class="card"><div class="card-header"><h3 class="card-title"><i class="fas fa-clipboard-list"></i> Journal d’audit</h3></div><div class="card-body">
 <form class="row" method="get"><div class="col"><input class="form-control" type="date" name="date_from" value="<?= esc($filters['date_from']) ?>"></div><div class="col"><input class="form-control" type="date" name="date_to" value="<?= esc($filters['date_to']) ?>"></div><div class="col"><input class="form-control" name="user" placeholder="Utilisateur" value="<?= esc($filters['user']) ?>"></div><div class="col"><input class="form-control" name="module" placeholder="Module" value="<?= esc($filters['module']) ?>"></div><div class="col"><select class="form-control" name="status"><option value="">Statut</option><?php foreach(['SUCCESS','WARNING','ERROR'] as $s): ?><option <?= $filters['status']===$s?'selected':'' ?>><?= $s ?></option><?php endforeach ?></select></div><div class="col"><input class="form-control" name="search" placeholder="Recherche libre" value="<?= esc($filters['search']) ?>"></div><div class="col"><button class="btn btn-primary">Filtrer</button></div></form><hr>
 <div class="mb-2"><?php foreach(['excel'=>'Exporter Excel','csv'=>'Exporter CSV','json'=>'Exporter JSON','pdf'=>'Exporter PDF'] as $f=>$label): ?><a class="btn btn-sm btn-outline-secondary" href="<?= site_url('administration/audit/export/'.$f.'?'.http_build_query($filters)) ?>"><?= $label ?></a> <?php endforeach ?></div>
-<table id="auditTable" class="table table-bordered table-hover"><thead><tr><th>Date</th><th>Utilisateur</th><th>Module</th><th>Action</th><th>Fichier</th><th>Lignes</th><th>Durée</th><th>IP</th><th>Statut</th><th>Message</th><th> </th></tr></thead><tbody><?php foreach($rows as $i=>$r): ?><tr><td><?= esc($r['date']) ?></td><td><?= esc($r['user']) ?></td><td><?= esc($r['module']) ?></td><td><?= esc($r['action']) ?></td><td><?= esc($r['file']) ?></td><td><?= $r['rows'] ?></td><td><?= $r['duration'] ?> s</td><td><?= esc($r['ip']) ?></td><td><span class="badge badge-<?= $r['status']==='SUCCESS'?'success':($r['status']==='WARNING'?'warning':'danger') ?>"><?= esc($r['status']) ?></span></td><td><?= esc($r['message']) ?></td><td><button class="btn btn-sm btn-info audit-see" data-entry='<?= esc(json_encode($r), 'attr') ?>'>Voir</button></td></tr><?php endforeach ?></tbody></table>
+<table id="auditTable" class="table table-bordered table-hover"><thead><tr><th>Date</th><th>Utilisateur</th><th>Module</th><th>Action</th><th>Fichier</th><th>Lignes</th><th>Durée</th><th>IP</th><th>Statut</th><th>Message</th><th> </th></tr></thead><tbody><?php foreach($rows as $i=>$r): ?><tr><td><?= esc($r['date']) ?></td><td><?= esc($r['user']) ?></td><td><?= esc($r['module']) ?></td><td><?= esc($r['action']) ?></td><td><?= esc($r['file']) ?></td><td><?= esc($r['rows']) ?></td><td><?= esc($r['duration']) ?> s</td><td><?= esc($r['ip']) ?></td><td><span class="badge badge-<?= $r['status']==='SUCCESS'?'success':($r['status']==='WARNING'?'warning':'danger') ?>"><?= esc($r['status']) ?></span></td><td><?= esc($r['message']) ?></td><td><button class="btn btn-sm btn-info audit-see" data-entry='<?= esc(json_encode($r), 'attr') ?>'>Voir</button></td></tr><?php endforeach ?></tbody></table>
 </div></div></div></section></div><?= $this->include('audit/modal_detail') ?><?= $this->include('templates/footer') ?>
 <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>"><script src="<?= base_url('assets/adminlte/plugins/datatables/jquery.dataTables.min.js') ?>"></script><script src="<?= base_url('assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script><script>$(function(){$('#auditTable').DataTable({pageLength:25,lengthMenu:[[25,50,100,-1],[25,50,100,'Tous']],order:[[0,'desc']]});$('.audit-see').on('click',function(){const e=$(this).data('entry');let h='';Object.entries(e).forEach(([k,v])=>h+='<dt class="col-sm-4">'+$('<div>').text(k).html()+'</dt><dd class="col-sm-8"><pre>'+ $('<div>').text(typeof v==='object'?JSON.stringify(v,null,2):v).html()+'</pre></dd>');$('#auditDetailBody').html(h);$('#auditDetail').modal('show');});});</script>
