@@ -6,14 +6,15 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('postpaid/general') ?>" class="nav-link active">Postpaid - Général</a>
+        <a href="<?= site_url('postpaid/general') ?>" class="nav-link active"><?= lang('Menu.postpaid') ?> - <?= lang('Menu.postpaidGeneral') ?></a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
+      <?= $this->include('templates/topbar_actions') ?>
       <li class="nav-item">
         <a class="nav-link logout-link" href="<?= site_url('authentification/logout') ?>">
-          <i class="fas fa-sign-out-alt"></i> Déconnexion
+          <i class="fas fa-sign-out-alt"></i> <?= lang('App.logout') ?>
         </a>
       </li>
     </ul>
@@ -29,25 +30,25 @@
         <input type="hidden" name="referentiel_context" value="postpaid_general">
         <!-- Informations générales -->
         <div class="card card-primary mb-3 shadow-sm animate__animated animate__fadeIn">
-          <div class="card-header"><h5>Informations générales</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.generalInfo') ?></h5></div>
           <div class="card-body row">
             <div class="col-md-6 mb-3">
-              <label>Année</label>
+              <label><?= lang('Memoire.year') ?></label>
               <input type="number" id="year_postpaid_general" name="year_postpaid_general" class="form-control" value="<?= date('Y') ?>" required>
             </div>
             <div class="col-md-6 mb-3">
-              <label>Cycle</label>
+              <label><?= lang('Memoire.cycle') ?></label>
               <input type="number" id="cycle_postpaid_general" name="cycle_postpaid_general" class="form-control" min="1" max="12" required>
             </div>
         </div>
 
         <!-- Client (liste déroulante) -->
         <div class="card card-secondary mb-3 shadow-sm animate__animated animate__fadeIn">
-          <div class="card-header"><h5>Client</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.client') ?></h5></div>
           <div class="card-body">
-            <label class="form-label">Sélectionnez le client</label>
+            <label class="form-label"><?= lang('Memoire.selectClient') ?></label>
             <select name="regroupName_postpaid_general" id="client_name" class="form-control" required>
-              <option value="" disabled selected>-- Choisir --</option>
+              <option value="" disabled selected><?= lang('Memoire.choosePlaceholder') ?></option>
               <option value="agents_cde_camwater">AGENTS CDE - CAMWATER</option>
               <option value="bureaux_cde_camwater">BUREAUX CDE - CAMWATER</option>
               <option value="agents_globeleq">AGENTS GLOBELEQ</option>
@@ -55,7 +56,7 @@
               <option value="grands_comptes">GRANDS COMPTES</option>
               <option value="regions">RÉGIONS</option>
             </select>
-            <small class="form-text text-muted">Choisissez l’entité concernée pour ce mémoire.</small>
+            <small class="form-text text-muted"><?= lang('Memoire.selectClientHelp') ?></small>
           </div>
         </div>
 
@@ -65,7 +66,7 @@
         =============================== -->
 <div class="card shadow-sm mb-3">
   <div class="card-header bg-gradient-info text-white">
-    <h5>Référentiel & Émission</h5>
+    <h5><?= lang('Memoire.referentialEmission') ?></h5>
   </div>
   <div class="card-body row justify-content-center">
 
@@ -83,7 +84,7 @@
                           checked>
                     <label for="ref_contrat_postpaid_general" class="option-pill btn btn-outline-success">
                       <i class="fa fa-handshake"></i>
-                      <span>Sur contrats</span>
+                      <span><?= lang('Memoire.onContracts') ?></span>
                     </label>
                   </div>
 
@@ -95,7 +96,7 @@
                           value="facture">
                     <label for="ref_facture_postpaid_general" class="option-pill btn btn-outline-warning">
                       <i class="fas fa-file-invoice"></i>
-                      <span>Sur factures</span>
+                      <span><?= lang('Memoire.onInvoices') ?></span>
                     </label>
                   </div>
                 </div>
@@ -111,7 +112,7 @@
                           checked>
                     <label for="ref_emission_postpaid_general" class="option-pill btn btn-outline-primary">
                       <i class="fas fa-bolt"></i>
-                      <span>Émission</span>
+                      <span><?= lang('Memoire.emission') ?></span>
                     </label>
                   </div>
 
@@ -123,7 +124,7 @@
                           value="impayes">
                     <label for="ref_impayes_postpaid_general" class="option-pill btn btn-outline-info">
                       <i class="fas fa-plug"></i>
-                      <span>Impayés</span>
+                      <span><?= lang('Memoire.unpaid') ?></span>
                     </label>
                   </div>
                 </div>
@@ -135,22 +136,22 @@
 
          <!-- Importer référentiel -->
         <div class="card card-success mb-3 shadow-sm animate__animated animate__fadeIn">
-          <div class="card-header"><h5>Importer le référentiel</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.importReferential') ?></h5></div>
           <div class="card-body">
             <input type="file" name="referentiel_file_postpaid_general" class="form-control">
-            <small class="form-text text-muted">Excel accepté</small>
+            <small class="form-text text-muted"><?= lang('Memoire.excelAccepted') ?></small>
           </div>
         </div>
 
 
         <!-- Dates -->
         <div class="card card-warning mb-3 shadow-sm animate__animated animate__fadeIn">
-          <div class="card-header"><h5>Période</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.period') ?></h5></div>
           <div class="card-body row">
 
             <!-- Date début -->
             <div class="col-md-6 mb-3">
-              <label for="date_start_postpaid_general">Date début</label>
+              <label for="date_start_postpaid_general"><?= lang('Memoire.dateStart') ?></label>
               <div class="input-group">
                 <input type="text" id="date_start_postpaid_general" name="date_start_postpaid_general"
                       class="form-control datepicker" placeholder="dd/mm/yyyy" required>
@@ -160,7 +161,7 @@
 
             <!-- Date fin -->
             <div class="col-md-6 mb-3">
-              <label for="date_end_postpaid_general">Date fin</label>
+              <label for="date_end_postpaid_general"><?= lang('Memoire.dateEnd') ?></label>
               <div class="input-group">
                 <input type="text" id="date_end_postpaid_general" name="date_end_postpaid_general"
                       class="form-control datepicker" placeholder="dd/mm/yyyy" required>
@@ -178,7 +179,7 @@
         =============================== -->
         <div class="card card-info mb-4 card-soft">
           <div class="card-header">
-            <h5 class="header-left">Document</h5>
+            <h5 class="header-left"><?= lang('Memoire.document') ?></h5>
           </div>
 
           <div class="card-body">
@@ -193,7 +194,7 @@
                       value="memoires"
                       checked>
                 <label for="memoires" class="option-pill btn btn-outline-success">
-                  <i class="fa fa-handshake"></i>&nbsp;Mémoires
+                  <i class="fa fa-handshake"></i>&nbsp;<?= lang('Memoire.memos') ?>
                 </label>
               </div>
 
@@ -204,14 +205,14 @@
                       id="donnees_memoires"
                       value="donnees_memoires">
                 <label for="donnees_memoires" class="option-pill btn btn-outline-warning">
-                  <i class="fa fa-file-invoice"></i>&nbsp;Données Mémoires
+                  <i class="fa fa-file-invoice"></i>&nbsp;<?= lang('Memoire.memoData') ?>
                 </label>
               </div>
             </div>
           </div>
         </div>
 
-        <button name="btnSubmitPostpaidGeneral" type="submit" class="btn btn-primary btn-lg w-100">Valider</button>
+        <button name="btnSubmitPostpaidGeneral" type="submit" class="btn btn-primary btn-lg w-100"><?= lang('Memoire.submit') ?></button>
       </form>
     </div>
   </section>

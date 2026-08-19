@@ -46,7 +46,7 @@ class AutoLogoutFilter implements FilterInterface
         if (! $session->has('id_user')) {
             return redirect()
                 ->to('/authentification/login')
-                ->with('gestReturnInfo', 'Veuillez vous reconnecter.');
+                ->with('gestReturnInfo', lang('Auth.pleaseReconnect'));
         }
 
         // Vérifier l'inactivité

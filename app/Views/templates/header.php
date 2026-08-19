@@ -16,9 +16,17 @@ if (! function_exists('isMenuOpen')) {
         return strpos($currentPath, $urlSegment) !== false ? 'menu-open' : '';
     }
 }
+
+// Lu directement ici (pas de plomberie contrôleur) : ce partial est inclus
+// par toutes les vues sans variable commune dédiée, même schéma que
+// templates/flash_messages.php qui lit session() directement. Le thème est
+// posé AVANT le premier rendu (pas de flash clair→sombre) ; voir
+// LocaleFilter pour la langue (déjà appliquée à la requête à ce stade).
+$mmTheme = service('request')->getCookie('mymemo_theme');
+$mmTheme = in_array($mmTheme, ['light', 'dark'], true) ? $mmTheme : 'light';
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?= esc(service('request')->getLocale()) ?>" data-theme="<?= esc($mmTheme) ?>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,7 +56,7 @@ if (! function_exists('isMenuOpen')) {
             <li class="nav-item">
               <a href="<?= site_url('dashboard') ?>" class="nav-link <?= isActive('dashboard', $currentPath) ?>">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
+                <p><?= lang('Menu.dashboard') ?></p>
               </a>
             </li>
 
@@ -57,7 +65,7 @@ if (! function_exists('isMenuOpen')) {
               <a href="#" class="nav-link <?= isActive('postpaid', $currentPath) ?>">
                 <i class="nav-icon fas fa-file-contract"></i>
                 <p>
-                  Postpaid
+                  <?= lang('Menu.postpaid') ?>
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -65,19 +73,19 @@ if (! function_exists('isMenuOpen')) {
                 <li class="nav-item">
                   <a href="<?= site_url('postpaid/particulier') ?>" class="nav-link <?= isActive('postpaid/particulier', $currentPath) ?>">
                     <i class="nav-icon fas fa-user"></i>
-                    <p>Particulier</p>
+                    <p><?= lang('Menu.postpaidParticulier') ?></p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="<?= site_url('postpaid/general') ?>" class="nav-link <?= isActive('postpaid/general', $currentPath) ?>">
                     <i class="nav-icon fas fa-globe"></i>
-                    <p>Général</p>
+                    <p><?= lang('Menu.postpaidGeneral') ?></p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="<?= site_url('postpaid/etat') ?>" class="nav-link <?= isActive('postpaid/etat', $currentPath) ?>">
                     <i class="nav-icon fas fa-landmark"></i>
-                    <p>État</p>
+                    <p><?= lang('Menu.postpaidEtat') ?></p>
                   </a>
                 </li>
               </ul>
@@ -88,13 +96,13 @@ if (! function_exists('isMenuOpen')) {
               <a href="<?= site_url('prepaid') ?>" class="nav-link <?= isActive('prepaid', $currentPath) ?>">
                 <i class="nav-icon fas fa-wallet"></i>
                 <p>
-                  Prepaid
+                  <?= lang('Menu.prepaid') ?>
                 </p>
               </a>
             </li>
 
             <?php if (session('is_mymemo_admin') === true): ?>
-            <li class="nav-item has-treeview <?= isMenuOpen('administration', $currentPath) ?>"><a href="#" class="nav-link <?= isActive('administration', $currentPath) ?>"><i class="nav-icon fas fa-user-shield"></i><p>Administration<i class="right fas fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="<?= site_url('administration/audit') ?>" class="nav-link <?= isActive('administration/audit', $currentPath) ?>"><i class="nav-icon fas fa-clipboard-list"></i><p>Journal d'audit</p></a></li><li class="nav-item"><a href="<?= site_url('administration/users') ?>" class="nav-link <?= isActive('administration/users', $currentPath) ?>"><i class="nav-icon fas fa-users"></i><p>Gestion des utilisateurs</p></a></li></ul></li>
+            <li class="nav-item has-treeview <?= isMenuOpen('administration', $currentPath) ?>"><a href="#" class="nav-link <?= isActive('administration', $currentPath) ?>"><i class="nav-icon fas fa-user-shield"></i><p><?= lang('Menu.administration') ?><i class="right fas fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="<?= site_url('administration/audit') ?>" class="nav-link <?= isActive('administration/audit', $currentPath) ?>"><i class="nav-icon fas fa-clipboard-list"></i><p><?= lang('Menu.auditLog') ?></p></a></li><li class="nav-item"><a href="<?= site_url('administration/users') ?>" class="nav-link <?= isActive('administration/users', $currentPath) ?>"><i class="nav-icon fas fa-users"></i><p><?= lang('Menu.users') ?></p></a></li></ul></li>
             <?php endif; ?>
 
           </ul>

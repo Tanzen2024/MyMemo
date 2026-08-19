@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'pageTitle'        => 'MyMemo Users',
+    'infoBanner'       => 'This list is MyMemo\'s authority for functional roles (writable/security/users.csv file). "Add" authorizes an existing AD account to use MyMemo — this does not create an AD account, a password, or a local account.',
+    'searchPlaceholder'=> 'Search (login or name)',
+    'colLogin'         => 'AD Login',
+    'colName'          => 'Name',
+    'colRoles'         => 'Roles',
+    'noRoles'          => 'None',
+    'noUsers'          => 'No authorized user yet.',
+    'addTitle'         => 'Add a MyMemo user',
+    'editTitle'        => 'Edit',
+    'adIdentifierLabel'=> 'AD identifier (login, without @domain)',
+    'adIdentifierHelpCreate' => 'Must match an existing AD account. This does not create an AD account or a password.',
+    'adIdentifierHelpEdit'   => 'The AD identifier is stable and cannot be changed here.',
+    'displayNameLabel' => 'Display name',
+    'rolesLabel'       => 'Roles',
+    'deleteConfirmTitle'  => 'Delete confirmation',
+    'deleteConfirmBody'   => 'Do you really want to delete user "%s"?',
+    'deleteConfirmWarning'=> 'This will remove their authorization to use MyMemo.',
+    'flashCreated'     => 'User authorized successfully.',
+    'flashNotFound'    => 'User not found.',
+    'flashUpdated'     => 'User updated.',
+    'flashDeleted'     => 'User deleted.',
+    'flashEnabled'     => 'User enabled.',
+    'flashDisabled'    => 'User disabled.',
+];

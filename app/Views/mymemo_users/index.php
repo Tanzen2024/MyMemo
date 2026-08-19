@@ -5,13 +5,14 @@
       <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="<?= site_url('administration/users') ?>" class="nav-link active">Gestion des utilisateurs</a>
+      <a href="<?= site_url('administration/users') ?>" class="nav-link active"><?= lang('Users.pageTitle') ?></a>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
+    <?= $this->include('templates/topbar_actions') ?>
     <li class="nav-item">
       <a class="nav-link logout-link" href="<?= site_url('authentification/logout') ?>">
-        <i class="fas fa-sign-out-alt"></i> Déconnexion
+        <i class="fas fa-sign-out-alt"></i> <?= lang('App.logout') ?>
       </a>
     </li>
   </ul>
@@ -27,23 +28,22 @@
 <?php endif; ?>
 
 <div class="alert alert-secondary">
-  Cette liste est l'autorité MyMemo pour les rôles fonctionnels (fichier <code>writable/security/users.csv</code>).
-  « Ajouter » autorise un compte AD <strong>existant</strong> à utiliser MyMemo — cela ne crée ni compte AD, ni mot de passe, ni compte local.
+  <?= lang('Users.infoBanner') ?>
 </div>
 
 <div class="card"><div class="card-header d-flex justify-content-between align-items-center">
-  <h3 class="card-title"><i class="fas fa-users"></i> Utilisateurs MyMemo</h3>
-  <a class="btn btn-primary btn-sm" href="<?= site_url('administration/users/create') ?>"><i class="fas fa-plus"></i> Ajouter</a>
+  <h3 class="card-title"><i class="fas fa-users"></i> <?= lang('Users.pageTitle') ?></h3>
+  <a class="btn btn-primary btn-sm" href="<?= site_url('administration/users/create') ?>"><i class="fas fa-plus"></i> <?= lang('App.add') ?></a>
 </div><div class="card-body">
 <form class="row" method="get">
-  <div class="col-auto mb-2"><input class="form-control" name="search" placeholder="Rechercher (login ou nom)" value="<?= esc($search) ?>"></div>
+  <div class="col-auto mb-2"><input class="form-control" name="search" placeholder="<?= esc(lang('Users.searchPlaceholder'), 'attr') ?>" value="<?= esc($search) ?>"></div>
   <div class="col-auto mb-2">
-    <button class="btn btn-primary">Rechercher</button>
-    <a class="btn btn-outline-secondary" href="<?= site_url('administration/users') ?>">Réinitialiser</a>
+    <button class="btn btn-primary"><?= lang('App.search') ?></button>
+    <a class="btn btn-outline-secondary" href="<?= site_url('administration/users') ?>"><?= lang('App.reset') ?></a>
   </div>
 </form><hr>
 <table id="usersTable" class="table table-bordered table-hover">
-  <thead><tr><th>Login AD</th><th>Nom</th><th>Rôles</th><th>Actif</th><th>Actions</th></tr></thead>
+  <thead><tr><th><?= lang('Users.colLogin') ?></th><th><?= lang('Users.colName') ?></th><th><?= lang('Users.colRoles') ?></th><th><?= lang('App.active') ?></th><th><?= lang('App.actions') ?></th></tr></thead>
   <tbody>
   <?php foreach ($users as $u): ?>
     <tr>
@@ -53,24 +53,24 @@
         <?php foreach ($u['roles'] as $role): ?>
           <span class="badge badge-<?= $role === 'ADMIN' ? 'primary' : 'info' ?>"><?= esc($role) ?></span>
         <?php endforeach ?>
-        <?php if ($u['roles'] === []): ?><span class="badge badge-danger">Aucun</span><?php endif ?>
+        <?php if ($u['roles'] === []): ?><span class="badge badge-danger"><?= lang('Users.noRoles') ?></span><?php endif ?>
       </td>
-      <td><span class="badge badge-<?= $u['enabled'] ? 'success' : 'secondary' ?>"><?= $u['enabled'] ? 'Oui' : 'Non' ?></span></td>
+      <td><span class="badge badge-<?= $u['enabled'] ? 'success' : 'secondary' ?>"><?= $u['enabled'] ? lang('App.yes') : lang('App.no') ?></span></td>
       <td class="text-nowrap">
-        <a class="btn btn-outline-secondary btn-sm" href="<?= site_url('administration/users/' . urlencode($u['username']) . '/edit') ?>">Modifier</a>
+        <a class="btn btn-outline-secondary btn-sm" href="<?= site_url('administration/users/' . urlencode($u['username']) . '/edit') ?>"><?= lang('App.edit') ?></a>
         <form class="d-inline" method="post" action="<?= site_url('administration/users/' . urlencode($u['username']) . '/' . ($u['enabled'] ? 'disable' : 'enable')) ?>">
           <?= csrf_field() ?>
-          <button class="btn btn-outline-<?= $u['enabled'] ? 'warning' : 'success' ?> btn-sm"><?= $u['enabled'] ? 'Désactiver' : 'Activer' ?></button>
+          <button class="btn btn-outline-<?= $u['enabled'] ? 'warning' : 'success' ?> btn-sm"><?= $u['enabled'] ? lang('App.disable') : lang('App.enable') ?></button>
         </form>
         <form class="d-inline delete-user-form" method="post" action="<?= site_url('administration/users/' . urlencode($u['username']) . '/delete') ?>" data-username="<?= esc($u['username'], 'attr') ?>">
           <?= csrf_field() ?>
-          <button type="submit" class="btn btn-outline-danger btn-sm">Supprimer</button>
+          <button type="submit" class="btn btn-outline-danger btn-sm"><?= lang('App.delete') ?></button>
         </form>
       </td>
     </tr>
   <?php endforeach ?>
   <?php if (empty($users)): ?>
-    <tr><td colspan="5" class="text-center text-muted">Aucun utilisateur autorisé pour le moment.</td></tr>
+    <tr><td colspan="5" class="text-center text-muted"><?= lang('Users.noUsers') ?></td></tr>
   <?php endif ?>
   </tbody>
 </table>
@@ -82,16 +82,17 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Confirmation de suppression</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title"><?= lang('Users.deleteConfirmTitle') ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="<?= esc(lang('App.close'), 'attr') ?>"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <p class="mb-1">Voulez-vous vraiment supprimer l'utilisateur « <strong id="deleteUserConfirmName"></strong> » ?</p>
-        <p class="text-muted mb-0">Cette action supprimera son autorisation d'utiliser MyMemo.</p>
+        <?php [$mmDeleteBefore, $mmDeleteAfter] = explode('%s', lang('Users.deleteConfirmBody'), 2) + ['', '']; ?>
+        <p class="mb-1"><?= esc($mmDeleteBefore) ?><strong id="deleteUserConfirmName"></strong><?= esc($mmDeleteAfter) ?></p>
+        <p class="text-muted mb-0"><?= lang('Users.deleteConfirmWarning') ?></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-danger" id="deleteUserConfirmBtn">Supprimer</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><?= lang('App.cancel') ?></button>
+        <button type="button" class="btn btn-danger" id="deleteUserConfirmBtn"><?= lang('App.delete') ?></button>
       </div>
     </div>
   </div>

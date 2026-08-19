@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'pageTitle'        => 'Utilisateurs MyMemo',
+    'infoBanner'       => "Cette liste est l'autorité MyMemo pour les rôles fonctionnels (fichier writable/security/users.csv). « Ajouter » autorise un compte AD existant à utiliser MyMemo — cela ne crée ni compte AD, ni mot de passe, ni compte local.",
+    'searchPlaceholder'=> 'Rechercher (login ou nom)',
+    'colLogin'         => 'Login AD',
+    'colName'          => 'Nom',
+    'colRoles'         => 'Rôles',
+    'noRoles'          => 'Aucun',
+    'noUsers'          => 'Aucun utilisateur autorisé pour le moment.',
+    'addTitle'         => 'Ajouter un utilisateur MyMemo',
+    'editTitle'        => 'Modifier',
+    'adIdentifierLabel'=> 'Identifiant AD (login, sans @domaine)',
+    'adIdentifierHelpCreate' => 'Doit correspondre à un compte AD existant. Ceci ne crée ni compte AD, ni mot de passe.',
+    'adIdentifierHelpEdit'   => "L'identifiant AD est stable et ne peut pas être modifié ici.",
+    'displayNameLabel' => 'Nom affiché',
+    'rolesLabel'       => 'Rôles',
+    'deleteConfirmTitle'  => 'Confirmation de suppression',
+    'deleteConfirmBody'   => 'Voulez-vous vraiment supprimer l\'utilisateur « %s » ?',
+    'deleteConfirmWarning'=> "Cette action supprimera son autorisation d'utiliser MyMemo.",
+    'flashCreated'     => 'Utilisateur autorisé avec succès.',
+    'flashNotFound'    => 'Utilisateur introuvable.',
+    'flashUpdated'     => 'Utilisateur mis à jour.',
+    'flashDeleted'     => 'Utilisateur supprimé.',
+    'flashEnabled'     => 'Utilisateur activé.',
+    'flashDisabled'    => 'Utilisateur désactivé.',
+];

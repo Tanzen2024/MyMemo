@@ -67,6 +67,13 @@ Import Lock Service
  [x] Only one concurrent import can acquire the same type lock
  [x] Expired lock is automatically replaced
 
+Language Controller
+ [x] Supported locale sets cookie on returned response
+ [x] French locale sets cookie
+ [x] Unsupported locale does not set cookie
+ [x] Always redirects
+ [x] Cookie has one year expiry
+
 Ldap Group Matcher
  [x] Exact configured dn matches
  [x] Historical hardcoded group never matches this real user
@@ -83,6 +90,15 @@ Ldap Group Matcher
  [x] UserC BothGroups
  [x] UserD ApplicationsAdminsOnly
  [x] UserE NoGroups
+
+Locale Filter
+ [x] Default locale config is french
+ [x] Supported locales are french and english
+ [x] No cookie falls back to default locale
+ [x] Valid english cookie is applied
+ [x] Valid french cookie is applied
+ [x] Unsupported cookie value falls back to default
+ [x] Malicious cookie value falls back to default
 
 Memoire Excel Config
  [x] Prepaid memory merge label uses the merge start cell
@@ -163,4 +179,10 @@ My Memo Users Delete Confirmation
  [x] No native browser confirm or alert remains in module views
  [x] My memo confirmation modal is present
  [x] Delete form keeps real post submission and csrf
+
+Theme Cookie
+ [x] Login defaults to light theme
+ [x] Login applies valid dark cookie
+ [x] Login ignores invalid theme cookie
+ [x] Shared header applies valid dark cookie
 

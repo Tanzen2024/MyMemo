@@ -36,6 +36,7 @@ class Filters extends BaseFilters
         'performance'   => PerformanceMetrics::class,
         'autologout'     => \App\Filters\AutoLogoutFilter::class,
         'auditadmin'     => \App\Filters\AdminAuditFilter::class,
+        'locale'         => \App\Filters\LocaleFilter::class,
     ];
 
     /**
@@ -75,7 +76,14 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            'autologout' => ['except' => ['authentification/login', 'authentification/logout']],
+            // Doit s'exécuter avant tout le reste (y compris sur login/logout,
+            // pas d'except) : la langue doit être posée avant qu'une vue ne
+            // rende du texte, authentifié ou non.
+            'locale',
+            // language/switch/* doit rester accessible sans session (ex. depuis
+            // la page de login) : sinon AutoLogoutFilter rediriger vers le login
+            // avant même que LanguageController::switch() ne s'exécute.
+            'autologout' => ['except' => ['authentification/login', 'authentification/logout', 'language/switch/*']],
             'csrf'       => ['except' => ['authentification/login']],
             // 'invalidchars',
         ],

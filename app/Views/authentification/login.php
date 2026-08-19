@@ -1,5 +1,10 @@
+<?php
+$mmTheme = service('request')->getCookie('mymemo_theme');
+$mmTheme = in_array($mmTheme, ['light', 'dark'], true) ? $mmTheme : 'light';
+$mmLocale = service('request')->getLocale();
+?>
 <!doctype html>
-<html lang="fr">
+<html lang="<?= esc($mmLocale) ?>" data-theme="<?= esc($mmTheme) ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +36,37 @@
             box-shadow: var(--shadow-lg);
             padding: 2.25rem 2rem;
             animation: mm-fade-in .35s ease both;
+        }
+
+        .login-topbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: .4rem;
+            margin-bottom: .75rem;
+        }
+
+        .login-lang {
+            font-size: .78rem;
+            padding: .2rem .5rem;
+            border-radius: var(--radius-pill);
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .login-lang.active {
+            background: var(--brand-100);
+            color: var(--brand-700);
+            font-weight: 600;
+        }
+
+        .login-theme-toggle {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: .95rem;
+            line-height: 1;
+            padding: .2rem .4rem;
         }
 
         .login-brand {
@@ -90,7 +126,7 @@
             border-radius: var(--radius-sm);
             font-size: .95rem;
             color: var(--text-body);
-            background: #fff;
+            background: var(--bg-card);
             box-sizing: border-box;
             transition: var(--transition-fast);
         }
@@ -124,10 +160,18 @@
 <body>
     <main class="login-shell">
         <div class="login-card">
+            <div class="login-topbar">
+                <a href="<?= site_url('language/switch/fr') ?>" class="login-lang <?= $mmLocale === 'fr' ? 'active' : '' ?>">🇫🇷 FR</a>
+                <a href="<?= site_url('language/switch/en') ?>" class="login-lang <?= $mmLocale === 'en' ? 'active' : '' ?>">🇬🇧 EN</a>
+                <button type="button" class="login-theme-toggle" id="mmLoginThemeToggle" title="<?= esc(lang('Menu.theme')) ?>">
+                    <span id="mmLoginThemeIconDark">🌙</span><span id="mmLoginThemeIconLight" style="display:none">☀</span>
+                </button>
+            </div>
+
             <div class="login-brand">
                 <span class="login-mark">MM</span>
                 <h1>MyMemo</h1>
-                <p>Connectez-vous pour continuer</p>
+                <p><?= lang('Auth.subtitle') ?></p>
             </div>
 
             <?php if (session('msg') || session('gestReturnInfo') || ($deniedReason ?? null)): ?>
@@ -137,16 +181,36 @@
             <form method="post" action="<?= site_url('authentification/login') ?>">
                 <?= csrf_field() ?>
                 <label class="login-field">
-                    Identifiant
+                    <?= lang('Auth.username') ?>
                     <input name="username" value="<?= esc(old('username')) ?>" autocomplete="username" required>
                 </label>
                 <label class="login-field">
-                    Mot de passe
+                    <?= lang('Auth.password') ?>
                     <input type="password" name="password" autocomplete="current-password" required>
                 </label>
-                <button type="submit" class="login-submit">Se connecter</button>
+                <button type="submit" class="login-submit"><?= lang('Auth.submit') ?></button>
             </form>
         </div>
     </main>
+    <script>
+    (function () {
+        var root = document.documentElement;
+        var btn = document.getElementById('mmLoginThemeToggle');
+        var iconDark = document.getElementById('mmLoginThemeIconDark');
+        var iconLight = document.getElementById('mmLoginThemeIconLight');
+        function syncIcon() {
+            var isDark = root.getAttribute('data-theme') === 'dark';
+            iconDark.style.display = isDark ? 'none' : '';
+            iconLight.style.display = isDark ? '' : 'none';
+        }
+        btn.addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            document.cookie = 'mymemo_theme=' + next + '; path=/; max-age=31536000; SameSite=Lax';
+            syncIcon();
+        });
+        syncIcon();
+    })();
+    </script>
 </body>
 </html>

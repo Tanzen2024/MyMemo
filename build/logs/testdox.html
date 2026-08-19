@@ -133,6 +133,14 @@
             <li class="success">Only one concurrent import can acquire the same type lock</li>
             <li class="success">Expired lock is automatically replaced</li>
         </ul>
+        <h2>Language Controller</h2>
+        <ul>
+            <li class="success">Supported locale sets cookie on returned response</li>
+            <li class="success">French locale sets cookie</li>
+            <li class="success">Unsupported locale does not set cookie</li>
+            <li class="success">Always redirects</li>
+            <li class="success">Cookie has one year expiry</li>
+        </ul>
         <h2>Ldap Group Matcher</h2>
         <ul>
             <li class="success">Exact configured dn matches</li>
@@ -150,6 +158,16 @@
             <li class="success">UserC BothGroups</li>
             <li class="success">UserD ApplicationsAdminsOnly</li>
             <li class="success">UserE NoGroups</li>
+        </ul>
+        <h2>Locale Filter</h2>
+        <ul>
+            <li class="success">Default locale config is french</li>
+            <li class="success">Supported locales are french and english</li>
+            <li class="success">No cookie falls back to default locale</li>
+            <li class="success">Valid english cookie is applied</li>
+            <li class="success">Valid french cookie is applied</li>
+            <li class="success">Unsupported cookie value falls back to default</li>
+            <li class="success">Malicious cookie value falls back to default</li>
         </ul>
         <h2>Memoire Excel Config</h2>
         <ul>
@@ -239,6 +257,13 @@
             <li class="success">No native browser confirm or alert remains in module views</li>
             <li class="success">My memo confirmation modal is present</li>
             <li class="success">Delete form keeps real post submission and csrf</li>
+        </ul>
+        <h2>Theme Cookie</h2>
+        <ul>
+            <li class="success">Login defaults to light theme</li>
+            <li class="success">Login applies valid dark cookie</li>
+            <li class="success">Login ignores invalid theme cookie</li>
+            <li class="success">Shared header applies valid dark cookie</li>
         </ul>
     </body>
 </html>

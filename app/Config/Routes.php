@@ -19,8 +19,11 @@ use CodeIgniter\Router\RouteCollection;
 // Dashboard
 $routes->get('/', function () {return redirect()->to(site_url('postpaid/particulier'));});
 
+// Langue (change le cookie mymemo_locale, accessible avec ou sans session)
+$routes->get('language/switch/(:segment)', 'LanguageController::switch/$1');
+
 // Authentification
-$routes->get('authentification/login', 'Views\AuthentificationController::login'); 
+$routes->get('authentification/login', 'Views\AuthentificationController::login');
 $routes->post('authentification/login', 'Views\AuthentificationController::doLogin');
 $routes->get('authentification/logout', 'Views\AuthentificationController::logout');
 $routes->get('dashboard', 'Views\DisplayViewsController::dashboard');

@@ -56,6 +56,34 @@
 }
 
 /* ===============================================================
+   THÈME SOMBRE
+   Ne redéfinit que les tokens de SURFACE/TEXTE (mêmes noms que
+   :root ci-dessus) : chaque composant les consomme déjà via var(...),
+   donc rien d'autre à modifier pour qu'ils suivent le thème. Les
+   teintes d'accent (--brand-500, --success-500...) et les fonds
+   pastel *-100 (utilisés par les badges, dont le texte a une couleur
+   fixe non tokenisée) restent identiques dans les deux thèmes : un
+   badge reste un petit chip coloré lisible, indépendant du thème
+   général — évite de dupliquer les règles de contraste des badges.
+================================================================ */
+[data-theme="dark"] {
+  --bg-body:   #191c26;
+  --bg-card:   #232733;
+  --bg-muted:  #2a2f3d;
+  --border-color: #333849;
+  --border-color-strong: #454b5e;
+
+  --text-heading: #eef1f7;
+  --text-body: #c7cdda;
+  --text-muted: #8b93a7;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.32);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.38);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ===============================================================
    BASE / TYPOGRAPHIE
 ================================================================ */
 body {
@@ -94,7 +122,7 @@ small, .text-muted { color: var(--text-muted) !important; }
 }
 
 .main-header.navbar {
-  background: #ffffff;
+  background: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--shadow-xs);
 }
@@ -130,7 +158,7 @@ small, .text-muted { color: var(--text-muted) !important; }
 }
 
 .main-footer {
-  background: #ffffff;
+  background: var(--bg-card);
   border-top: 1px solid var(--border-color);
   color: var(--text-muted);
   font-size: .85rem;
@@ -206,6 +234,7 @@ small, .text-muted { color: var(--text-muted) !important; }
    CARDS
 ================================================================ */
 .card {
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm) !important;
@@ -382,7 +411,7 @@ small, .text-muted { color: var(--text-muted) !important; }
   padding: .55rem 1.1rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-color-strong);
-  background: #ffffff;
+  background: var(--bg-card);
   color: var(--text-body);
   font-weight: 500;
   display: inline-flex;
@@ -427,7 +456,7 @@ label {
   border-radius: var(--radius-sm);
   padding: .55rem .85rem;
   color: var(--text-body);
-  background: #ffffff;
+  background: var(--bg-card);
   transition: var(--transition-fast);
 }
 
@@ -544,6 +573,8 @@ button:disabled {
    MODALS
 ================================================================ */
 .modal-content {
+  background: var(--bg-card);
+  color: var(--text-body);
   border: none;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);

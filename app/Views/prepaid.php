@@ -7,14 +7,15 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('prepaid') ?>" class="nav-link active">Prepaid</a>
+        <a href="<?= site_url('prepaid') ?>" class="nav-link active"><?= lang('Menu.prepaid') ?></a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
+      <?= $this->include('templates/topbar_actions') ?>
       <li class="nav-item">
         <a class="nav-link logout-link" href="<?= site_url('authentification/logout') ?>">
-          <i class="fas fa-sign-out-alt"></i> Déconnexion
+          <i class="fas fa-sign-out-alt"></i> <?= lang('App.logout') ?>
         </a>
       </li>
     </ul>
@@ -31,14 +32,14 @@
              INFORMATIONS GÉNÉRALES
         =============================== -->
         <div class="card card-primary mb-3 shadow-sm">
-          <div class="card-header"><h5>Informations générales</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.generalInfo') ?></h5></div>
           <div class="card-body row">
             <div class="col-md-6 mb-3">
-              <label for="year_prepaid">Année</label>
+              <label for="year_prepaid"><?= lang('Memoire.year') ?></label>
               <input type="number" id="year_prepaid" name="year_prepaid" class="form-control" value="<?= date('Y') ?>" required>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="cycle_prepaid">Cycle</label>
+              <label for="cycle_prepaid"><?= lang('Memoire.cycle') ?></label>
               <input type="number" id="cycle_prepaid" name="cycle_prepaid" class="form-control" min="1" max="12" required>
             </div>
           </div>
@@ -48,9 +49,9 @@
              CLIENT
         =============================== -->
         <div class="card card-secondary mb-3 shadow-sm">
-          <div class="card-header"><h5>Client</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.client') ?></h5></div>
           <div class="card-body">
-            <input type="text" name="regroupName_prepaid" class="form-control" placeholder="Nom du client" required>
+            <input type="text" name="regroupName_prepaid" class="form-control" placeholder="<?= esc(lang('Memoire.clientNamePlaceholder'), 'attr') ?>" required>
           </div>
         </div>
 
@@ -59,7 +60,7 @@
         ================================= -->
         <div class="card card-info mb-4 card-soft">
           <div class="card-header">
-            <h5 class="header-left">Référentiel</h5>
+            <h5 class="header-left"><?= lang('Memoire.referential') ?></h5>
           </div>
 
           <div class="card-body">
@@ -74,7 +75,7 @@
                       value="contrat"
                       checked>
                 <label for="ref_contrat_prepaid" class="option-pill btn btn-outline-success">
-                  <i class="fa fa-handshake"></i>&nbsp;Sur contrats
+                  <i class="fa fa-handshake"></i>&nbsp;<?= lang('Memoire.onContracts') ?>
                 </label>
               </div>
 
@@ -85,7 +86,7 @@
                       id="ref_facture_prepaid"
                       value="facture">
                 <label for="ref_facture_prepaid" class="option-pill btn btn-outline-warning">
-                  <i class="fa fa-file-invoice"></i>&nbsp;Sur reçus
+                  <i class="fa fa-file-invoice"></i>&nbsp;<?= lang('Memoire.onReceipts') ?>
                 </label>
               </div>
 
@@ -98,10 +99,10 @@
              IMPORT
         =============================== -->
         <div class="card card-success mb-3 shadow-sm">
-          <div class="card-header"><h5>Importer le référentiel</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.importReferential') ?></h5></div>
           <div class="card-body">
             <input type="file" name="referentiel_file_prepaid" class="form-control">
-            <small class="text-muted">Excel accepté</small>
+            <small class="text-muted"><?= lang('Memoire.excelAccepted') ?></small>
           </div>
         </div>
 
@@ -110,12 +111,12 @@
              PÉRIODE
         =============================== -->
        <div class="card card-warning mb-3 shadow-sm animate__animated animate__fadeIn">
-        <div class="card-header"><h5>Période</h5></div>
+        <div class="card-header"><h5><?= lang('Memoire.period') ?></h5></div>
         <div class="card-body row">
 
           <!-- Date début -->
           <div class="col-md-6 mb-3">
-            <label for="date_start_prepaid">Date début</label>
+            <label for="date_start_prepaid"><?= lang('Memoire.dateStart') ?></label>
             <div class="input-group">
               <input type="text" id="date_start_prepaid" name="date_start_prepaid"
                     class="form-control datepicker" placeholder="dd/mm/yyyy" required>
@@ -125,7 +126,7 @@
 
           <!-- Date fin -->
           <div class="col-md-6 mb-3">
-            <label for="date_end_prepaid">Date fin</label>
+            <label for="date_end_prepaid"><?= lang('Memoire.dateEnd') ?></label>
             <div class="input-group">
               <input type="text" id="date_end_prepaid" name="date_end_prepaid"
                     class="form-control datepicker" placeholder="dd/mm/yyyy" required>
@@ -140,7 +141,7 @@
         =============================== -->
         <div class="card card-info mb-4 card-soft">
           <div class="card-header">
-            <h5 class="header-left">Document</h5>
+            <h5 class="header-left"><?= lang('Memoire.document') ?></h5>
           </div>
 
           <div class="card-body">
@@ -155,7 +156,7 @@
                       value="memoires"
                       checked>
                 <label for="memoires" class="option-pill btn btn-outline-success">
-                  <i class="fa fa-handshake"></i>&nbsp;Mémoires
+                  <i class="fa fa-handshake"></i>&nbsp;<?= lang('Memoire.memos') ?>
                 </label>
               </div>
 
@@ -166,7 +167,7 @@
                       id="donnees_memoires"
                       value="donnees_memoires">
                 <label for="donnees_memoires" class="option-pill btn btn-outline-warning">
-                  <i class="fa fa-file-invoice"></i>&nbsp;Données Mémoires
+                  <i class="fa fa-file-invoice"></i>&nbsp;<?= lang('Memoire.memoData') ?>
                 </label>
               </div>
             </div>
@@ -174,7 +175,7 @@
         </div>
 
         <button id="btnSubmitPrepaid" type="submit" class="btn btn-primary btn-lg w-100">
-          Valider
+          <?= lang('Memoire.submit') ?>
         </button>
 
       </form>

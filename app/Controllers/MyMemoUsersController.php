@@ -93,7 +93,7 @@ final class MyMemoUsersController extends BaseController
                 'new_enabled' => $input['enabled'],
             ]);
 
-            return redirect()->to('/administration/users')->with('msg', 'Utilisateur autorisé avec succès.');
+            return redirect()->to('/administration/users')->with('msg', lang('Users.flashCreated'));
         } catch (\Throwable $e) {
             $this->auditLogger->log('MYMEMO_USER_CREATED', 'FAILED', 0.0, $this->request, [
                 'category'    => 'ADMINISTRATION',
@@ -111,7 +111,7 @@ final class MyMemoUsersController extends BaseController
     {
         $user = $this->repository->findByUsername($username);
         if ($user === null) {
-            return redirect()->to('/administration/users')->with('msg', 'Utilisateur introuvable.');
+            return redirect()->to('/administration/users')->with('msg', lang('Users.flashNotFound'));
         }
 
         return view('mymemo_users/form', [
@@ -148,7 +148,7 @@ final class MyMemoUsersController extends BaseController
 
             $this->auditRoleDiff($username, $before['roles'] ?? [], $input['roles']);
 
-            return redirect()->to('/administration/users')->with('msg', 'Utilisateur mis à jour.');
+            return redirect()->to('/administration/users')->with('msg', lang('Users.flashUpdated'));
         } catch (\Throwable $e) {
             $this->auditLogger->log('MYMEMO_USER_UPDATED', 'FAILED', 0.0, $this->request, [
                 'category'    => 'ADMINISTRATION',
@@ -187,7 +187,7 @@ final class MyMemoUsersController extends BaseController
                 'old_roles'   => $before['roles'] ?? null,
             ]);
 
-            return redirect()->to('/administration/users')->with('msg', 'Utilisateur supprimé.');
+            return redirect()->to('/administration/users')->with('msg', lang('Users.flashDeleted'));
         } catch (\Throwable $e) {
             $this->auditLogger->log('MYMEMO_USER_DELETED', 'FAILED', 0.0, $this->request, [
                 'category'    => 'ADMINISTRATION',
@@ -215,7 +215,7 @@ final class MyMemoUsersController extends BaseController
                 'target_user' => $username,
             ]);
 
-            return redirect()->to('/administration/users')->with('msg', $enabled ? 'Utilisateur activé.' : 'Utilisateur désactivé.');
+            return redirect()->to('/administration/users')->with('msg', $enabled ? lang('Users.flashEnabled') : lang('Users.flashDisabled'));
         } catch (\Throwable $e) {
             $this->auditLogger->log($action, 'FAILED', 0.0, $this->request, [
                 'category'    => 'ADMINISTRATION',

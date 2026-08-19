@@ -6,14 +6,15 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('postpaid/etat') ?>" class="nav-link active">Postpaid - État</a>
+        <a href="<?= site_url('postpaid/etat') ?>" class="nav-link active"><?= lang('Menu.postpaid') ?> - <?= lang('Menu.postpaidEtat') ?></a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
+      <?= $this->include('templates/topbar_actions') ?>
       <li class="nav-item">
         <a class="nav-link logout-link" href="<?= site_url('authentification/logout') ?>">
-          <i class="fas fa-sign-out-alt"></i> Déconnexion
+          <i class="fas fa-sign-out-alt"></i> <?= lang('App.logout') ?>
         </a>
       </li>
     </ul>
@@ -29,14 +30,14 @@
         <input type="hidden" name="referentiel_context" value="postpaid_etat">
         <!-- Informations générales -->
         <div class="card card-primary mb-3 shadow-sm animate__animated animate__fadeIn">
-          <div class="card-header"><h5>Informations générales</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.generalInfo') ?></h5></div>
           <div class="card-body row">
             <div class="col-md-6 mb-3">
-              <label>Année</label>
+              <label><?= lang('Memoire.year') ?></label>
               <input type="number" id="year_postpaid_etat" name="year_postpaid_etat" class="form-control" value="<?= date('Y') ?>" required>
             </div>
             <div class="col-md-6 mb-3">
-              <label>Cycle</label>
+              <label><?= lang('Memoire.cycle') ?></label>
               <input type="number" id="cycle_postpaid_etat" name="cycle_postpaid_etat" class="form-control" min="1" max="12" required>
             </div>
           </div>
@@ -47,7 +48,7 @@
         =============================== -->
 <div class="card shadow-sm mb-3">
   <div class="card-header bg-gradient-info text-white">
-    <h5>Référentiel & Émission</h5>
+    <h5><?= lang('Memoire.referentialEmission') ?></h5>
   </div>
   <div class="card-body row justify-content-center">
 
@@ -66,7 +67,7 @@
                           checked>
                     <label for="ref_contrat_postpaid_etat" class="option-pill btn btn-outline-success">
                       <i class="fa fa-handshake"></i>
-                      <span>Sur contrats</span>
+                      <span><?= lang('Memoire.onContracts') ?></span>
                     </label>
                   </div>
 
@@ -78,7 +79,7 @@
                           value="facture">
                     <label for="ref_facture_postpaid_etat" class="option-pill btn btn-outline-warning">
                       <i class="fas fa-file-invoice"></i>
-                      <span>Sur factures</span>
+                      <span><?= lang('Memoire.onInvoices') ?></span>
                     </label>
                   </div>
                 </div>
@@ -118,12 +119,12 @@
 
         <!-- Dates -->
         <div class="card card-warning mb-3 shadow-sm animate__animated animate__fadeIn">
-          <div class="card-header"><h5>Période</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.period') ?></h5></div>
           <div class="card-body row">
 
             <!-- Date début -->
             <div class="col-md-6 mb-3">
-              <label for="date_start_postpaid_etat">Date début</label>
+              <label for="date_start_postpaid_etat"><?= lang('Memoire.dateStart') ?></label>
               <div class="input-group">
                 <input type="text" id="date_start_postpaid_etat" name="date_start_postpaid_etat"
                       class="form-control datepicker" placeholder="dd/mm/yyyy" required>
@@ -133,7 +134,7 @@
 
             <!-- Date fin -->
             <div class="col-md-6 mb-3">
-              <label for="date_end_postpaid_etat">Date fin</label>
+              <label for="date_end_postpaid_etat"><?= lang('Memoire.dateEnd') ?></label>
               <div class="input-group">
                 <input type="text" id="date_end_postpaid_etat" name="date_end_postpaid_etat"
                       class="form-control datepicker" placeholder="dd/mm/yyyy" required>
@@ -147,10 +148,10 @@
 
         <!-- Importer référentiel -->
         <div class="card card-success mb-3 shadow-sm animate__animated animate__fadeIn">
-          <div class="card-header"><h5>Importer le référentiel</h5></div>
+          <div class="card-header"><h5><?= lang('Memoire.importReferential') ?></h5></div>
           <div class="card-body">
             <input type="file" name="referentiel_file_postpaid_etat" class="form-control">
-            <small class="form-text text-muted">Excel accepté</small>
+            <small class="form-text text-muted"><?= lang('Memoire.excelAccepted') ?></small>
           </div>
         </div>
 
@@ -160,7 +161,7 @@
         =============================== -->
         <div class="card card-info mb-4 card-soft">
           <div class="card-header">
-            <h5 class="header-left">Document</h5>
+            <h5 class="header-left"><?= lang('Memoire.document') ?></h5>
           </div>
 
           <div class="card-body">
@@ -175,7 +176,7 @@
                       value="memoires"
                       checked>
                 <label for="memoires" class="option-pill btn btn-outline-success">
-                  <i class="fa fa-handshake"></i>&nbsp;Mémoires
+                  <i class="fa fa-handshake"></i>&nbsp;<?= lang('Memoire.memos') ?>
                 </label>
               </div>
 
@@ -186,14 +187,14 @@
                       id="donnees_memoires"
                       value="donnees_memoires">
                 <label for="donnees_memoires" class="option-pill btn btn-outline-warning">
-                  <i class="fa fa-file-invoice"></i>&nbsp;Données Mémoires
+                  <i class="fa fa-file-invoice"></i>&nbsp;<?= lang('Memoire.memoData') ?>
                 </label>
               </div>
             </div>
           </div>
         </div>
 
-        <button name="btnSubmitPostpaidEtat" type="submit" class="btn btn-primary btn-lg w-100">Valider</button>
+        <button name="btnSubmitPostpaidEtat" type="submit" class="btn btn-primary btn-lg w-100"><?= lang('Memoire.submit') ?></button>
       </form>
     </div>
   </section>

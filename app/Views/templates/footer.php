@@ -220,6 +220,8 @@ document.addEventListener('DOMContentLoaded', function(){
     // fichier à télécharger). Sans ce filtre, TOUT formulaire de TOUTE page
     // (recherche, filtres, CRUD Gestion des utilisateurs...) était intercepté
     // et sa navigation/redirection normale absorbée par ce fetch().
+    var mmServerErrorLabel = <?= json_encode(lang('App.serverError'), JSON_UNESCAPED_UNICODE) ?>;
+    var mmFileGenerationErrorLabel = <?= json_encode(lang('App.fileGenerationError'), JSON_UNESCAPED_UNICODE) ?>;
     document.querySelectorAll('form[data-async="true"]').forEach(form => {
 
     form.addEventListener("submit", async function(e){
@@ -257,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 overlay.style.display = 'none';
                 if(btn) btn.disabled = false;
 
-                let errorText = "Erreur serveur";
+                let errorText = mmServerErrorLabel;
 
                 try {
                     const err = await response.json();
@@ -314,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
             if(btn) btn.disabled = false;
 
-            alert("Erreur lors de la génération du fichier");
+            alert(mmFileGenerationErrorLabel);
         }
 
     });
@@ -331,16 +333,16 @@ document.addEventListener('DOMContentLoaded', function(){
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><i class="fas fa-sign-out-alt"></i> Déconnexion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title"><i class="fas fa-sign-out-alt"></i> <?= lang('App.logout') ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="<?= esc(lang('App.close'), 'attr') ?>"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
-        <p class="mb-0">Êtes-vous sûr de vouloir vous déconnecter ?</p>
+        <p class="mb-0"><?= lang('App.logoutConfirmBody') ?></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><?= lang('App.cancel') ?></button>
         <button type="button" class="btn btn-danger" id="logoutConfirmBtn">
-          <i class="fas fa-sign-out-alt"></i> <span class="logout-btn-label">Déconnexion</span>
+          <i class="fas fa-sign-out-alt"></i> <span class="logout-btn-label"><?= lang('App.logout') ?></span>
         </button>
       </div>
     </div>
@@ -350,6 +352,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     let logoutHref = null;
+    var logoutInProgressLabel = <?= json_encode(lang('App.logoutInProgress'), JSON_UNESCAPED_UNICODE) ?>;
 
     document.querySelectorAll('.logout-link').forEach(function (link) {
         link.addEventListener('click', function (e) {
@@ -365,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!logoutHref) return;
             logoutConfirmBtn.disabled = true;
             logoutConfirmBtn.classList.add('is-loading');
-            logoutConfirmBtn.querySelector('.logout-btn-label').textContent = 'Déconnexion…';
+            logoutConfirmBtn.querySelector('.logout-btn-label').textContent = logoutInProgressLabel;
             window.location.href = logoutHref;
         });
     }

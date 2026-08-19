@@ -25,10 +25,10 @@ class AuthentificationController extends BaseController
      * connecté" ci-dessous, qui ne détruit rien et peut donc utiliser le
      * flashdata normalement.
      */
-    private const DENIED_MESSAGES = [
-        'session_expired' => 'Session expirée pour inactivité.',
-        'unauthorized'     => "Votre compte n'est pas autorisé à utiliser MyMemo. Contactez votre administrateur.",
-        'service_unavailable' => 'Service momentanément indisponible. Veuillez réessayer ou contacter un administrateur.',
+    private const DENIED_MESSAGE_KEYS = [
+        'session_expired' => 'Auth.sessionExpired',
+        'unauthorized'     => 'Auth.unauthorized',
+        'service_unavailable' => 'Auth.serviceUnavailableDenied',
     ];
 
     public function login()
@@ -37,7 +37,8 @@ class AuthentificationController extends BaseController
             return redirect()->to('/dashboard');
         }
 
-        $deniedReason = self::DENIED_MESSAGES[(string) $this->request->getGet('denied')] ?? null;
+        $deniedKey = self::DENIED_MESSAGE_KEYS[(string) $this->request->getGet('denied')] ?? null;
+        $deniedReason = $deniedKey !== null ? lang($deniedKey) : null;
 
         return view('authentification/login', ['deniedReason' => $deniedReason]);
     }
@@ -67,33 +68,33 @@ class AuthentificationController extends BaseController
         // Active Directory accepts both sAMAccountName and UPN forms.
         if ($username === '' || $password === '' || ! preg_match('/^[A-Za-z0-9._-]+(?:@[A-Za-z0-9.-]+)?$/', $username)) {
             $logLogin('FAILED', 'Identifiants incorrects (format invalide ou champ manquant)');
-            return redirect()->to('/authentification/login')->with('msg', 'Identifiants incorrects')->withInput();
+            return redirect()->to('/authentification/login')->with('msg', lang('Auth.incorrectCredentials'))->withInput();
         }
 
         if (!function_exists('ldap_connect')) {
             log_message('error', 'The LDAP PHP extension is unavailable.');
             $logLogin('ERROR', 'Extension PHP LDAP indisponible');
-            return redirect()->to('/authentification/login')->with('msg', 'Service de connexion indisponible.');
+            return redirect()->to('/authentification/login')->with('msg', lang('Auth.serviceUnavailable'));
         }
 
         $ldap = config('LDAP');
         if ($ldap->host === '' || $ldap->baseDn === '' || $ldap->domain === '') {
             log_message('error', 'LDAP authentication is not configured.');
             $logLogin('ERROR', 'Configuration LDAP absente');
-            return redirect()->to('/authentification/login')->with('msg', 'Service de connexion indisponible.');
+            return redirect()->to('/authentification/login')->with('msg', lang('Auth.serviceUnavailable'));
         }
 
         $uri = $ldap->uri();
         if ($uri === '') {
             log_message('error', 'LDAP URI is invalid.');
             $logLogin('ERROR', 'Configuration LDAP invalide');
-            return redirect()->to('/authentification/login')->with('msg', 'Service de connexion indisponible.');
+            return redirect()->to('/authentification/login')->with('msg', lang('Auth.serviceUnavailable'));
         }
 
         $connection = ldap_connect($uri);
         if ($connection === false) {
             $logLogin('ERROR', 'Connexion au serveur LDAP impossible');
-            return redirect()->to('/authentification/login')->with('msg', 'Service de connexion indisponible.');
+            return redirect()->to('/authentification/login')->with('msg', lang('Auth.serviceUnavailable'));
         }
 
         try {
@@ -105,7 +106,7 @@ class AuthentificationController extends BaseController
             if ($ldap->startTls && ! @ldap_start_tls($connection)) {
                 log_message('error', 'LDAP StartTLS failed (code {code}): {error}', ['code' => ldap_errno($connection), 'error' => ldap_error($connection)]);
                 $logLogin('ERROR', 'Échec de négociation TLS LDAP');
-                return redirect()->to('/authentification/login')->with('msg', 'Service de connexion indisponible.');
+                return redirect()->to('/authentification/login')->with('msg', lang('Auth.serviceUnavailable'));
             }
 
             $upn = str_contains($username, '@') ? $username : $username . '@' . $ldap->domain;
@@ -114,7 +115,7 @@ class AuthentificationController extends BaseController
             if (!@ldap_bind($connection, $upn, $password)) {
                 log_message('warning', 'LDAP bind failed (code {code}): {error}', ['code' => ldap_errno($connection), 'error' => ldap_error($connection)]);
                 $logLogin('FAILED', 'Échec du bind LDAP (identifiants incorrects)');
-                return redirect()->to('/authentification/login')->with('msg', 'Identifiants incorrects')->withInput();
+                return redirect()->to('/authentification/login')->with('msg', lang('Auth.incorrectCredentials'))->withInput();
             }
 
             $filter = '(sAMAccountName=' . ldap_escape($samAccountName, '', LDAP_ESCAPE_FILTER) . ')';
@@ -125,7 +126,7 @@ class AuthentificationController extends BaseController
                     log_message('warning', 'LDAP search failed (code {code}): {error}', ['code' => ldap_errno($connection), 'error' => ldap_error($connection)]);
                 }
                 $logLogin('FAILED', 'Compte introuvable dans l\'annuaire');
-                return redirect()->to('/authentification/login')->with('msg', 'Compte introuvable.');
+                return redirect()->to('/authentification/login')->with('msg', lang('Auth.accountNotFound'));
             }
 
             $groups = [];
@@ -146,7 +147,7 @@ class AuthentificationController extends BaseController
             } catch (\Throwable $e) {
                 log_message('critical', 'doLogin : lecture de users.csv impossible : {msg}', ['msg' => $e->getMessage()]);
                 $logLogin('ERROR', 'users.csv illisible (permissions/disque)');
-                return redirect()->to('/authentification/login')->with('msg', 'Service de connexion indisponible.');
+                return redirect()->to('/authentification/login')->with('msg', lang('Auth.serviceUnavailable'));
             }
 
             if (! $resolved['authorized']) {
