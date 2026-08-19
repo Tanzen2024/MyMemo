@@ -51,13 +51,77 @@
         </style>
     </head>
     <body>
+        <h2>Audit Error Classifier</h2>
+        <ul>
+            <li class="success">No data exception is classified as no data error</li>
+            <li class="success">File generation exception produces safe user message without path</li>
+            <li class="success">Excel import business messages are relayed as is</li>
+            <li class="success">Oracle connection error maps to retry later message</li>
+            <li class="success">Unknown exception falls back to generic safe message</li>
+            <li class="success">Incident ref and correlation id have expected format</li>
+        </ul>
+        <h2>Audit Failure Scenario</h2>
+        <ul>
+            <li class="success">Memory generation failure is fully traceable without exposing internals</li>
+        </ul>
+        <h2>Audit Index View Formatting</h2>
+        <ul>
+            <li class="success">Date cell is displayed in french format not iso</li>
+            <li class="success">Sort order attribute uses real timestamp not display string</li>
+            <li class="success">Table is wrapped in responsive container</li>
+            <li class="success">Long content columns expose full value via title attribute</li>
+            <li class="success">Embedded detail json keeps source iso date untouched</li>
+        </ul>
+        <h2>Audit Logger Service</h2>
+        <ul>
+            <li class="success">Successful login records the verified username</li>
+            <li class="success">Failed login never records the attempted username</li>
+            <li class="success">Explicit user override is used for session expired after destroy</li>
+            <li class="success">Sensitive keys are redacted even if passed by mistake</li>
+        </ul>
         <h2>Audit Reader Service</h2>
         <ul>
             <li class="success">Reads only requested days and applies filters</li>
         </ul>
+        <h2>Dashboard Menu Visibility</h2>
+        <ul>
+            <li class="success">Admin sees administration menu</li>
+            <li class="success">User does not see administration menu</li>
+            <li class="success">Dashboard menu is present and above postpaid</li>
+        </ul>
+        <h2>Dashboard Service</h2>
+        <ul>
+            <li class="success">Active inactive and admin counts</li>
+            <li class="success">No audit events yields empty ranking and activity</li>
+            <li class="success">Login ranking sorted descending</li>
+            <li class="success">Login ranking is capped at ten</li>
+            <li class="success">Legacy upn format is grouped with short username</li>
+            <li class="success">Event older than thirty days is excluded by default</li>
+            <li class="success">Recent activity filters and sorts by date</li>
+            <li class="success">Unreadable users csv degrades gracefully instead of throwing</li>
+        </ul>
+        <h2>Dashboard View Rendering</h2>
+        <ul>
+            <li class="success">Dashboard renders without error and shows expected content</li>
+            <li class="success">Dashboard renders with empty data</li>
+        </ul>
         <h2>Example Session</h2>
         <ul>
             <li class="success">Session simple</li>
+        </ul>
+        <h2>Excel Export Service</h2>
+        <ul>
+            <li class="success">Produces a valid xlsx container with expected data</li>
+            <li class="success">Values looking like formulas are stored as safe text</li>
+            <li class="success">Invalid sheet title characters are sanitized instead of throwing</li>
+            <li class="success">Throws on empty data instead of producing an invalid file</li>
+        </ul>
+        <h2>Form Async Scoping</h2>
+        <ul>
+            <li class="success">Footer script only targets async forms</li>
+            <li class="success">Generation forms still carry data async</li>
+            <li class="success">User management forms do not carry data async</li>
+            <li class="success">Audit filter form does not carry data async</li>
         </ul>
         <h2>Health</h2>
         <ul>
@@ -69,6 +133,24 @@
             <li class="success">Only one concurrent import can acquire the same type lock</li>
             <li class="success">Expired lock is automatically replaced</li>
         </ul>
+        <h2>Ldap Group Matcher</h2>
+        <ul>
+            <li class="success">Exact configured dn matches</li>
+            <li class="success">Historical hardcoded group never matches this real user</li>
+            <li class="success">Case and whitespace differences are tolerated</li>
+            <li class="success">Bare group name matches regardless of ou depth</li>
+            <li class="success">Multiple configured groups any match grants access</li>
+            <li class="success">Unrelated group does not match</li>
+            <li class="success">Empty configuration denies access rather than failing open</li>
+            <li class="success">Empty user groups does not match anything</li>
+            <li class="success">Partial substring does not falsely match</li>
+            <li class="success">Full dn and bare cn both match</li>
+            <li class="success">UserA MyMemoUsersOnly</li>
+            <li class="success">UserB MyMemoAdminsOnly ImpliesMyMemoUsers</li>
+            <li class="success">UserC BothGroups</li>
+            <li class="success">UserD ApplicationsAdminsOnly</li>
+            <li class="success">UserE NoGroups</li>
+        </ul>
         <h2>Memoire Excel Config</h2>
         <ul>
             <li class="success">Prepaid memory merge label uses the merge start cell</li>
@@ -78,6 +160,85 @@
             <li class="success">Build returns sql and binds for prepaid with contrat</li>
             <li class="success">Build normalizes string result to sql binds array</li>
             <li class="success">Build throws for unknown type</li>
+        </ul>
+        <h2>My Memo Authorization</h2>
+        <ul>
+            <li class="success">No my memo group is denied</li>
+            <li class="success">My memo users grants access</li>
+            <li class="success">My memo admins grants access and administration</li>
+            <li class="success">Both groups grant both</li>
+            <li class="success">Applications admins alone is denied</li>
+            <li class="success">Historical admins group alone is denied</li>
+            <li class="success">My memo admins without my memo users in member of still grants user access</li>
+            <li class="success">Empty configuration denies access</li>
+            <li class="success">Bare cn configuration</li>
+            <li class="success">Full dn configuration</li>
+            <li class="success">Case insensitive configuration</li>
+            <li class="success">Whitespace tolerant configuration</li>
+            <li class="success">Multiple configured groups</li>
+            <li class="success">My memo user without admin is denied audit access</li>
+            <li class="success">My memo admin is granted audit access</li>
+        </ul>
+        <h2>My Memo Authorization Service</h2>
+        <ul>
+            <li class="success">Unknown user is denied</li>
+            <li class="success">Disabled user is denied</li>
+            <li class="success">Enabled without roles is denied</li>
+            <li class="success">User role grants mymemo access only</li>
+            <li class="success">Admin role grants every capability</li>
+            <li class="success">Multiple roles union of capabilities</li>
+            <li class="success">Authorization checks are case and whitespace insensitive</li>
+            <li class="success">Unknown role is rejected</li>
+            <li class="success">Last admin cannot be disabled</li>
+            <li class="success">Last admin role cannot be revoked</li>
+            <li class="success">Last admin cannot be deleted</li>
+            <li class="success">Disabling one admin is allowed when another remains</li>
+        </ul>
+        <h2>My Memo User Repository</h2>
+        <ul>
+            <li class="success">Missing file is bootstrapped with seed admin</li>
+            <li class="success">Empty file yields no users</li>
+            <li class="success">Malformed row is skipped</li>
+            <li class="success">Multiple roles round trip</li>
+            <li class="success">Lookup is case and whitespace insensitive</li>
+            <li class="success">Adding duplicate username fails</li>
+            <li class="success">Updating unknown user fails</li>
+            <li class="success">Write leaves no temporary file behind</li>
+            <li class="success">Backup is created before write</li>
+            <li class="success">Remove deletes user</li>
+            <li class="success">Guard can reject an update</li>
+            <li class="success">Invalid username format is rejected</li>
+        </ul>
+        <h2>My Memo User Repository Read Error</h2>
+        <ul>
+            <li class="success">Read all throws on unreadable file</li>
+            <li class="success">Mutation throws rather than silently overwriting with empty file</li>
+        </ul>
+        <h2>My Memo Users Badge Rendering</h2>
+        <ul>
+            <li class="success">Admin badge uses primary class</li>
+            <li class="success">User badge uses info class not light</li>
+            <li class="success">Multiple roles render both badges distinctly</li>
+        </ul>
+        <h2>My Memo Users Controller</h2>
+        <ul>
+            <li class="success">Store creates authorized user</li>
+            <li class="success">Store rejects unknown role</li>
+            <li class="success">Store rejects invalid username</li>
+            <li class="success">Store rejects duplicate username</li>
+            <li class="success">Update applies role and status changes</li>
+            <li class="success">Last admin cannot self revoke through update</li>
+            <li class="success">Last admin cannot be disabled through controller</li>
+            <li class="success">Last admin cannot be deleted through controller</li>
+            <li class="success">Disable works when not last admin</li>
+            <li class="success">Delete works when not last admin</li>
+            <li class="success">Index shows clear error when users csv is unreadable</li>
+        </ul>
+        <h2>My Memo Users Delete Confirmation</h2>
+        <ul>
+            <li class="success">No native browser confirm or alert remains in module views</li>
+            <li class="success">My memo confirmation modal is present</li>
+            <li class="success">Delete form keeps real post submission and csrf</li>
         </ul>
     </body>
 </html>

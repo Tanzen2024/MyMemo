@@ -130,8 +130,8 @@
                 <p>Connectez-vous pour continuer</p>
             </div>
 
-            <?php if (session('msg')): ?>
-                <p role="alert" class="login-alert"><?= esc(session('msg')) ?></p>
+            <?php if (session('msg') || session('gestReturnInfo') || ($deniedReason ?? null)): ?>
+                <p role="alert" class="login-alert"><?= esc(session('msg') ?? session('gestReturnInfo') ?? $deniedReason) ?></p>
             <?php endif; ?>
 
             <form method="post" action="<?= site_url('authentification/login') ?>">

@@ -21,6 +21,7 @@
   </nav>
 
 <div class="content-wrapper">
+  <?= $this->include('templates/flash_messages') ?>
   <section class="content">
     <div class="container d-flex justify-content-center">
       <form id="FormPrepaid" method="post" action="<?= site_url('prepaid') ?>" class="w-75" data-async="true" enctype="multipart/form-data">

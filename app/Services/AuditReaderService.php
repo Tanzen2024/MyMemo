@@ -51,8 +51,10 @@ final class AuditReaderService
     }
     private function matches(array $row, array $filters): bool
     {
-        foreach (['user','module','action','file','status'] as $field) if ($filters[$field] !== '' && stripos((string) $row[$field], $filters[$field]) === false) return false;
+        foreach (['user','module','action','file','status','severity','category','correlation_id','incident_ref'] as $field) {
+            if (($filters[$field] ?? '') !== '' && stripos((string) ($row[$field] ?? ''), $filters[$field]) === false) return false;
+        }
         if ($filters['search'] === '') return true;
-        return stripos(implode(' ', array_map('strval', [$row['date'],$row['user'],$row['module'],$row['action'],$row['file'],$row['message']])), $filters['search']) !== false;
+        return stripos(implode(' ', array_map('strval', [$row['date'],$row['user'],$row['module'],$row['action'],$row['file'],$row['message'],$row['user_message'] ?? '',$row['incident_ref'] ?? ''])), $filters['search']) !== false;
     }
 }

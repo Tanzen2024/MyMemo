@@ -20,6 +20,7 @@
   </nav>
 
 <div class="content-wrapper">
+  <?= $this->include('templates/flash_messages') ?>
   <section class="content">
     <div class="container d-flex justify-content-center">
       <form id="FormPostpaidEtat" method="post" action="<?= site_url('postpaid/etat') ?>" data-async="true" class="w-75" enctype="multipart/form-data">

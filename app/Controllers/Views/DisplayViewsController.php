@@ -3,6 +3,7 @@
 namespace App\Controllers\Views;
 
 use App\Controllers\BaseController;
+use App\Services\DashboardService;
 
 class DisplayViewsController extends BaseController
 {
@@ -33,7 +34,19 @@ class DisplayViewsController extends BaseController
     public function dashboard()
     {
         // Si l'utilisateur est authentifié, la logique d'authentification a déjà été gérée
-        return view('dashboard', ['title' => 'Tableau de Bord']);
+        $requestedPeriod = (string) $this->request->getGet('period');
+        $period = in_array($requestedPeriod, ['today', '7d', 'all'], true) ? $requestedPeriod : '30d';
+        $today = date('Y-m-d');
+        $dateFrom = match ($period) {
+            'today' => $today,
+            '7d'    => date('Y-m-d', strtotime('-7 days')),
+            'all'   => '2000-01-01',
+            default => date('Y-m-d', strtotime('-30 days')),
+        };
+
+        $overview = (new DashboardService())->buildOverview(['date_from' => $dateFrom, 'date_to' => $today]);
+
+        return view('dashboard', $overview + ['title' => 'Tableau de Bord', 'period' => $period]);
     }
 
     public function profile()

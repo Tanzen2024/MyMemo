@@ -26,6 +26,14 @@ $routes->get('authentification/logout', 'Views\AuthentificationController::logou
 $routes->get('dashboard', 'Views\DisplayViewsController::dashboard');
 $routes->get('administration/audit', 'AuditController::index', ['filter' => 'auditadmin']);
 $routes->get('administration/audit/export/(:segment)', 'AuditController::export/$1', ['filter' => 'auditadmin']);
+$routes->get('administration/users', 'MyMemoUsersController::index', ['filter' => 'auditadmin']);
+$routes->get('administration/users/create', 'MyMemoUsersController::create', ['filter' => 'auditadmin']);
+$routes->post('administration/users', 'MyMemoUsersController::store', ['filter' => 'auditadmin']);
+$routes->get('administration/users/(:segment)/edit', 'MyMemoUsersController::edit/$1', ['filter' => 'auditadmin']);
+$routes->post('administration/users/(:segment)', 'MyMemoUsersController::update/$1', ['filter' => 'auditadmin']);
+$routes->post('administration/users/(:segment)/enable', 'MyMemoUsersController::enable/$1', ['filter' => 'auditadmin']);
+$routes->post('administration/users/(:segment)/disable', 'MyMemoUsersController::disable/$1', ['filter' => 'auditadmin']);
+$routes->post('administration/users/(:segment)/delete', 'MyMemoUsersController::delete/$1', ['filter' => 'auditadmin']);
 
 
 // Affichage formulaire

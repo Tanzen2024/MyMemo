@@ -23,7 +23,29 @@ final class AuditEntry
             'status' => strtoupper((string) ($entry['status'] ?? 'SUCCESS')),
             'message' => (string) ($entry['message'] ?? ''),
             'error_stack' => (string) ($entry['error_stack'] ?? ''),
+            // Champs "audit enterprise" : présents seulement sur les événements
+            // instrumentés en conséquence (authentification, import, mémoire,
+            // erreurs Oracle) ; vides sinon, sans casser les anciennes entrées.
+            'category' => strtoupper((string) ($entry['category'] ?? '')),
+            'severity' => strtoupper((string) ($entry['severity'] ?? self::defaultSeverity((string) ($entry['status'] ?? 'SUCCESS')))),
+            'error_type' => strtoupper((string) ($entry['error_type'] ?? '')),
+            'correlation_id' => (string) ($entry['correlation_id'] ?? ''),
+            'incident_ref' => (string) ($entry['incident_ref'] ?? ''),
+            'user_message' => (string) ($entry['user_message'] ?? ''),
+            'technical_message' => (string) ($entry['technical_message'] ?? ''),
+            'exception' => (string) ($entry['exception'] ?? ''),
             'raw' => $entry,
         ];
+    }
+
+    /** Sévérité par défaut pour les entrées écrites avant l'introduction du champ. */
+    private static function defaultSeverity(string $status): string
+    {
+        return match (strtoupper($status)) {
+            'SUCCESS' => 'SUCCESS',
+            'WARNING', 'REFUSED' => 'WARNING',
+            'FAILED', 'ERROR' => 'ERROR',
+            default => 'INFO',
+        };
     }
 }

@@ -21,6 +21,7 @@
 </nav>
 
 <div class="content-wrapper">
+  <?= $this->include('templates/flash_messages') ?>
   <section class="content">
     <div class="container d-flex justify-content-center">
       <form data-context="js_postpaid_particulier" id="FormPostpaidParticulier" method="post" data-async="true" action="<?= site_url('postpaid/particulier') ?>" class="w-75" enctype="multipart/form-data">

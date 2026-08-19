@@ -216,7 +216,11 @@ document.addEventListener('DOMContentLoaded', function(){
     // ================================
     // SPINNER GLOBAL FORMULAIRE
     // ================================
-    document.querySelectorAll("form").forEach(form => {
+    // Uniquement les formulaires de génération Postpaid/Prepaid (réponse =
+    // fichier à télécharger). Sans ce filtre, TOUT formulaire de TOUTE page
+    // (recherche, filtres, CRUD Gestion des utilisateurs...) était intercepté
+    // et sa navigation/redirection normale absorbée par ce fetch().
+    document.querySelectorAll('form[data-async="true"]').forEach(form => {
 
     form.addEventListener("submit", async function(e){
         e.preventDefault();

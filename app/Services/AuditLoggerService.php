@@ -14,15 +14,28 @@ final class AuditLoggerService
             return;
         }
 
+        // Un échec/erreur d'authentification ne doit jamais conserver
+        // l'identifiant saisi (non vérifié) ; un succès, en revanche, DOIT
+        // enregistrer l'identité désormais vérifiée par l'annuaire AD.
+        $isUnverifiedLoginAttempt = in_array($action, ['login', 'LOGIN_SUCCESS', 'LOGIN_FAILED', 'LOGIN_ERROR'], true)
+            && $status !== 'SUCCESS';
+
+        // Un appelant peut fournir explicitement l'utilisateur via $context
+        // (ex. SESSION_EXPIRED, journalisé après destruction de la session :
+        // session()->get('username') ne serait alors plus disponible).
+        $user = $isUnverifiedLoginAttempt
+            ? 'anonymous'
+            : (string) ($context['user'] ?? session()->get('username') ?? 'anonymous');
+        unset($context['user']);
+
         $entry = [
             'date'     => date('c'),
-            // Authentication attempts must not retain a supplied identifier.
-            'user'     => $action === 'login' ? 'anonymous' : (string) (session()->get('username') ?? 'anonymous'),
+            'user'     => $user,
             'ip'       => $request->getIPAddress(),
             'action'   => $action,
             'status'   => $status,
             'duration' => round($duration, 4),
-        ] + $context;
+        ] + self::redactSensitive($context);
 
         // Format JSON Lines (une entrée = une ligne, écriture en ajout pur) :
         // contrairement à un tableau JSON unique, ceci évite de relire et de
@@ -44,5 +57,27 @@ final class AuditLoggerService
             flock($handle, LOCK_UN);
             fclose($handle);
         }
+    }
+
+    /**
+     * Filet de sécurité (défense en profondeur) : même si un appelant
+     * introduisait par erreur une clé sensible dans $context (mot de passe,
+     * token, secret...), sa valeur est remplacée avant écriture. Ne remplace
+     * pas la discipline des appelants (aucun ne doit passer ces valeurs),
+     * mais garantit qu'une régression future ne fuite jamais de secret.
+     */
+    private static function redactSensitive(array $context): array
+    {
+        static $pattern = '/password|passwd|token|secret|credential|api[_-]?key|cookie|authorization/i';
+
+        foreach ($context as $key => $value) {
+            if (is_array($value)) {
+                $context[$key] = self::redactSensitive($value);
+            } elseif (is_string($key) && preg_match($pattern, $key)) {
+                $context[$key] = '[REDACTED]';
+            }
+        }
+
+        return $context;
     }
 }

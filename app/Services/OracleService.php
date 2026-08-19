@@ -11,9 +11,37 @@ class OracleService
 {
     protected BaseConnection $db;
 
+    /** Dernière erreur Oracle rencontrée (null si la dernière requête a réussi). */
+    private ?array $lastError = null;
+
+    /**
+     * Identifiant de corrélation de l'opération en cours (import/génération),
+     * défini par le contrôleur appelant pour relier les erreurs Oracle
+     * automatiquement journalisées ici à l'événement métier correspondant
+     * dans le journal d'audit. Statique : OracleService est instancié
+     * plusieurs fois par requête (MemoryController, MemorySQLFactory...).
+     */
+    private static ?string $correlationId = null;
+
     public function __construct(?BaseConnection $db = null)
     {
         $this->db = $db ?? Database::connect();
+    }
+
+    public static function setCorrelationId(?string $id): void
+    {
+        self::$correlationId = $id;
+    }
+
+    /**
+     * Permet à l'appelant de distinguer "aucune donnée trouvée" (résultat
+     * vide légitime) d'un échec Oracle silencieusement absorbé par fetchAll()
+     * (qui retourne [] dans les deux cas pour ne pas changer son contrat
+     * existant). Remis à null après une requête réussie.
+     */
+    public function getLastError(): ?array
+    {
+        return $this->lastError;
     }
 
     /* =========================
@@ -47,10 +75,13 @@ class OracleService
 
         if ($query === false) {
             $error = $this->db->error();
+            $this->lastError = $error;
             log_message('error', 'Oracle SQL error: ' . json_encode($error));
-            $this->logOracleError('oracle_error', $duration, $error, $sql);
+            $this->logOracleError('ORACLE_ERROR', $duration, $error, $sql);
             return false;
         }
+
+        $this->lastError = null;
 
         // Détecte si SELECT pour retourner les résultats
         $isSelect = stripos(ltrim($sql), 'SELECT') === 0;
@@ -65,11 +96,21 @@ class OracleService
     private function logOracleError(string $action, float $duration, array $error, string $sql): void
     {
         try {
-            (new AuditLoggerService())->log($action, 'ERROR', $duration, service('request'), [
-                'code'    => $error['code'] ?? null,
-                'message' => $error['message'] ?? 'Erreur Oracle inconnue',
-                'sql'     => substr(preg_replace('/\s+/', ' ', trim($sql)), 0, 300),
-            ]);
+            $context = [
+                'category'          => 'DATABASE',
+                'severity'          => 'ERROR',
+                'error_type'        => 'ORACLE_ERROR',
+                'error_code'        => $error['code'] ?? null,
+                'technical_message' => $error['message'] ?? 'Erreur Oracle inconnue',
+                // Détail technique réservé à l'audit administrateur (jamais
+                // affiché à l'utilisateur) : requête tronquée, sans les valeurs
+                // des binds qui pourraient contenir des données métier sensibles.
+                'sql'               => substr(preg_replace('/\s+/', ' ', trim($sql)), 0, 300),
+            ];
+            if (self::$correlationId !== null) {
+                $context['correlation_id'] = self::$correlationId;
+            }
+            (new AuditLoggerService())->log($action, 'ERROR', $duration, service('request'), $context);
         } catch (\Throwable $e) {
             log_message('error', 'Échec de journalisation d\'audit (oracle_error) : ' . $e->getMessage());
         }
@@ -93,14 +134,14 @@ class OracleService
             if ($result === false) {
                 $error = $this->db->error();
                 log_message('error', 'Truncate error: ' . json_encode($error));
-                $this->logOracleError('oracle_error', microtime(true) - $startedAt, $error, "TRUNCATE {$table}");
+                $this->logOracleError('ORACLE_ERROR', microtime(true) - $startedAt, $error, "TRUNCATE {$table}");
                 return false;
             }
 
             return true;
         } catch (\Throwable $e) {
             log_message('error', 'Truncate error: ' . $e->getMessage());
-            $this->logOracleError('oracle_error', microtime(true) - $startedAt, ['message' => $e->getMessage()], "TRUNCATE {$table}");
+            $this->logOracleError('ORACLE_ERROR', microtime(true) - $startedAt, ['message' => $e->getMessage()], "TRUNCATE {$table}");
             return false;
         }
     }
@@ -246,14 +287,14 @@ class OracleService
             if ($result === false) {
                 $error = $this->db->error();
                 log_message('error', 'NLS error: ' . json_encode($error));
-                $this->logOracleError('oracle_error', microtime(true) - $startedAt, $error, 'ALTER SESSION SET NLS_NUMERIC_CHARACTERS');
+                $this->logOracleError('ORACLE_ERROR', microtime(true) - $startedAt, $error, 'ALTER SESSION SET NLS_NUMERIC_CHARACTERS');
                 return false;
             }
 
             return true;
         } catch (\Throwable $e) {
             log_message('error', 'NLS error: ' . $e->getMessage());
-            $this->logOracleError('oracle_error', microtime(true) - $startedAt, ['message' => $e->getMessage()], 'ALTER SESSION SET NLS_NUMERIC_CHARACTERS');
+            $this->logOracleError('ORACLE_ERROR', microtime(true) - $startedAt, ['message' => $e->getMessage()], 'ALTER SESSION SET NLS_NUMERIC_CHARACTERS');
             return false;
         }
     }

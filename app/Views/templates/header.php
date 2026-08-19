@@ -2,12 +2,19 @@
 $uri = service('uri');
 $currentPath = $uri->getPath();
 
-function isActive($urlSegment, $currentPath) {
-    return strpos($currentPath, $urlSegment) !== false ? 'active' : '';
+// function_exists() : ce template peut être inclus plusieurs fois dans le
+// même processus PHP (tests unitaires) ; sans cette garde, une deuxième
+// inclusion provoquerait une erreur fatale de redéclaration.
+if (! function_exists('isActive')) {
+    function isActive($urlSegment, $currentPath) {
+        return strpos($currentPath, $urlSegment) !== false ? 'active' : '';
+    }
 }
 
-function isMenuOpen($urlSegment, $currentPath) {
-    return strpos($currentPath, $urlSegment) !== false ? 'menu-open' : '';
+if (! function_exists('isMenuOpen')) {
+    function isMenuOpen($urlSegment, $currentPath) {
+        return strpos($currentPath, $urlSegment) !== false ? 'menu-open' : '';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -36,6 +43,14 @@ function isMenuOpen($urlSegment, $currentPath) {
   <div class="sidebar">
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+
+            <!-- Dashboard -->
+            <li class="nav-item">
+              <a href="<?= site_url('dashboard') ?>" class="nav-link <?= isActive('dashboard', $currentPath) ?>">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
 
             <!-- Postpaid -->
             <li class="nav-item has-treeview <?= isMenuOpen('postpaid', $currentPath) ?>">
@@ -78,7 +93,9 @@ function isMenuOpen($urlSegment, $currentPath) {
               </a>
             </li>
 
-            <li class="nav-item has-treeview <?= isMenuOpen('administration', $currentPath) ?>"><a href="#" class="nav-link <?= isActive('administration', $currentPath) ?>"><i class="nav-icon fas fa-user-shield"></i><p>Administration<i class="right fas fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="<?= site_url('administration/audit') ?>" class="nav-link <?= isActive('administration/audit', $currentPath) ?>"><i class="nav-icon fas fa-clipboard-list"></i><p>Journal d'audit</p></a></li></ul></li>
+            <?php if (session('is_mymemo_admin') === true): ?>
+            <li class="nav-item has-treeview <?= isMenuOpen('administration', $currentPath) ?>"><a href="#" class="nav-link <?= isActive('administration', $currentPath) ?>"><i class="nav-icon fas fa-user-shield"></i><p>Administration<i class="right fas fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="<?= site_url('administration/audit') ?>" class="nav-link <?= isActive('administration/audit', $currentPath) ?>"><i class="nav-icon fas fa-clipboard-list"></i><p>Journal d'audit</p></a></li><li class="nav-item"><a href="<?= site_url('administration/users') ?>" class="nav-link <?= isActive('administration/users', $currentPath) ?>"><i class="nav-icon fas fa-users"></i><p>Gestion des utilisateurs</p></a></li></ul></li>
+            <?php endif; ?>
 
           </ul>
         </li>

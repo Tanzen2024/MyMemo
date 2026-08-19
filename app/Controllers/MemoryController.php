@@ -9,7 +9,10 @@ use App\Services\ExcelExportService;
 use App\Services\ExcelImportService;
 use App\Services\OracleService;
 use App\Services\AuditLoggerService;
+use App\Services\AuditErrorClassifier;
 use App\Services\ImportLockService;
+use App\Exceptions\NoDataException;
+use App\Exceptions\FileGenerationException;
 use App\Factories\MemorySQLFactory;
 use Config\ReferentielImportConfig;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -51,6 +54,15 @@ class MemoryController extends BaseController
     /** Hauteur de ligne (points) du bloc d'en-tête, cf. renderCompanyInfoStyles(). */
     private const PRINT_HEADER_BLOCK_ROW_HEIGHT_PT = 16.0;
 
+    /**
+     * Hauteur (points) de la ligne d'en-tête du tableau (libellés de colonnes),
+     * fixée explicitement car ces libellés sont désormais en wrapText sur des
+     * colonnes resserrées : sans hauteur explicite, une ligne calée sur
+     * PRINT_HEADER_BLOCK_ROW_HEIGHT_PT (prévue pour du texte sur une seule
+     * ligne) couperait un libellé bilingue passé sur 2-3 lignes.
+     */
+    private const PRINT_TABLE_HEADER_ROW_HEIGHT_PT = 34.0;
+
     public function __construct()
     {
         $this->oracle        = new OracleService();
@@ -74,13 +86,45 @@ class MemoryController extends BaseController
 {
     $lock = null;
     $startedAt = microtime(true);
+    $correlationId = AuditErrorClassifier::newCorrelationId();
+    $classifier = new AuditErrorClassifier();
+    OracleService::setCorrelationId($correlationId);
+
+    // Journalise un échec classifié (import ou génération), avec référence
+    // d'incident, puis renvoie l'utilisateur vers le formulaire d'origine
+    // avec un message compréhensible au lieu d'une réponse JSON brute (le
+    // formulaire est un POST classique, pas un appel AJAX).
+    $failAndRedirect = function (string $event, string $module, \Throwable $e, float $stageStartedAt) use ($classifier, $correlationId) {
+        $classified = $classifier->classify($e);
+        $incidentRef = AuditErrorClassifier::newIncidentRef();
+
+        log_message('error', "{$event} : " . $e->getMessage());
+        log_message('error', 'Trace de l\'exception : ' . $e->getTraceAsString());
+
+        $this->auditLogger->log($event, 'FAILED', microtime(true) - $stageStartedAt, $this->request, [
+            'category'          => $classified['category'],
+            'severity'          => $classified['severity'],
+            'error_type'        => $classified['error_type'],
+            'module'            => $module,
+            'user_message'      => $classified['user_message'],
+            'technical_message' => $classified['technical_message'],
+            'exception'         => get_class($e),
+            'file'              => $e->getFile() . ':' . $e->getLine(),
+            'correlation_id'    => $correlationId,
+            'incident_ref'      => $incidentRef,
+        ]);
+
+        return redirect()->back()->withInput()->with(
+            'msg',
+            $classified['user_message'] . ' Référence incident : ' . $incidentRef
+        );
+    };
+
     try {
         // ⚡ Définir les caractères numériques pour cette session
         if (! $this->oracle->setNumericCharacters(',', ' ')) {
             log_message('error', 'Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.');
-            return $this->response->setStatusCode(500)->setJSON([
-                'error' => 'Impossible d\'initialiser la session Oracle. Consultez les journaux serveur.'
-            ]);
+            return $failAndRedirect('MEMORY_GENERATION_FAILED', 'Configuration', new \RuntimeException('ORA-00000 Impossible d\'initialiser la session Oracle.'), $startedAt);
         }
 
         // Augmenter le temps et la mémoire pour gros fichiers
@@ -97,16 +141,24 @@ class MemoryController extends BaseController
         $lock = $this->importLocks->acquire($type);
         if ($lock === null) {
             $this->auditLogger->log(
-                'import_lock',
+                'EXCEL_IMPORT_REFUSED',
                 'REFUSED',
                 microtime(true) - $startedAt,
                 $this->request,
-                ['type' => $type, 'message' => 'Un import du même référentiel est déjà en cours.']
+                [
+                    'category'       => 'IMPORT',
+                    'severity'       => 'WARNING',
+                    'type'           => $type,
+                    'module'         => $context,
+                    'correlation_id' => $correlationId,
+                    'message'        => 'Un import du même référentiel est déjà en cours.',
+                ]
             );
 
-            return $this->response->setStatusCode(409)->setJSON([
-                'error' => 'Un import de ce référentiel est déjà en cours. Veuillez réessayer plus tard.'
-            ]);
+            return redirect()->back()->withInput()->with(
+                'msg',
+                'Un import de ce référentiel est déjà en cours. Veuillez réessayer dans quelques instants.'
+            );
         }
 
         log_message('debug', "Contexte en cours = {$context}, Type référentiel = {$type}");
@@ -115,23 +167,49 @@ class MemoryController extends BaseController
          * 2. Import Excel
          * ============================ */
         $importStartedAt = microtime(true);
-        $importData = $this->importProcess($this->request, $context, $type);
+        $this->auditLogger->log('EXCEL_IMPORT_STARTED', 'INFO', 0.0, $this->request, [
+            'category'       => 'IMPORT',
+            'severity'       => 'INFO',
+            'type'           => $type,
+            'module'         => $context,
+            'correlation_id' => $correlationId,
+        ]);
+
+        try {
+            $importData = $this->importProcess($this->request, $context, $type);
+        } catch (\Throwable $e) {
+            return $failAndRedirect('EXCEL_IMPORT_FAILED', $context, $e, $importStartedAt);
+        }
         log_message('debug', 'Import terminé : ' . json_encode($importData));
 
         $this->auditLogger->log(
-            'import',
+            'EXCEL_IMPORT_COMPLETED',
             'SUCCESS',
             microtime(true) - $importStartedAt,
             $this->request,
             [
-                'type'     => $type,
+                'category'       => 'IMPORT',
+                'severity'       => 'SUCCESS',
+                'type'           => $type,
+                'module'         => $context,
+                'correlation_id' => $correlationId,
                 'file'     => $importData['file']?->getClientName() ?? 'inconnu',
                 'inserted' => $importData['importStats']['inserted'] ?? null,
                 'skipped'  => $importData['importStats']['skipped'] ?? null,
+                'rows'     => $importData['importStats']['inserted'] ?? 0,
             ]
         );
 
         $exportStartedAt = microtime(true);
+        $this->auditLogger->log('MEMORY_GENERATION_STARTED', 'INFO', 0.0, $this->request, [
+            'category'       => 'MEMORY',
+            'severity'       => 'INFO',
+            'module'         => $context,
+            'correlation_id' => $correlationId,
+            'client'         => $importData['regroupName'] ?? '',
+        ]);
+
+        try {
 
         /* ============================
          * 3. Chargement Oracle
@@ -206,6 +284,7 @@ class MemoryController extends BaseController
                     $importData['regroupName']
                 );
 
+                $this->verifyGeneratedFile($file);
                 log_message('debug', "Fichier généré pour DonneesMemoire : {$file}");
 
                 $generated[] = $file;
@@ -270,6 +349,7 @@ class MemoryController extends BaseController
             }
         }
 
+        $this->verifyGeneratedFile($filePath);
         log_message('debug', "Fichier généré pour Mémoire : {$filePath}");
         $generated[] = $filePath;
     } else {
@@ -279,41 +359,68 @@ class MemoryController extends BaseController
 
 
         if (!$generated) {
-            throw new \Exception('Aucun fichier généré');
+            // Un résultat Oracle vide peut être une absence légitime de
+            // données OU la conséquence d'une requête ayant échoué (fetchAll()
+            // retourne [] dans les deux cas) : getLastError() permet de
+            // distinguer les deux causes pour l'utilisateur et l'audit.
+            $lastOracleError = $this->oracle->getLastError();
+            if ($lastOracleError !== null) {
+                throw new \RuntimeException(
+                    'ORA-' . ($lastOracleError['code'] ?? '00000') . ' ' . ($lastOracleError['message'] ?? 'Erreur Oracle')
+                );
+            }
+
+            throw new NoDataException(
+                'Aucune donnée n\'a été trouvée pour les critères sélectionnés (période, cycle ou regroupement).'
+            );
         }
 
         $this->auditLogger->log(
-            'export',
+            'MEMORY_GENERATION_COMPLETED',
             'SUCCESS',
             microtime(true) - $exportStartedAt,
             $this->request,
-            ['type' => $type, 'files' => array_map('basename', $generated)]
-        );
-
-        return $this->downloadFiles($generated, $exportDir, $importData);
-    } catch (\Throwable $e) {
-        log_message('error', 'Erreur : ' . $e->getMessage());
-        log_message('error', 'Trace de l\'exception : ' . $e->getTraceAsString());
-
-        $this->auditLogger->log(
-            'php_error',
-            'ERROR',
-            microtime(true) - $startedAt,
-            $this->request,
             [
-                'exception' => get_class($e),
-                'message'   => $e->getMessage(),
-                'file'      => $e->getFile() . ':' . $e->getLine(),
+                'category'       => 'MEMORY',
+                'severity'       => 'SUCCESS',
+                'type'           => $type,
+                'module'         => $context,
+                'client'         => $importData['regroupName'] ?? '',
+                'correlation_id' => $correlationId,
+                'files'          => array_map('basename', $generated),
+                'file'           => basename($generated[0]),
             ]
         );
 
-        return $this->response->setStatusCode(500)->setJSON([
-            'error' => 'Une erreur est survenue pendant le traitement. Consultez les journaux serveur.'
-        ]);
+        return $this->downloadFiles($generated, $exportDir, $importData);
+
+        } catch (\Throwable $e) {
+            return $failAndRedirect('MEMORY_GENERATION_FAILED', $context, $e, $exportStartedAt);
+        }
+    } catch (\Throwable $e) {
+        // Filet de sécurité pour toute erreur en dehors des deux étapes
+        // instrumentées ci-dessus (détection du type, verrou d'import...).
+        return $failAndRedirect('OPERATION_FAILED', $context ?? 'Import/Export', $e, $startedAt);
     } finally {
+        OracleService::setCorrelationId(null);
         $lock?->release();
     }
 }
+
+    /**
+     * Vérifie qu'un fichier annoncé comme généré existe réellement et n'est
+     * pas vide avant de le considérer comme un succès (cf. audit : ne jamais
+     * enregistrer SUCCESS sur la seule absence d'exception levée).
+     */
+    private function verifyGeneratedFile(string $path): void
+    {
+        clearstatcache(true, $path);
+        if (!is_file($path) || filesize($path) === 0) {
+            throw new FileGenerationException(
+                "Le fichier généré est introuvable ou vide à l'emplacement attendu : {$path}"
+            );
+        }
+    }
 
     /* ========================================================= */
 
@@ -384,7 +491,10 @@ class MemoryController extends BaseController
         {
             if (count($files) === 1) {
 
-                return $this->response->download($files[0], null)
+                // setMime=true : sans cela DownloadResponse envoie
+                // Content-Type: application/octet-stream au lieu du type
+                // Office Open XML attendu pour un .xlsx.
+                return $this->response->download($files[0], null, true)
                     ->setFileName(basename($files[0]));
             }
 
@@ -402,7 +512,7 @@ class MemoryController extends BaseController
 
             $zip->close();
 
-            return $this->response->download($zipPath, null)
+            return $this->response->download($zipPath, null, true)
                 ->setFileName($zipName);
         }
 
@@ -455,41 +565,34 @@ class MemoryController extends BaseController
      * Configure une mise en page d'impression professionnelle pour un tableau
      * large destiné à être imprimé sur A4.
      *
-     * Choix volontaire : aucune compression artificielle (pas de "fit to
-     * page"), échelle 100%, pagination naturelle d'Excel sur autant de pages
-     * (largeur et hauteur) que nécessaire. C'est ce qui évite le texte
-     * illisible produit par l'ancien réglage setFitToWidth(1), qui forçait
-     * un unique facteur d'échelle (appliqué à la fois en largeur ET en
-     * hauteur) pour faire tenir un tableau de plusieurs centaines d'unités
-     * de largeur de colonnes sur une seule page.
+     * Choix imposé : Paysage fixe (plus de largeur imprimable qu'en portrait,
+     * donc une échelle FitToWidth plus lisible pour un tableau à colonnes
+     * nombreuses), toutes les colonnes compressées sur une seule page de
+     * largeur (FitToWidth = 1), hauteur libre sur autant de pages que
+     * nécessaire (FitToHeight = 0). Excel calcule lui-même le facteur
+     * d'échelle nécessaire ; voir estimateFitToWidthScalePercent() pour
+     * l'estimation de ce même facteur côté PHP, utilisée pour recaler la
+     * pagination verticale manuelle (computeMaxLinesPerPage()) sur le rendu
+     * réellement compressé.
      *
      * @param array $colSettings Tableau des colonnes ['A' => ['width' => int, ...], ...]
      * @param array $margins     ['top' => float, 'bottom' => float, 'left' => float, 'right' => float, 'header' => float, 'footer' => float] en pouces
      *
      * @return string L'orientation retenue (\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_*),
-     *                à réutiliser pour computeMaxLinesPerPage().
+     *                à réutiliser pour computeMaxLinesPerPage() et estimateFitToWidthScalePercent().
      */
     private function configurePrintLayout(\PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet, array $colSettings, array $margins): string
     {
-        $totalWidthUnits = array_sum(array_column($colSettings, 'width'));
-
-        // Portrait pour un tableau étroit, paysage au-delà (seuil ~ largeur
-        // exploitable d'une page A4 portrait, en unités de colonne Excel).
-        $orientation = $totalWidthUnits > 90
-            ? \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE
-            : \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_PORTRAIT;
+        $orientation = \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE;
 
         $sheet->getPageSetup()
             ->setOrientation($orientation)
             ->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A4)
-            ->setFitToPage(false)
-            ->setScale(100)
+            ->setFitToPage(true)
+            ->setFitToWidth(1)
+            ->setFitToHeight(0)
             ->setHorizontalCentered(true)
-            ->setVerticalCentered(false)
-            // Pages de continuation (tableau réparti sur plusieurs pages en
-            // largeur) : répète la première colonne pour garder le contexte
-            // de la ligne (nom client), comme sur une facture professionnelle.
-            ->setColumnsToRepeatAtLeftByStartAndEnd('A', 'A');
+            ->setVerticalCentered(false);
 
         $sheet->getPageMargins()
             ->setTop($margins['top'])
@@ -522,26 +625,70 @@ class MemoryController extends BaseController
     }
 
     /**
-     * Estime combien de lignes de données tiennent sur une page A4 imprimée
-     * à 100% (sans compression), compte tenu de la hauteur du bloc d'en-tête
-     * déjà dessiné en haut de page. Remplace un nombre de lignes par page
-     * codé en dur qui ne correspondait plus à la réalité une fois l'échelle
-     * forcée à 1 page de large supprimée.
+     * Estime le pourcentage d'échelle qu'Excel appliquera réellement à
+     * l'impression pour satisfaire FitToWidth = 1 (cf. configurePrintLayout()),
+     * c'est-à-dire le rapport entre la largeur imprimable de la page A4
+     * (moins marges gauche/droite, selon l'orientation) et la largeur totale
+     * des colonnes.
+     *
+     * PhpSpreadsheet ne calcule pas et ne stocke pas ce pourcentage (c'est
+     * Excel qui le fait à l'ouverture du fichier) : on le ré-estime donc côté
+     * PHP, avec la même conversion largeur de colonne → pixels qu'Excel
+     * (7 px par unité de largeur + 5 px de marge interne par colonne, MDW=7
+     * pour la police par défaut), afin de recaler computeMaxLinesPerPage()
+     * sur le rendu réellement compressé plutôt que sur une échelle 100%
+     * qui produirait des sauts de page prématurés (pages quasi vides).
      *
      * @param string $orientation \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_*
-     * @param float  $headerBlockHeightPt Hauteur estimée (en points) du bloc d'en-tête
-     *                                    redessiné en haut de chaque page (société, titre, etc.)
      */
-    private function computeMaxLinesPerPage(string $orientation, float $headerBlockHeightPt, array $margins): int
+    private function estimateFitToWidthScalePercent(array $colSettings, array $margins, string $orientation): float
+    {
+        $columnCount = count($colSettings);
+        $totalWidthUnits = array_sum(array_column($colSettings, 'width'));
+
+        $totalWidthPt = ($totalWidthUnits * 7 + $columnCount * 5) * 0.75;
+
+        $pageWidthIn = $orientation === \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE
+            ? 11.69 // A4 paysage
+            : 8.27;  // A4 portrait
+        $pageWidthPt = $pageWidthIn * 72;
+        $usableWidthPt = $pageWidthPt - ($margins['left'] + $margins['right']) * 72;
+
+        if ($totalWidthPt <= 0.0) {
+            return 100.0;
+        }
+
+        $scale = ($usableWidthPt / $totalWidthPt) * 100;
+
+        // Bornes Excel réelles (10% à 400%), mais on ne monte jamais au-delà
+        // de 100% : FitToWidth ne sert qu'à réduire, jamais à agrandir.
+        return min(100.0, max(10.0, $scale));
+    }
+
+    /**
+     * Estime combien de lignes de données tiennent sur une page A4 imprimée,
+     * compte tenu de la hauteur du bloc d'en-tête déjà dessiné en haut de
+     * page et de l'échelle réellement appliquée par FitToWidth = 1 (cf.
+     * estimateFitToWidthScalePercent()) : plus l'échelle est réduite, plus
+     * de lignes tiennent physiquement dans la même surface imprimable.
+     *
+     * @param string $orientation \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_*
+     * @param float  $headerBlockHeightPt Hauteur estimée (en points, à 100%) du bloc d'en-tête
+     *                                    redessiné en haut de chaque page (société, titre, etc.)
+     * @param float  $scalePercent Échelle réelle d'impression (cf. estimateFitToWidthScalePercent()).
+     */
+    private function computeMaxLinesPerPage(string $orientation, float $headerBlockHeightPt, array $margins, float $scalePercent = 100.0): int
     {
         $pageHeightIn = $orientation === \PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE
             ? 8.27  // A4 paysage
             : 11.69; // A4 portrait
 
-        $usableHeightPt = ($pageHeightIn - $margins['top'] - $margins['bottom'] - $margins['header'] - $margins['footer']) * 72;
-        $availableForDataPt = max(0.0, $usableHeightPt - $headerBlockHeightPt);
+        $scaleFactor = max(0.1, $scalePercent / 100);
 
-        return max(5, (int) floor($availableForDataPt / self::PRINT_DATA_ROW_HEIGHT_PT));
+        $usableHeightPt = ($pageHeightIn - $margins['top'] - $margins['bottom'] - $margins['header'] - $margins['footer']) * 72;
+        $availableForDataPt = max(0.0, $usableHeightPt - $headerBlockHeightPt * $scaleFactor);
+
+        return max(5, (int) floor($availableForDataPt / (self::PRINT_DATA_ROW_HEIGHT_PT * $scaleFactor)));
     }
 
     /**
@@ -829,25 +976,35 @@ foreach ($groupedRows as $groupId => $groupRows) {
 
     $sheetIndex++;
 
-    $spreadsheet->getDefaultStyle()->getFont()->setName(self::PRINT_FONT_NAME)->setSize(9);
+    $spreadsheet->getDefaultStyle()->getFont()->setName(self::PRINT_FONT_NAME)->setSize(10);
 
     $columns = range('A', 'O');
+    // Groupe A (contenu long : nom client, agence, n° compteur) volontairement
+    // plus large que le Groupe B (références/dates/montants courts). Les
+    // colonnes à FORMAT NUMÉRIQUE explicite (F='0', G/H/I/L/M/N/O='#,##0')
+    // reçoivent en plus une marge de sécurité au-delà du nombre de chiffres
+    // le plus long observé (cf. Memoire_JC_DECAUX_20260818_125414.xlsx) :
+    // contrairement au texte qui déborde simplement visuellement, Excel
+    // affiche "####" (jamais un chiffre tronqué) dès qu'une cellule numérique
+    // formatée ne tient pas dans sa colonne — c'est ce qui provoquait les
+    // "####" observés sur "No Compteur / Meter No" (13 chiffres, largeur
+    // insuffisante à 13 sans aucune marge).
     $colSettings = [
-        'A'=>['width'=>40,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
-        'B'=>['width'=>40,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
-        'C'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'D'=>['width'=>15,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'E'=>['width'=>15,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'F'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'0'],
-        'G'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'H'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'I'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'J'=>['width'=>15,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'K'=>['width'=>30,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'L'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'M'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'N'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'O'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'A'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],   // Groupe A : Nom client
+        'B'=>['width'=>16,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],   // Groupe A : Agence
+        'C'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'D'=>['width'=>11,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'E'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'F'=>['width'=>16,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'0'], // Groupe A : No compteur (jusqu'à 13 chiffres + marge)
+        'G'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'H'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'I'=>['width'=>9,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'J'=>['width'=>8,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'K'=>['width'=>10,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'L'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'M'=>['width'=>11,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'N'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'O'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
     ];
     foreach ($colSettings as $col => $s) {
         $sheet->getColumnDimension($col)->setWidth($s['width']);
@@ -862,14 +1019,20 @@ foreach ($groupedRows as $groupId => $groupRows) {
     ];
 
     // ===== MISE EN PAGE D'IMPRESSION =====
-    $printMargins = ['top' => 0.6, 'bottom' => 0.6, 'left' => 0.5, 'right' => 0.5, 'header' => 0.3, 'footer' => 0.3];
+    // Marges resserrées (dans la fourchette professionnelle habituelle) pour
+    // récupérer de la largeur/hauteur imprimable au profit de l'échelle FitToWidth.
+    $printMargins = ['top' => 0.45, 'bottom' => 0.45, 'left' => 0.35, 'right' => 0.35, 'header' => 0.3, 'footer' => 0.3];
     $printOrientation = $this->configurePrintLayout($sheet, $colSettings, $printMargins);
+    $printScale = $this->estimateFitToWidthScalePercent($colSettings, $printMargins, $printOrientation);
 
     // ===== PARAMÈTRES DE PAGINATION =====
+    // Bloc d'en-tête = 11 lignes "société/titre" à hauteur standard + 1 ligne
+    // d'en-tête de tableau désormais plus haute (wrapText sur colonnes resserrées).
     $maxLinesPerPage = $this->computeMaxLinesPerPage(
         $printOrientation,
-        self::PRINT_HEADER_BLOCK_ROWS * self::PRINT_HEADER_BLOCK_ROW_HEIGHT_PT,
-        $printMargins
+        (self::PRINT_HEADER_BLOCK_ROWS - 1) * self::PRINT_HEADER_BLOCK_ROW_HEIGHT_PT + self::PRINT_TABLE_HEADER_ROW_HEIGHT_PT,
+        $printMargins,
+        $printScale
     );
     $chunks = array_chunk($rows, $maxLinesPerPage);
     $totalPages = count($chunks);
@@ -1009,6 +1172,15 @@ foreach ($groupedRows as $groupId => $groupRows) {
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
                 'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
             ],
+            // Bordure assortie à celle du libellé "N° MÉMOIRE" juste au-dessus
+            // (headersAdditionnal, cellule N6:O6) : le numéro forme ainsi un
+            // bloc visuellement identifiable d'un seul coup d'œil.
+            'borders' => [
+                'outline' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                    'color' => ['rgb' => '014BA0'],
+                ],
+            ],
         ]);
 
 
@@ -1024,11 +1196,14 @@ foreach ($groupedRows as $groupId => $groupRows) {
         }
 
         $sheet->getStyle("A{$rowIndex}:O{$rowIndex}")->applyFromArray([
-            'font'=>['bold'=>true,'color'=>['rgb'=>$textBlueColor]],
+            'font'=>['bold'=>true,'size'=>9,'color'=>['rgb'=>$textBlueColor]],
             'fill'=>['fillType'=>'solid','startColor'=>['rgb'=>$fillHeaderColor]],
             'borders'=>['allBorders'=>['borderStyle'=>'thin','color'=>['rgb'=>$borderColor]]],
-            'alignment'=>['horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,'wrapText'=>true]
+            'alignment'=>['horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,'wrapText'=>true]
         ]);
+        // Hauteur fixée explicitement : les libellés bilingues wrappent sur 2-3
+        // lignes maintenant que les colonnes sont resserrées (cf. colSettings).
+        $sheet->getRowDimension($rowIndex)->setRowHeight(self::PRINT_TABLE_HEADER_ROW_HEIGHT_PT);
         $rowIndex++;
 
         log_message('debug', "Insertion données page {$currentPage} et ligne {$rowIndex}");
@@ -1560,24 +1735,30 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
     $sheet = $spreadsheet->getActiveSheet();
     $sheet->setTitle($regroupName);
 
-    $spreadsheet->getDefaultStyle()->getFont()->setName(self::PRINT_FONT_NAME)->setSize(9);
+    $spreadsheet->getDefaultStyle()->getFont()->setName(self::PRINT_FONT_NAME)->setSize(10);
 
     $columns = range('A', 'N');
+    // Groupe A (contenu long : agence, nom client, n° compteur) plus large que
+    // le Groupe B, même logique que exportMemoirePostpaid : les colonnes
+    // numériques (I/L/M/N='#,##0', H=General sur des ID longs) reçoivent une
+    // marge de sécurité au-delà du nombre de chiffres le plus long attendu,
+    // pour éviter qu'Excel n'affiche "####" (comportement propre aux cellules
+    // numériques, jamais aux cellules texte).
     $colSettings = [
-        'A'=>['width'=>10,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
-        'B'=>['width'=>25,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
-        'C'=>['width'=>30,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
-        'D'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'E'=>['width'=>45,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
-        'F'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'G'=>['width'=>25,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'H'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT],
-        'I'=>['width'=>15,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,'format'=>'#,##0'],
-        'J'=>['width'=>30,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'K'=>['width'=>25,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
-        'L'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'M'=>['width'=>15,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
-        'N'=>['width'=>20,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'A'=>['width'=>13,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
+        'B'=>['width'=>14,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],
+        'C'=>['width'=>16,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],   // Groupe A : Agence
+        'D'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'E'=>['width'=>22,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT],   // Groupe A : Nom client
+        'F'=>['width'=>13,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'G'=>['width'=>13,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'H'=>['width'=>17,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT],  // Groupe A : No compteur (jusqu'à 13 chiffres + marge)
+        'I'=>['width'=>10,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,'format'=>'#,##0'],
+        'J'=>['width'=>16,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'K'=>['width'=>11,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+        'L'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'M'=>['width'=>11,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
+        'N'=>['width'=>12,'align'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT,'format'=>'#,##0'],
     ];
     foreach ($colSettings as $col => $s) {
         $sheet->getColumnDimension($col)->setWidth($s['width']);
@@ -1590,14 +1771,16 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
     ];
 
     // ===== MISE EN PAGE D'IMPRESSION =====
-    $printMargins = ['top' => 0.6, 'bottom' => 0.6, 'left' => 0.5, 'right' => 0.5, 'header' => 0.3, 'footer' => 0.3];
+    $printMargins = ['top' => 0.45, 'bottom' => 0.45, 'left' => 0.35, 'right' => 0.35, 'header' => 0.3, 'footer' => 0.3];
     $printOrientation = $this->configurePrintLayout($sheet, $colSettings, $printMargins);
+    $printScale = $this->estimateFitToWidthScalePercent($colSettings, $printMargins, $printOrientation);
 
     // ===== PARAMÈTRES DE PAGINATION =====
     $maxLinesPerPage = $this->computeMaxLinesPerPage(
         $printOrientation,
-        self::PRINT_HEADER_BLOCK_ROWS * self::PRINT_HEADER_BLOCK_ROW_HEIGHT_PT,
-        $printMargins
+        (self::PRINT_HEADER_BLOCK_ROWS - 1) * self::PRINT_HEADER_BLOCK_ROW_HEIGHT_PT + self::PRINT_TABLE_HEADER_ROW_HEIGHT_PT,
+        $printMargins,
+        $printScale
     );
     $chunks = array_chunk($rows, $maxLinesPerPage);
     $totalPages = count($chunks);
@@ -1698,6 +1881,15 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
                 'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
                 'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
             ],
+            // Bordure assortie à celle du libellé "N° MÉMOIRE" juste au-dessus
+            // (headersAdditionnal, cellule M6:N6) : le numéro forme ainsi un
+            // bloc visuellement identifiable d'un seul coup d'œil.
+            'borders' => [
+                'outline' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                    'color' => ['rgb' => '014BA0'],
+                ],
+            ],
         ]);
 
         if($regroupId === 'SONATREL'){
@@ -1765,11 +1957,14 @@ protected function exportMemoirePrepaid(array $rows, string $regroupName, String
         }
 
         $sheet->getStyle("A{$rowIndex}:N{$rowIndex}")->applyFromArray([
-            'font'=>['bold'=>true,'color'=>['rgb'=>$textBlueColor]],
+            'font'=>['bold'=>true,'size'=>9,'color'=>['rgb'=>$textBlueColor]],
             'fill'=>['fillType'=>'solid','startColor'=>['rgb'=>$fillHeaderColor]],
             'borders'=>['allBorders'=>['borderStyle'=>'thin','color'=>['rgb'=>$borderColor]]],
-            'alignment'=>['horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,'wrapText'=>true]
+            'alignment'=>['horizontal'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,'vertical'=>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,'wrapText'=>true]
         ]);
+        // Hauteur fixée explicitement : les libellés bilingues wrappent sur 2-3
+        // lignes maintenant que les colonnes sont resserrées (cf. colSettings).
+        $sheet->getRowDimension($rowIndex)->setRowHeight(self::PRINT_TABLE_HEADER_ROW_HEIGHT_PT);
         $rowIndex++;
 
         log_message('debug', "Insertion données page {$currentPage} et ligne {$rowIndex}");

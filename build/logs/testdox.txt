@@ -1,8 +1,63 @@
+Audit Error Classifier
+ [x] No data exception is classified as no data error
+ [x] File generation exception produces safe user message without path
+ [x] Excel import business messages are relayed as is
+ [x] Oracle connection error maps to retry later message
+ [x] Unknown exception falls back to generic safe message
+ [x] Incident ref and correlation id have expected format
+
+Audit Failure Scenario
+ [x] Memory generation failure is fully traceable without exposing internals
+
+Audit Index View Formatting
+ [x] Date cell is displayed in french format not iso
+ [x] Sort order attribute uses real timestamp not display string
+ [x] Table is wrapped in responsive container
+ [x] Long content columns expose full value via title attribute
+ [x] Embedded detail json keeps source iso date untouched
+
+Audit Logger Service
+ [x] Successful login records the verified username
+ [x] Failed login never records the attempted username
+ [x] Explicit user override is used for session expired after destroy
+ [x] Sensitive keys are redacted even if passed by mistake
+
 Audit Reader Service
  [x] Reads only requested days and applies filters
 
+Dashboard Menu Visibility
+ [x] Admin sees administration menu
+ [x] User does not see administration menu
+ [x] Dashboard menu is present and above postpaid
+
+Dashboard Service
+ [x] Active inactive and admin counts
+ [x] No audit events yields empty ranking and activity
+ [x] Login ranking sorted descending
+ [x] Login ranking is capped at ten
+ [x] Legacy upn format is grouped with short username
+ [x] Event older than thirty days is excluded by default
+ [x] Recent activity filters and sorts by date
+ [x] Unreadable users csv degrades gracefully instead of throwing
+
+Dashboard View Rendering
+ [x] Dashboard renders without error and shows expected content
+ [x] Dashboard renders with empty data
+
 Example Session
  [x] Session simple
+
+Excel Export Service
+ [x] Produces a valid xlsx container with expected data
+ [x] Values looking like formulas are stored as safe text
+ [x] Invalid sheet title characters are sanitized instead of throwing
+ [x] Throws on empty data instead of producing an invalid file
+
+Form Async Scoping
+ [x] Footer script only targets async forms
+ [x] Generation forms still carry data async
+ [x] User management forms do not carry data async
+ [x] Audit filter form does not carry data async
 
 Health
  [x] Is defined app path
@@ -12,6 +67,23 @@ Import Lock Service
  [x] Only one concurrent import can acquire the same type lock
  [x] Expired lock is automatically replaced
 
+Ldap Group Matcher
+ [x] Exact configured dn matches
+ [x] Historical hardcoded group never matches this real user
+ [x] Case and whitespace differences are tolerated
+ [x] Bare group name matches regardless of ou depth
+ [x] Multiple configured groups any match grants access
+ [x] Unrelated group does not match
+ [x] Empty configuration denies access rather than failing open
+ [x] Empty user groups does not match anything
+ [x] Partial substring does not falsely match
+ [x] Full dn and bare cn both match
+ [x] UserA MyMemoUsersOnly
+ [x] UserB MyMemoAdminsOnly ImpliesMyMemoUsers
+ [x] UserC BothGroups
+ [x] UserD ApplicationsAdminsOnly
+ [x] UserE NoGroups
+
 Memoire Excel Config
  [x] Prepaid memory merge label uses the merge start cell
 
@@ -19,4 +91,76 @@ Memory SQLFactory
  [x] Build returns sql and binds for prepaid with contrat
  [x] Build normalizes string result to sql binds array
  [x] Build throws for unknown type
+
+My Memo Authorization
+ [x] No my memo group is denied
+ [x] My memo users grants access
+ [x] My memo admins grants access and administration
+ [x] Both groups grant both
+ [x] Applications admins alone is denied
+ [x] Historical admins group alone is denied
+ [x] My memo admins without my memo users in member of still grants user access
+ [x] Empty configuration denies access
+ [x] Bare cn configuration
+ [x] Full dn configuration
+ [x] Case insensitive configuration
+ [x] Whitespace tolerant configuration
+ [x] Multiple configured groups
+ [x] My memo user without admin is denied audit access
+ [x] My memo admin is granted audit access
+
+My Memo Authorization Service
+ [x] Unknown user is denied
+ [x] Disabled user is denied
+ [x] Enabled without roles is denied
+ [x] User role grants mymemo access only
+ [x] Admin role grants every capability
+ [x] Multiple roles union of capabilities
+ [x] Authorization checks are case and whitespace insensitive
+ [x] Unknown role is rejected
+ [x] Last admin cannot be disabled
+ [x] Last admin role cannot be revoked
+ [x] Last admin cannot be deleted
+ [x] Disabling one admin is allowed when another remains
+
+My Memo User Repository
+ [x] Missing file is bootstrapped with seed admin
+ [x] Empty file yields no users
+ [x] Malformed row is skipped
+ [x] Multiple roles round trip
+ [x] Lookup is case and whitespace insensitive
+ [x] Adding duplicate username fails
+ [x] Updating unknown user fails
+ [x] Write leaves no temporary file behind
+ [x] Backup is created before write
+ [x] Remove deletes user
+ [x] Guard can reject an update
+ [x] Invalid username format is rejected
+
+My Memo User Repository Read Error
+ [x] Read all throws on unreadable file
+ [x] Mutation throws rather than silently overwriting with empty file
+
+My Memo Users Badge Rendering
+ [x] Admin badge uses primary class
+ [x] User badge uses info class not light
+ [x] Multiple roles render both badges distinctly
+
+My Memo Users Controller
+ [x] Store creates authorized user
+ [x] Store rejects unknown role
+ [x] Store rejects invalid username
+ [x] Store rejects duplicate username
+ [x] Update applies role and status changes
+ [x] Last admin cannot self revoke through update
+ [x] Last admin cannot be disabled through controller
+ [x] Last admin cannot be deleted through controller
+ [x] Disable works when not last admin
+ [x] Delete works when not last admin
+ [x] Index shows clear error when users csv is unreadable
+
+My Memo Users Delete Confirmation
+ [x] No native browser confirm or alert remains in module views
+ [x] My memo confirmation modal is present
+ [x] Delete form keeps real post submission and csrf
 
