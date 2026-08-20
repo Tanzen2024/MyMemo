@@ -1,0 +1,1 @@
+{"timestamp":"2026-08-04T15:48:36+02:00","script":"oracle_oci8_probe.php","oci8_version":"3.3.0","instant_client_version":"19.29.0.0.0","dsn":"cmsprod","result":"failed","oci_error":{"code":12546,"message":"ORA-12546: TNS:permission denied","offset":0,"sqltext":""}}

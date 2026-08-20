@@ -1,0 +1,146 @@
+DEBUG - 2026-08-04 08:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:57:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:58:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-04 08:58:13 --> CSRF token verified.
+DEBUG - 2026-08-04 08:58:13 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-04 08:58:13 --> Error connecting to the database: ErrorException: oci_connect(): ORA-24415: Missing or null username. in C:\xampp\htdocs\MyMemo\system\Database\OCI8\Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'oci_connect(): ...', 'C:\\xampp\\htdocs...', 150)
+#1 C:\xampp\htdocs\MyMemo\system\Database\OCI8\Connection.php(150): oci_connect('', Object(SensitiveParameterValue), '', 'AL32UTF8')
+#2 C:\xampp\htdocs\MyMemo\system\Database\BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect(false)
+#3 C:\xampp\htdocs\MyMemo\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\xampp\htdocs\MyMemo\app\Services\OracleService.php(243): CodeIgniter\Database\BaseConnection->query('ALTER SESSION S...', Array)
+#5 C:\xampp\htdocs\MyMemo\app\Controllers\MemoryController.php(79): App\Services\OracleService->setNumericCharacters(',', ' ')
+#6 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MemoryController))
+#8 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\MyMemo\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\MyMemo\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\MyMemo\public\index.php(58): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\MyMemo\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-08-04 08:58:13 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-24415: Missing or null username.
+ERROR - 2026-08-04 08:58:13 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+DEBUG - 2026-08-04 08:58:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 08:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:00:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:00:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:01:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:02:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:02:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:02:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:06:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:07:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:07:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:08:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:08:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:08:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:08:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:09:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:11:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:12:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-04 09:12:00 --> CSRF token verified.
+DEBUG - 2026-08-04 09:12:00 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-04 09:12:00 --> Error connecting to the database: ErrorException: oci_connect(): ORA-24415: Missing or null username. in C:\xampp\htdocs\MyMemo\system\Database\OCI8\Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'oci_connect(): ...', 'C:\\xampp\\htdocs...', 150)
+#1 C:\xampp\htdocs\MyMemo\system\Database\OCI8\Connection.php(150): oci_connect('', Object(SensitiveParameterValue), '', 'AL32UTF8')
+#2 C:\xampp\htdocs\MyMemo\system\Database\BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect(false)
+#3 C:\xampp\htdocs\MyMemo\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\xampp\htdocs\MyMemo\app\Services\OracleService.php(243): CodeIgniter\Database\BaseConnection->query('ALTER SESSION S...', Array)
+#5 C:\xampp\htdocs\MyMemo\app\Controllers\MemoryController.php(79): App\Services\OracleService->setNumericCharacters(',', ' ')
+#6 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MemoryController))
+#8 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\MyMemo\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\MyMemo\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\MyMemo\public\index.php(58): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\MyMemo\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-08-04 09:12:00 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-24415: Missing or null username.
+ERROR - 2026-08-04 09:12:00 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+DEBUG - 2026-08-04 09:12:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-04 09:12:56 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: postpaid/particulier]
+in SYSTEMPATH\Security\Security.php on line 262.
+ 1 SYSTEMPATH\Security\Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH\Filters\CSRF.php(52): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH\Filters\Filters.php(241): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH\Filters\Filters.php(221): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH\CodeIgniter.php(479): CodeIgniter\Filters\Filters->run('postpaid/particulier', 'before')
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(58): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\MyMemo\\public\\index.php')
+DEBUG - 2026-08-04 09:13:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:13:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-04 09:13:16 --> CSRF token verified.
+DEBUG - 2026-08-04 09:13:16 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-04 09:13:16 --> Error connecting to the database: ErrorException: oci_connect(): ORA-24415: Missing or null username. in C:\xampp\htdocs\MyMemo\system\Database\OCI8\Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'oci_connect(): ...', 'C:\\xampp\\htdocs...', 150)
+#1 C:\xampp\htdocs\MyMemo\system\Database\OCI8\Connection.php(150): oci_connect('', Object(SensitiveParameterValue), '', 'AL32UTF8')
+#2 C:\xampp\htdocs\MyMemo\system\Database\BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect(false)
+#3 C:\xampp\htdocs\MyMemo\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\xampp\htdocs\MyMemo\app\Services\OracleService.php(243): CodeIgniter\Database\BaseConnection->query('ALTER SESSION S...', Array)
+#5 C:\xampp\htdocs\MyMemo\app\Controllers\MemoryController.php(79): App\Services\OracleService->setNumericCharacters(',', ' ')
+#6 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MemoryController))
+#8 C:\xampp\htdocs\MyMemo\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\MyMemo\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\MyMemo\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\MyMemo\public\index.php(58): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\MyMemo\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-08-04 09:13:16 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-24415: Missing or null username.
+ERROR - 2026-08-04 09:13:16 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+DEBUG - 2026-08-04 09:14:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:14:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 09:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 12:32:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 12:32:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 12:32:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 12:33:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 12:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 12:33:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 12:33:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-04 12:33:28 --> CSRF token verified.
+DEBUG - 2026-08-04 12:33:28 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-04 12:33:28 --> NLS error: La configuration Oracle ne définit pas database.oracle.username.
+ERROR - 2026-08-04 12:33:28 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+DEBUG - 2026-08-04 13:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 13:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 13:29:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 13:29:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 13:29:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 13:42:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 13:50:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-04 13:50:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

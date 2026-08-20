@@ -1,0 +1,1797 @@
+
+CodeIgniter v4.6.4 Command Line Tool - Server Time: 2026-08-04 07:33:13 UTC+00:00
+
+CodeIgniter development server started on http://127.0.0.1:3000
+Press Control-C to stop.
+[Tue Aug  4 08:33:13 2026] PHP 8.5.0 Development Server (http://127.0.0.1:3000) started
+[Tue Aug  4 08:33:25 2026] 127.0.0.1:54633 Accepted
+[Tue Aug  4 08:33:25 2026] 127.0.0.1:54633 Closing
+[Tue Aug  4 08:33:25 2026] 127.0.0.1:54635 Accepted
+[Tue Aug  4 08:33:25 2026] 127.0.0.1:54635 Closing
+[Tue Aug  4 08:33:26 2026] 127.0.0.1:54637 Accepted
+[Tue Aug  4 08:33:26 2026] 127.0.0.1:54637 Closing
+[Tue Aug  4 08:33:26 2026] 127.0.0.1:54639 Accepted
+[Tue Aug  4 08:33:26 2026] 127.0.0.1:54639 Closing
+[Tue Aug  4 08:33:42 2026] 127.0.0.1:53484 Accepted
+[Tue Aug  4 08:33:42 2026] 127.0.0.1:53484 Closing
+[Tue Aug  4 08:33:42 2026] 127.0.0.1:53486 Accepted
+[Tue Aug  4 08:33:42 2026] 127.0.0.1:53486 Closing
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:56153 Accepted
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:52375 Accepted
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:56153 Closing
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:52375 Closing
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:57802 Accepted
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:57802 [200]: GET /index.php?debugbar
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:57802 Closing
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:57506 Accepted
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:57506 [200]: GET /index.php?debugbar_time=1785828864.330667
+[Tue Aug  4 08:34:24 2026] 127.0.0.1:57506 Closing
+[Tue Aug  4 08:34:25 2026] 127.0.0.1:55179 Accepted
+[Tue Aug  4 08:34:30 2026] 127.0.0.1:55179 Closing
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:53059 Accepted
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:53059 Closing
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:58389 Accepted
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:58389 [200]: GET /index.php?debugbar
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:58389 Closing
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:59698 Accepted
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:59698 [200]: GET /index.php?debugbar_time=1785828871.181716
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:59698 Closing
+[Tue Aug  4 08:34:31 2026] 127.0.0.1:51050 Accepted
+[Tue Aug  4 08:34:35 2026] 127.0.0.1:51050 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 08:34:35 2026] 127.0.0.1:51050 Closing
+[Tue Aug  4 08:38:07 2026] 127.0.0.1:57084 Accepted
+[Tue Aug  4 08:38:07 2026] 127.0.0.1:61684 Accepted
+[Tue Aug  4 08:38:07 2026] 127.0.0.1:57084 Closing
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:61684 Closing
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:51142 Accepted
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:51142 [200]: GET /index.php?debugbar
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:51142 Closing
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:63588 Accepted
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:63588 [200]: GET /index.php?debugbar_time=1785829088.066617
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:63588 Closing
+[Tue Aug  4 08:38:08 2026] 127.0.0.1:53035 Accepted
+[Tue Aug  4 08:38:17 2026] 127.0.0.1:53035 Closing
+[Tue Aug  4 08:38:17 2026] 127.0.0.1:54366 Accepted
+[Tue Aug  4 08:38:17 2026] 127.0.0.1:54366 Closing
+[Tue Aug  4 08:38:17 2026] 127.0.0.1:58715 Accepted
+[Tue Aug  4 08:38:18 2026] 127.0.0.1:58715 [200]: GET /index.php?debugbar
+[Tue Aug  4 08:38:18 2026] 127.0.0.1:58715 Closing
+[Tue Aug  4 08:38:18 2026] 127.0.0.1:58819 Accepted
+[Tue Aug  4 08:38:18 2026] 127.0.0.1:58819 [200]: GET /index.php?debugbar_time=1785829097.593737
+[Tue Aug  4 08:38:18 2026] 127.0.0.1:58819 Closing
+[Tue Aug  4 08:38:18 2026] 127.0.0.1:60506 Accepted
+[Tue Aug  4 08:38:26 2026] 127.0.0.1:55194 Accepted
+[Tue Aug  4 08:38:26 2026] 127.0.0.1:55194 Closing
+[Tue Aug  4 08:38:26 2026] 127.0.0.1:53264 Accepted
+[Tue Aug  4 08:38:27 2026] 127.0.0.1:53264 Closing
+[Tue Aug  4 08:38:51 2026] 127.0.0.1:54777 Accepted
+[Tue Aug  4 08:38:51 2026] 127.0.0.1:54777 Closing
+[Tue Aug  4 08:38:51 2026] 127.0.0.1:54779 Accepted
+[Tue Aug  4 08:38:51 2026] 127.0.0.1:54779 Closing
+[Tue Aug  4 08:42:12 2026] 127.0.0.1:60506 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 08:42:12 2026] 127.0.0.1:60506 Closing
+[Tue Aug  4 08:44:53 2026] 127.0.0.1:65480 Accepted
+[Tue Aug  4 08:44:53 2026] 127.0.0.1:65480 Closing
+[Tue Aug  4 08:44:54 2026] 127.0.0.1:65483 Accepted
+[Tue Aug  4 08:44:54 2026] 127.0.0.1:65483 Closing
+[Tue Aug  4 08:44:54 2026] 127.0.0.1:65486 Accepted
+[Tue Aug  4 08:44:54 2026] 127.0.0.1:65486 Closing
+[Tue Aug  4 09:04:49 2026] 127.0.0.1:63209 Accepted
+[Tue Aug  4 09:04:50 2026] 127.0.0.1:63209 Closing
+[Tue Aug  4 09:04:50 2026] 127.0.0.1:63213 Accepted
+[Tue Aug  4 09:04:50 2026] 127.0.0.1:63213 Closing
+[Tue Aug  4 09:04:50 2026] 127.0.0.1:50508 Accepted
+[Tue Aug  4 09:04:50 2026] 127.0.0.1:50508 Closing
+[Tue Aug  4 09:06:48 2026] 127.0.0.1:57956 Accepted
+[Tue Aug  4 09:06:48 2026] 127.0.0.1:57956 Closing
+[Tue Aug  4 09:06:48 2026] 127.0.0.1:57958 Accepted
+[Tue Aug  4 09:06:48 2026] 127.0.0.1:57958 Closing
+[Tue Aug  4 09:06:49 2026] 127.0.0.1:57961 Accepted
+[Tue Aug  4 09:06:49 2026] 127.0.0.1:57961 Closing
+[Tue Aug  4 09:07:21 2026] 127.0.0.1:62545 Accepted
+[Tue Aug  4 09:07:21 2026] 127.0.0.1:57713 Accepted
+[Tue Aug  4 09:07:21 2026] 127.0.0.1:62545 Closing
+[Tue Aug  4 09:07:21 2026] 127.0.0.1:57713 [200]: GET /index.php?debugbar_time=1785830841.742654
+[Tue Aug  4 09:07:21 2026] 127.0.0.1:57713 Closing
+[Tue Aug  4 09:07:21 2026] 127.0.0.1:50939 Accepted
+[Tue Aug  4 09:07:23 2026] 127.0.0.1:50939 Closing
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:60274 Accepted
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:60274 Closing
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:58737 Accepted
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:58737 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:58737 Closing
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:57697 Accepted
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:57697 [200]: GET /index.php?debugbar_time=1785830844.149040
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:57697 Closing
+[Tue Aug  4 09:07:24 2026] 127.0.0.1:57799 Accepted
+[Tue Aug  4 09:07:47 2026] 127.0.0.1:57799 Closing
+[Tue Aug  4 09:07:47 2026] 127.0.0.1:49250 Accepted
+[Tue Aug  4 09:07:47 2026] 127.0.0.1:49250 Closing
+[Tue Aug  4 09:07:48 2026] 127.0.0.1:54407 Accepted
+[Tue Aug  4 09:07:48 2026] 127.0.0.1:54407 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:07:48 2026] 127.0.0.1:54407 Closing
+[Tue Aug  4 09:07:48 2026] 127.0.0.1:54527 Accepted
+[Tue Aug  4 09:07:48 2026] 127.0.0.1:54527 [200]: GET /index.php?debugbar_time=1785830867.939841
+[Tue Aug  4 09:07:48 2026] 127.0.0.1:54527 Closing
+[Tue Aug  4 09:07:48 2026] 127.0.0.1:61721 Accepted
+[Tue Aug  4 09:08:33 2026] 127.0.0.1:61721 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:08:33 2026] 127.0.0.1:61721 Closing
+[Tue Aug  4 09:17:45 2026] 127.0.0.1:52082 Accepted
+[Tue Aug  4 09:17:45 2026] 127.0.0.1:57243 Accepted
+[Tue Aug  4 09:17:45 2026] 127.0.0.1:52082 Closing
+[Tue Aug  4 09:17:45 2026] 127.0.0.1:60416 Accepted
+[Tue Aug  4 09:17:45 2026] 127.0.0.1:57243 Closing
+[Tue Aug  4 09:17:45 2026] 127.0.0.1:60416 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:17:45 2026] 127.0.0.1:60416 Closing
+[Tue Aug  4 09:17:46 2026] 127.0.0.1:61197 Accepted
+[Tue Aug  4 09:17:46 2026] 127.0.0.1:61197 [200]: GET /index.php?debugbar_time=1785831465.701062
+[Tue Aug  4 09:17:46 2026] 127.0.0.1:61197 Closing
+[Tue Aug  4 09:17:46 2026] 127.0.0.1:60078 Accepted
+[Tue Aug  4 09:20:03 2026] 127.0.0.1:60078 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:20:03 2026] 127.0.0.1:60078 Closing
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:57760 Accepted
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:55336 Accepted
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:57760 Closing
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:55336 Closing
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:57725 Accepted
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:57725 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:57725 Closing
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:63393 Accepted
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:63393 [200]: GET /index.php?debugbar_time=1785831625.187033
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:63393 Closing
+[Tue Aug  4 09:20:25 2026] 127.0.0.1:56016 Accepted
+[Tue Aug  4 09:22:54 2026] 127.0.0.1:56016 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:22:54 2026] 127.0.0.1:56016 Closing
+[Tue Aug  4 09:36:09 2026] 127.0.0.1:60282 Accepted
+[Tue Aug  4 09:36:09 2026] 127.0.0.1:60282 Closing
+[Tue Aug  4 09:40:07 2026] 127.0.0.1:51470 Accepted
+[Tue Aug  4 09:40:07 2026] 127.0.0.1:50781 Accepted
+[Tue Aug  4 09:40:07 2026] 127.0.0.1:51470 Closing
+[Tue Aug  4 09:40:07 2026] 127.0.0.1:50781 [200]: GET /index.php?debugbar_time=1785832807.535272
+[Tue Aug  4 09:40:07 2026] 127.0.0.1:50781 Closing
+[Tue Aug  4 09:40:07 2026] 127.0.0.1:55017 Accepted
+[Tue Aug  4 09:40:10 2026] 127.0.0.1:55017 Closing
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:62353 Accepted
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:62353 Closing
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:57429 Accepted
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:57429 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:57429 Closing
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:57674 Accepted
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:57674 [200]: GET /index.php?debugbar_time=1785832811.147660
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:57674 Closing
+[Tue Aug  4 09:40:11 2026] 127.0.0.1:52251 Accepted
+[Tue Aug  4 09:40:31 2026] 127.0.0.1:52251 Closing
+[Tue Aug  4 09:40:31 2026] 127.0.0.1:60897 Accepted
+[Tue Aug  4 09:40:31 2026] 127.0.0.1:60897 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:57951 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:59175 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49235 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:64486 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49288 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:54940 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:57951 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:59175 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49235 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:64486 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:64486 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49288 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:54940 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:59175 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49288 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:54940 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49235 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:62833 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:62833 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:62833 Closing
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49844 Accepted
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49844 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:40:32 2026] 127.0.0.1:49844 Closing
+[Tue Aug  4 09:40:33 2026] 127.0.0.1:53820 Accepted
+[Tue Aug  4 09:40:33 2026] 127.0.0.1:53820 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:40:33 2026] 127.0.0.1:53820 Closing
+[Tue Aug  4 09:40:33 2026] 127.0.0.1:58526 Accepted
+[Tue Aug  4 09:40:35 2026] 127.0.0.1:58526 [200]: GET /index.php?debugbar_time=1785832831.746951
+[Tue Aug  4 09:40:35 2026] 127.0.0.1:58526 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:61278 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:61278 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:51509 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:51509 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:51509 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:60674 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:60674 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:52659 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:52659 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:50912 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:54642 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:62558 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:50912 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:50912 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:54642 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:62558 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:54642 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:62558 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:52659 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:64882 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:64882 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:64882 Closing
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:49909 Accepted
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:49909 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:40:41 2026] 127.0.0.1:49909 Closing
+[Tue Aug  4 09:40:42 2026] 127.0.0.1:49290 Accepted
+[Tue Aug  4 09:40:42 2026] 127.0.0.1:49290 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:40:42 2026] 127.0.0.1:49290 Closing
+[Tue Aug  4 09:40:42 2026] 127.0.0.1:61973 Accepted
+[Tue Aug  4 09:40:42 2026] 127.0.0.1:61973 [200]: GET /index.php?debugbar_time=1785832841.431594
+[Tue Aug  4 09:40:42 2026] 127.0.0.1:61973 Closing
+[Tue Aug  4 09:40:42 2026] 127.0.0.1:55716 Accepted
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:55716 Closing
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:54836 Accepted
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:54836 Closing
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:52790 Accepted
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:51887 Accepted
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:57964 Accepted
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:58230 Accepted
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:57217 Accepted
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:52790 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:51887 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:57964 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:57964 Closing
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:58230 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:57217 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:52790 Closing
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:58230 Closing
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:57217 Closing
+[Tue Aug  4 09:40:46 2026] 127.0.0.1:51887 Closing
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:64228 Accepted
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:64228 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:64228 Closing
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:51257 Accepted
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:51257 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:51257 Closing
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:53978 Accepted
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:53978 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:53978 Closing
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:53948 Accepted
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:53948 [200]: GET /index.php?debugbar_time=1785832846.441215
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:53948 Closing
+[Tue Aug  4 09:40:47 2026] 127.0.0.1:61240 Accepted
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:61240 Closing
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:49681 Accepted
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:49681 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:49681 Closing
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:61674 Accepted
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:64262 Accepted
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:54499 Accepted
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:60312 Accepted
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:54686 Accepted
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:61674 Closing
+[Tue Aug  4 09:40:50 2026] 127.0.0.1:64262 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:54499 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:54499 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:60312 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:54686 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:60312 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:54686 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:64262 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:64986 Accepted
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:64986 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:64986 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:64547 Accepted
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:64547 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:64547 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:52727 Accepted
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:52727 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:52727 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:51913 Accepted
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:51913 [200]: GET /index.php?debugbar_time=1785832850.616941
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:51913 Closing
+[Tue Aug  4 09:40:51 2026] 127.0.0.1:52337 Accepted
+[Tue Aug  4 09:40:53 2026] 127.0.0.1:52337 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:53594 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:53594 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:52964 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:60856 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:55717 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:49343 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:60616 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:52964 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:60856 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:55717 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:55717 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:49343 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:60616 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:52964 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:49343 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:60616 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:60856 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:64178 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:64178 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:64178 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:51901 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:51901 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:51901 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:54567 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:54567 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:54567 Closing
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:61165 Accepted
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:61165 [200]: GET /index.php?debugbar_time=1785832853.830414
+[Tue Aug  4 09:40:54 2026] 127.0.0.1:61165 Closing
+[Tue Aug  4 09:40:55 2026] 127.0.0.1:65024 Accepted
+[Tue Aug  4 09:41:02 2026] 127.0.0.1:65024 Closing
+[Tue Aug  4 09:41:02 2026] 127.0.0.1:54711 Accepted
+[Tue Aug  4 09:41:02 2026] 127.0.0.1:54711 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:52353 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56159 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:54882 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:49971 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56172 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:58952 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:52353 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56159 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:54882 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:49971 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:49971 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56172 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:58952 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56159 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56172 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:58952 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:54882 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:62346 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:62346 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:62346 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:63901 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:63901 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:63901 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56107 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56107 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56107 Closing
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56634 Accepted
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56634 [200]: GET /index.php?debugbar_time=1785832862.875643
+[Tue Aug  4 09:41:03 2026] 127.0.0.1:56634 Closing
+[Tue Aug  4 09:41:04 2026] 127.0.0.1:54797 Accepted
+[Tue Aug  4 09:41:08 2026] 127.0.0.1:54797 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:62207 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:62207 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:51361 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:59678 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:51361 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:59678 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:51361 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:65226 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:65226 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52771 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:56114 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52771 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52771 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52550 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:56114 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52550 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:59678 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:56114 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52550 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:63231 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:63231 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:63231 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:59822 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:59822 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:59822 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52435 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52435 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:52435 Closing
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:63683 Accepted
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:63683 [200]: GET /index.php?debugbar_time=1785832869.056917
+[Tue Aug  4 09:41:09 2026] 127.0.0.1:63683 Closing
+[Tue Aug  4 09:41:10 2026] 127.0.0.1:58043 Accepted
+[Tue Aug  4 09:42:30 2026] 127.0.0.1:58043 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:42:30 2026] 127.0.0.1:58043 Closing
+[Tue Aug  4 09:48:54 2026] 127.0.0.1:63390 Accepted
+[Tue Aug  4 09:48:54 2026] 127.0.0.1:63390 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:48:54 2026] 127.0.0.1:63390 Closing
+[Tue Aug  4 09:48:55 2026] 127.0.0.1:63392 Accepted
+[Tue Aug  4 09:48:55 2026] 127.0.0.1:63392 Closing
+[Tue Aug  4 09:48:55 2026] 127.0.0.1:63394 Accepted
+[Tue Aug  4 09:48:55 2026] 127.0.0.1:63394 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:61756 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:61756 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:62552 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:62552 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:62552 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:54200 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:54200 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:54200 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:50200 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:55343 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:64543 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:60909 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:50200 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:55343 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:55343 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:64543 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:60909 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:64543 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:60909 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:50200 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:49705 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:49705 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:49705 Closing
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:62404 Accepted
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:62404 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:51:04 2026] 127.0.0.1:62404 Closing
+[Tue Aug  4 09:51:05 2026] 127.0.0.1:58682 Accepted
+[Tue Aug  4 09:51:05 2026] 127.0.0.1:58682 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:51:05 2026] 127.0.0.1:58682 Closing
+[Tue Aug  4 09:51:05 2026] 127.0.0.1:50046 Accepted
+[Tue Aug  4 09:51:05 2026] 127.0.0.1:50046 [200]: GET /index.php?debugbar_time=1785833464.388389
+[Tue Aug  4 09:51:05 2026] 127.0.0.1:50046 Closing
+[Tue Aug  4 09:51:05 2026] 127.0.0.1:51235 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:51235 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:61223 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:61223 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:61223 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:57986 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:49680 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:60665 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:63129 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:51396 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:57986 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:49680 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:60665 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:60665 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:63129 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:51396 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:49680 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:63129 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:51396 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:57986 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:65122 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:65122 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:65122 Closing
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:50388 Accepted
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:50388 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:51:19 2026] 127.0.0.1:50388 Closing
+[Tue Aug  4 09:51:20 2026] 127.0.0.1:60458 Accepted
+[Tue Aug  4 09:51:20 2026] 127.0.0.1:60458 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:51:20 2026] 127.0.0.1:60458 Closing
+[Tue Aug  4 09:51:20 2026] 127.0.0.1:50688 Accepted
+[Tue Aug  4 09:51:20 2026] 127.0.0.1:50688 [200]: GET /index.php?debugbar_time=1785833479.235562
+[Tue Aug  4 09:51:20 2026] 127.0.0.1:50688 Closing
+[Tue Aug  4 09:51:20 2026] 127.0.0.1:62821 Accepted
+[Tue Aug  4 09:51:29 2026] 127.0.0.1:62821 Closing
+[Tue Aug  4 09:51:29 2026] 127.0.0.1:50764 Accepted
+[Tue Aug  4 09:51:29 2026] 127.0.0.1:50764 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:51:29 2026] 127.0.0.1:50764 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50009 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50379 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50009 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:62646 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50379 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:64612 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:62646 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:62646 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:52721 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:64612 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:52721 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50379 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:64612 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:52721 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50009 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:59267 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:59267 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:59267 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50493 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50493 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50493 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50132 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50132 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:50132 Closing
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:55065 Accepted
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:55065 [200]: GET /index.php?debugbar_time=1785833489.739736
+[Tue Aug  4 09:51:30 2026] 127.0.0.1:55065 Closing
+[Tue Aug  4 09:51:31 2026] 127.0.0.1:51222 Accepted
+[Tue Aug  4 09:51:36 2026] 127.0.0.1:51222 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:58986 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:58986 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:58986 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:63847 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:56858 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:53225 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:63847 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:56858 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:53225 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:53225 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:56071 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:62280 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:56071 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:63847 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:62280 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:56858 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:56071 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:62280 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:63076 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:63076 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:63076 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:55345 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:55345 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:55345 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:62674 Accepted
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:62674 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:62674 Closing
+[Tue Aug  4 09:51:37 2026] 127.0.0.1:60004 Accepted
+[Tue Aug  4 09:51:38 2026] 127.0.0.1:60004 [200]: GET /index.php?debugbar_time=1785833496.847826
+[Tue Aug  4 09:51:38 2026] 127.0.0.1:60004 Closing
+[Tue Aug  4 09:51:38 2026] 127.0.0.1:51022 Accepted
+[Tue Aug  4 09:51:43 2026] 127.0.0.1:51022 Closing
+[Tue Aug  4 09:51:43 2026] 127.0.0.1:53787 Accepted
+[Tue Aug  4 09:51:43 2026] 127.0.0.1:53787 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58836 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58733 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58516 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:62929 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:50346 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:64894 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58836 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58733 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58516 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:62929 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:62929 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:50346 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:64894 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58836 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58516 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:50346 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:64894 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58733 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58033 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:54321 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58033 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:54321 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58033 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:54321 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:54796 Accepted
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:54796 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:54796 Closing
+[Tue Aug  4 09:51:44 2026] 127.0.0.1:58963 Accepted
+[Tue Aug  4 09:51:45 2026] 127.0.0.1:58963 [200]: GET /index.php?debugbar_time=1785833503.888407
+[Tue Aug  4 09:51:45 2026] 127.0.0.1:58963 Closing
+[Tue Aug  4 09:51:45 2026] 127.0.0.1:62178 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:62178 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:62334 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:62334 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:62334 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:52509 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51925 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51532 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51686 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:62674 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:52509 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51925 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51532 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51532 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51686 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:62674 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51925 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:51686 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:62674 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:52509 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:55007 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:55007 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:55007 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:60891 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:60891 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:60891 Closing
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:54704 Accepted
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:54704 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:51:55 2026] 127.0.0.1:54704 Closing
+[Tue Aug  4 09:51:56 2026] 127.0.0.1:55530 Accepted
+[Tue Aug  4 09:51:56 2026] 127.0.0.1:55530 [200]: GET /index.php?debugbar_time=1785833515.042726
+[Tue Aug  4 09:51:56 2026] 127.0.0.1:55530 Closing
+[Tue Aug  4 09:51:56 2026] 127.0.0.1:60588 Accepted
+[Tue Aug  4 09:53:03 2026] 127.0.0.1:60588 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:53:03 2026] 127.0.0.1:60588 Closing
+[Tue Aug  4 09:53:05 2026] 127.0.0.1:56828 Accepted
+[Tue Aug  4 09:53:05 2026] 127.0.0.1:60671 Accepted
+[Tue Aug  4 09:53:05 2026] 127.0.0.1:56828 Closing
+[Tue Aug  4 09:53:05 2026] 127.0.0.1:60671 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:53:05 2026] 127.0.0.1:60671 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:58999 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:58999 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:58999 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:52980 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:60969 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:53633 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:64991 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:52980 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:60969 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:60969 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:53633 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:63158 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:64991 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:63158 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:52980 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:53633 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:64991 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:63158 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:59807 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:59807 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:59807 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:61366 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:61366 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:61366 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:51753 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:51753 [200]: GET /index.php?debugbar_time=1785833585.847784
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:51753 Closing
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:56652 Accepted
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:56652 [200]: GET /favicon.ico
+[Tue Aug  4 09:53:06 2026] 127.0.0.1:56652 Closing
+[Tue Aug  4 09:53:07 2026] 127.0.0.1:52093 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:52093 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:55112 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:55112 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:55112 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:53872 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:54362 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:61260 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:54851 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:62377 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:53872 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:54362 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:61260 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:61260 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:54851 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:62377 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:54362 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:54851 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:62377 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:53872 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:65393 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:65393 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:65393 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:59518 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:59518 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:59518 Closing
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:64542 Accepted
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:64542 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:53:09 2026] 127.0.0.1:64542 Closing
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:56979 Accepted
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:56979 [200]: GET /index.php?debugbar_time=1785833589.007549
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:56979 Closing
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:54897 Accepted
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:54897 Closing
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:50494 Accepted
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:50494 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:50494 Closing
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:53795 Accepted
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:62154 Accepted
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:53795 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:62154 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:62154 Closing
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:53795 Closing
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:57421 Accepted
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:57585 Accepted
+[Tue Aug  4 09:53:10 2026] 127.0.0.1:51630 Accepted
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:57421 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:57421 Closing
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:57585 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:51630 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:57585 Closing
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:51630 Closing
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:53797 Accepted
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:53797 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:53797 Closing
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:61728 Accepted
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:61728 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:61728 Closing
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:63858 Accepted
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:63858 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:63858 Closing
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:50845 Accepted
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:50845 [200]: GET /index.php?debugbar_time=1785833590.624444
+[Tue Aug  4 09:53:11 2026] 127.0.0.1:50845 Closing
+[Tue Aug  4 09:53:12 2026] 127.0.0.1:53178 Accepted
+[Tue Aug  4 09:53:12 2026] 127.0.0.1:53178 Closing
+[Tue Aug  4 09:53:12 2026] 127.0.0.1:64993 Accepted
+[Tue Aug  4 09:53:12 2026] 127.0.0.1:64993 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:53:12 2026] 127.0.0.1:64993 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:52874 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:51475 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:50337 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:54304 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:59544 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:52874 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:51475 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:50337 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:50337 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:54304 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:59544 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:51475 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:54304 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:59544 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:52874 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:64553 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:64553 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:64553 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:53115 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:53115 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:53115 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:54531 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:54531 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:54531 Closing
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:64543 Accepted
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:64543 [200]: GET /index.php?debugbar_time=1785833592.735966
+[Tue Aug  4 09:53:13 2026] 127.0.0.1:64543 Closing
+[Tue Aug  4 09:53:14 2026] 127.0.0.1:65383 Accepted
+[Tue Aug  4 09:54:23 2026] 127.0.0.1:65383 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:54:23 2026] 127.0.0.1:65383 Closing
+[Tue Aug  4 09:54:46 2026] 127.0.0.1:53998 Accepted
+[Tue Aug  4 09:54:46 2026] 127.0.0.1:53998 Closing
+[Tue Aug  4 09:54:46 2026] 127.0.0.1:63038 Accepted
+[Tue Aug  4 09:55:19 2026] 127.0.0.1:63038 Closing
+[Tue Aug  4 09:55:19 2026] 127.0.0.1:62032 Accepted
+[Tue Aug  4 09:55:19 2026] 127.0.0.1:62032 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:56142 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:62463 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:51377 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59468 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:63747 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:60845 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:56142 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:62463 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:51377 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59468 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59468 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:63747 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:60845 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:56142 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:51377 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:63747 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:60845 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:62463 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:51216 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:51216 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:51216 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:64194 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:64194 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:64194 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59079 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59079 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59079 Closing
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59467 Accepted
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59467 [200]: GET /index.php?debugbar_time=1785833719.711756
+[Tue Aug  4 09:55:20 2026] 127.0.0.1:59467 Closing
+[Tue Aug  4 09:55:21 2026] 127.0.0.1:50717 Accepted
+[Tue Aug  4 09:57:10 2026] 127.0.0.1:50717 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:57:10 2026] 127.0.0.1:50717 Closing
+[Tue Aug  4 09:57:18 2026] 127.0.0.1:62039 Accepted
+[Tue Aug  4 09:57:18 2026] 127.0.0.1:62039 Closing
+[Tue Aug  4 09:57:18 2026] 127.0.0.1:58634 Accepted
+[Tue Aug  4 09:57:18 2026] 127.0.0.1:58634 Closing
+[Tue Aug  4 09:57:18 2026] 127.0.0.1:56632 Accepted
+[Tue Aug  4 09:57:18 2026] 127.0.0.1:56632 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 09:57:18 2026] 127.0.0.1:56632 Closing
+[Tue Aug  4 09:57:46 2026] 127.0.0.1:64762 Accepted
+[Tue Aug  4 09:57:46 2026] 127.0.0.1:64593 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:64762 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:64593 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:58453 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:58453 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:58453 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:58222 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:62817 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:59086 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:52472 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:57850 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:58222 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:62817 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:59086 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:52472 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:57850 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:52540 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:58222 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:52540 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:59086 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:52472 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:57850 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:52540 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:62817 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:55967 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:55967 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:55967 Closing
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:51227 Accepted
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:51227 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:57:47 2026] 127.0.0.1:51227 Closing
+[Tue Aug  4 09:57:48 2026] 127.0.0.1:50653 Accepted
+[Tue Aug  4 09:57:48 2026] 127.0.0.1:50653 [200]: GET /index.php?debugbar_time=1785833867.137035
+[Tue Aug  4 09:57:48 2026] 127.0.0.1:50653 Closing
+[Tue Aug  4 09:57:48 2026] 127.0.0.1:64095 Accepted
+[Tue Aug  4 09:57:50 2026] 127.0.0.1:64095 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:62725 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:62103 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:59044 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:55132 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:60001 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:50709 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:62725 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:62103 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:59044 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:55132 [200]: GET /index.php?debugbar
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:55132 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:60001 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:50709 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:62725 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:59044 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:60001 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:50709 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:62103 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:63986 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:50413 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:63986 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:50413 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:63986 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:50413 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:65471 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:65471 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:65471 Closing
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:54458 Accepted
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:54458 [200]: GET /index.php?debugbar_time=1785833870.857849
+[Tue Aug  4 09:57:51 2026] 127.0.0.1:54458 Closing
+[Tue Aug  4 09:57:52 2026] 127.0.0.1:52493 Accepted
+[Tue Aug  4 09:58:13 2026] 127.0.0.1:52493 Closing
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:60609 Accepted
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:53034 Accepted
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:49881 Accepted
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:60609 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:53034 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:49881 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:60609 Closing
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:49881 Closing
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:52789 Accepted
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:53034 Closing
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:52789 Closing
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:57569 Accepted
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:55392 Accepted
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:57569 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js.map
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:55392 [200]: GET /assets/adminlte/dist/js/adminlte.min.js.map
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:57569 Closing
+[Tue Aug  4 09:58:29 2026] 127.0.0.1:55392 Closing
+[Tue Aug  4 09:58:45 2026] 127.0.0.1:60318 Accepted
+[Tue Aug  4 09:58:45 2026] 127.0.0.1:60318 Closing
+[Tue Aug  4 09:58:46 2026] 127.0.0.1:60322 Accepted
+[Tue Aug  4 09:58:46 2026] 127.0.0.1:60322 Closing
+[Tue Aug  4 09:58:46 2026] 127.0.0.1:60324 Accepted
+[Tue Aug  4 09:58:46 2026] 127.0.0.1:60324 Closing
+[Tue Aug  4 09:58:46 2026] 127.0.0.1:60327 Accepted
+[Tue Aug  4 09:58:47 2026] 127.0.0.1:60327 Closing
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:52549 Accepted
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:62699 Accepted
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:52549 Closing
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:63427 Accepted
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:62699 [200]: GET /assets/adminlte/dist/css/adminlte.min.css.map
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:50838 Accepted
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:63427 [200]: GET /assets/adminlte/dist/js/adminlte.min.js.map
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:50838 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js.map
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:63427 Closing
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:50838 Closing
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:62699 Closing
+[Tue Aug  4 10:00:01 2026] 127.0.0.1:61821 Accepted
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:61821 Closing
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:55015 Accepted
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:55015 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:55015 Closing
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:49157 Accepted
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:53188 Accepted
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:49981 Accepted
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:58611 Accepted
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:56827 Accepted
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:49157 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:53188 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:49981 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:49981 Closing
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:58611 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:56827 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:53188 Closing
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:58611 Closing
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:56827 Closing
+[Tue Aug  4 10:00:10 2026] 127.0.0.1:49157 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:65154 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:65154 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:65154 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:59875 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:59875 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60861 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:59875 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60861 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60861 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60835 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60835 [200]: GET /index.php?debugbar_time=1785834010.568697
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60835 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:52574 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:59980 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:52574 [200]: GET /favicon.ico
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:62037 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:59980 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:62037 [200]: GET /assets/adminlte/dist/css/adminlte.min.css.map
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:52574 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:62037 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60802 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60802 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js.map
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60802 Closing
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60845 Accepted
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60845 [200]: GET /assets/adminlte/dist/js/adminlte.min.js.map
+[Tue Aug  4 10:00:11 2026] 127.0.0.1:60845 Closing
+[Tue Aug  4 10:00:42 2026] 127.0.0.1:54237 Accepted
+[Tue Aug  4 10:00:42 2026] 127.0.0.1:49347 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:54237 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:49347 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:49347 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:54037 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:54037 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:54037 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:64218 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:54070 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:53550 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:58914 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:64218 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:54070 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:53550 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:58914 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:54070 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:53550 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:58914 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:64218 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:56886 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:56886 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:56886 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55831 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55831 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55831 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:63143 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:63143 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:63143 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:62157 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:62157 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55087 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55087 [200]: GET /index.php?debugbar_time=1785834043.054377
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55087 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:61286 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55342 Accepted
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:61286 [200]: GET /favicon.ico
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55342 [200]: GET /assets/adminlte/dist/css/adminlte.min.css.map
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:61286 Closing
+[Tue Aug  4 10:00:43 2026] 127.0.0.1:55342 Closing
+[Tue Aug  4 10:00:44 2026] 127.0.0.1:50405 Accepted
+[Tue Aug  4 10:00:44 2026] 127.0.0.1:50405 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js.map
+[Tue Aug  4 10:00:44 2026] 127.0.0.1:50405 Closing
+[Tue Aug  4 10:00:44 2026] 127.0.0.1:62356 Accepted
+[Tue Aug  4 10:00:44 2026] 127.0.0.1:62356 [200]: GET /assets/adminlte/dist/js/adminlte.min.js.map
+[Tue Aug  4 10:00:44 2026] 127.0.0.1:62356 Closing
+[Tue Aug  4 10:01:46 2026] 127.0.0.1:54707 Accepted
+[Tue Aug  4 10:01:46 2026] 127.0.0.1:54707 Closing
+[Tue Aug  4 10:01:46 2026] 127.0.0.1:61107 Accepted
+[Tue Aug  4 10:01:46 2026] 127.0.0.1:61107 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:01:46 2026] 127.0.0.1:61107 Closing
+[Tue Aug  4 10:01:47 2026] 127.0.0.1:65484 Accepted
+[Tue Aug  4 10:01:47 2026] 127.0.0.1:61969 Accepted
+[Tue Aug  4 10:01:47 2026] 127.0.0.1:65484 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:01:47 2026] 127.0.0.1:65484 Closing
+[Tue Aug  4 10:01:47 2026] 127.0.0.1:61969 [200]: GET /index.php?debugbar_time=1785834106.690923
+[Tue Aug  4 10:01:47 2026] 127.0.0.1:61969 Closing
+[Tue Aug  4 10:01:50 2026] 127.0.0.1:55067 Accepted
+[Tue Aug  4 10:01:50 2026] 127.0.0.1:55067 [200]: GET /favicon.ico
+[Tue Aug  4 10:01:50 2026] 127.0.0.1:55067 Closing
+[Tue Aug  4 10:01:50 2026] 127.0.0.1:65219 Accepted
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:51573 Accepted
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:51573 Closing
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:63620 Accepted
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:63620 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:63620 Closing
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:63439 Accepted
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:63439 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:02:18 2026] 127.0.0.1:63439 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:55487 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:58543 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:62766 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:55628 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:55487 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:58543 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:62766 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:55628 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:58543 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:62766 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:55628 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:55487 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:53455 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:53455 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:53455 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:57863 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:57863 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:57863 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:53449 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:53449 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:53449 Closing
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:59472 Accepted
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:59472 [200]: GET /index.php?debugbar_time=1785834138.643584
+[Tue Aug  4 10:02:19 2026] 127.0.0.1:59472 Closing
+[Tue Aug  4 10:02:20 2026] 127.0.0.1:50657 Accepted
+[Tue Aug  4 10:02:29 2026] 127.0.0.1:50657 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:57446 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:57446 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:53676 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:49300 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56548 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:53676 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56881 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:49300 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56548 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:55050 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56881 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56881 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:49769 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:55050 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:53676 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:49769 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56548 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:55050 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:49769 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:49300 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56366 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:53657 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56366 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:53657 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:56366 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:53657 Closing
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:55105 Accepted
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:55105 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:02:30 2026] 127.0.0.1:55105 Closing
+[Tue Aug  4 10:02:31 2026] 127.0.0.1:50648 Accepted
+[Tue Aug  4 10:02:31 2026] 127.0.0.1:50648 [200]: GET /index.php?debugbar_time=1785834150.124708
+[Tue Aug  4 10:02:31 2026] 127.0.0.1:50648 Closing
+[Tue Aug  4 10:02:31 2026] 127.0.0.1:61845 Accepted
+[Tue Aug  4 10:02:34 2026] 127.0.0.1:61845 Closing
+[Tue Aug  4 10:02:34 2026] 127.0.0.1:53907 Accepted
+[Tue Aug  4 10:02:34 2026] 127.0.0.1:53907 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:60501 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:62932 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:51861 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:54097 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:55227 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:49936 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:60501 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:62932 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:51861 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:54097 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:54097 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:55227 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:49936 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:60501 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:51861 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:55227 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:49936 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:62932 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:63401 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:63401 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:63401 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:51402 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:51402 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:51402 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:50030 Accepted
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:50030 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:50030 Closing
+[Tue Aug  4 10:02:35 2026] 127.0.0.1:62781 Accepted
+[Tue Aug  4 10:02:36 2026] 127.0.0.1:62781 [200]: GET /index.php?debugbar_time=1785834154.860334
+[Tue Aug  4 10:02:36 2026] 127.0.0.1:62781 Closing
+[Tue Aug  4 10:02:36 2026] 127.0.0.1:55656 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:55656 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:63267 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:63267 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:63267 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:54872 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:61323 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:65451 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:55519 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:61490 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:54872 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:61323 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:65451 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:65451 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:55519 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:61490 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:61323 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:55519 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:61490 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:54872 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:51195 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:51195 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:51195 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:51334 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:51334 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:51334 Closing
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:55779 Accepted
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:55779 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:02:39 2026] 127.0.0.1:55779 Closing
+[Tue Aug  4 10:02:40 2026] 127.0.0.1:65340 Accepted
+[Tue Aug  4 10:02:40 2026] 127.0.0.1:65340 [200]: GET /index.php?debugbar_time=1785834159.088581
+[Tue Aug  4 10:02:40 2026] 127.0.0.1:65340 Closing
+[Tue Aug  4 10:02:40 2026] 127.0.0.1:63174 Accepted
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:65219 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:65219 Closing
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:62541 Accepted
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:62541 Closing
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:52345 Accepted
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:52345 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:52345 Closing
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:60442 Accepted
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:51693 Accepted
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:60442 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:60442 Closing
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:51693 [200]: GET /index.php?debugbar_time=1785834178.367968
+[Tue Aug  4 10:02:58 2026] 127.0.0.1:51693 Closing
+[Tue Aug  4 10:03:52 2026] 127.0.0.1:63174 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 10:03:52 2026] 127.0.0.1:63174 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:56511 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:53992 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:56511 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:53992 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:53992 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:50846 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:50846 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:50846 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:64980 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:58288 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:52358 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:58680 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:64980 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:58288 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:52358 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:58680 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:60786 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:61070 Accepted
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:60786 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:58288 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:52358 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:58680 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:61070 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:60786 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:61070 Closing
+[Tue Aug  4 10:06:55 2026] 127.0.0.1:64980 Closing
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:63138 Accepted
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:63138 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:63138 Closing
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:58959 Accepted
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:58959 [200]: GET /index.php?debugbar_time=1785834415.434964
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:58959 Closing
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:55217 Accepted
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:55217 [200]: GET /favicon.ico
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:55217 Closing
+[Tue Aug  4 10:06:56 2026] 127.0.0.1:50380 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:50380 Closing
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:50008 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:50008 Closing
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:54243 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:54243 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:54243 Closing
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:64035 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:63080 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:51327 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:54404 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:64035 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:52691 Accepted
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:63080 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:51327 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:51327 Closing
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:54404 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:52691 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:63080 Closing
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:54404 Closing
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:52691 Closing
+[Tue Aug  4 10:07:06 2026] 127.0.0.1:64035 Closing
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:50048 Accepted
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:50048 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:50048 Closing
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:58669 Accepted
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:58669 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:58669 Closing
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:50282 Accepted
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:50282 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:50282 Closing
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:53172 Accepted
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:53172 [200]: GET /index.php?debugbar_time=1785834426.526324
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:53172 Closing
+[Tue Aug  4 10:07:07 2026] 127.0.0.1:55328 Accepted
+[Tue Aug  4 10:08:11 2026] 127.0.0.1:55328 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 10:08:11 2026] 127.0.0.1:55328 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:59893 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:49180 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:59893 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:49180 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:49180 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:51527 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:51527 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:51527 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:49755 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:54949 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:60123 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:58877 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:49755 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:54949 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:60123 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:58877 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:54949 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:60123 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:58877 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:57938 Accepted
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:57938 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:57938 Closing
+[Tue Aug  4 10:08:33 2026] 127.0.0.1:49755 Closing
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:63964 Accepted
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:63964 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:63964 Closing
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:56721 Accepted
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:56721 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:56721 Closing
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:59309 Accepted
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:59309 [200]: GET /index.php?debugbar_time=1785834513.515331
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:59309 Closing
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:59226 Accepted
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:59226 [200]: GET /favicon.ico
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:59226 Closing
+[Tue Aug  4 10:08:34 2026] 127.0.0.1:60437 Accepted
+[Tue Aug  4 10:08:35 2026] 127.0.0.1:60437 Closing
+[Tue Aug  4 10:08:35 2026] 127.0.0.1:52868 Accepted
+[Tue Aug  4 10:08:35 2026] 127.0.0.1:52868 Closing
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:57338 Accepted
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:61772 Accepted
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:57338 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:61772 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:61772 Closing
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:57338 Closing
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:57640 Accepted
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:57640 [200]: GET /index.php?debugbar_time=1785834515.826632
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:57640 Closing
+[Tue Aug  4 10:08:36 2026] 127.0.0.1:51304 Accepted
+[Tue Aug  4 10:08:51 2026] 127.0.0.1:51304 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64946 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64946 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:58136 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:50130 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:58136 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64279 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:50130 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64279 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:58136 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64279 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:65467 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:50804 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:56294 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:65467 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:65467 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:50804 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:56294 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:50804 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:56294 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:50130 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:58937 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:58937 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:58937 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64572 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64572 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64572 Closing
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64423 Accepted
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64423 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:08:52 2026] 127.0.0.1:64423 Closing
+[Tue Aug  4 10:08:53 2026] 127.0.0.1:53855 Accepted
+[Tue Aug  4 10:08:53 2026] 127.0.0.1:53855 [200]: GET /index.php?debugbar_time=1785834532.212848
+[Tue Aug  4 10:08:53 2026] 127.0.0.1:53855 Closing
+[Tue Aug  4 10:08:53 2026] 127.0.0.1:57078 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:57078 Closing
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:61829 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:61829 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:61829 Closing
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:61313 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:50857 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:49681 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:51797 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:53987 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:61313 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:50857 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:49681 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:49681 Closing
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:51797 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:53987 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:50857 Closing
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:51797 Closing
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:53987 Closing
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:61313 Closing
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:57989 Accepted
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:57989 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:08:57 2026] 127.0.0.1:57989 Closing
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:61794 Accepted
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:61794 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:61794 Closing
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:60304 Accepted
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:60304 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:60304 Closing
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:56583 Accepted
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:56583 [200]: GET /index.php?debugbar_time=1785834537.333456
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:56583 Closing
+[Tue Aug  4 10:08:58 2026] 127.0.0.1:57512 Accepted
+[Tue Aug  4 10:09:26 2026] 127.0.0.1:57512 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 10:09:26 2026] 127.0.0.1:57512 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:57632 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:57632 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:59152 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:59152 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:59152 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:54573 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:54573 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:54573 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:58914 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:53861 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:57827 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:62920 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:58914 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:53861 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:57827 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:62920 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:58914 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:53861 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:57827 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:62920 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:52012 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:52012 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:52012 Closing
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:53106 Accepted
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:53106 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:09:34 2026] 127.0.0.1:53106 Closing
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:49677 Accepted
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:49677 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:49677 Closing
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:64988 Accepted
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:64988 [200]: GET /index.php?debugbar_time=1785834574.385454
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:64988 Closing
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:55393 Accepted
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:55393 [200]: GET /favicon.ico
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:55393 Closing
+[Tue Aug  4 10:09:35 2026] 127.0.0.1:63901 Accepted
+[Tue Aug  4 10:09:55 2026] 127.0.0.1:65134 Accepted
+[Tue Aug  4 10:09:55 2026] 127.0.0.1:65134 Closing
+[Tue Aug  4 10:09:55 2026] 127.0.0.1:65137 Accepted
+[Tue Aug  4 10:09:55 2026] 127.0.0.1:65137 Closing
+[Tue Aug  4 10:09:55 2026] 127.0.0.1:65142 Accepted
+[Tue Aug  4 10:09:55 2026] 127.0.0.1:65142 Closing
+[Tue Aug  4 10:09:56 2026] 127.0.0.1:65145 Accepted
+[Tue Aug  4 10:09:56 2026] 127.0.0.1:65145 Closing
+[Tue Aug  4 10:09:56 2026] 127.0.0.1:65147 Accepted
+[Tue Aug  4 10:09:56 2026] 127.0.0.1:65147 Closing
+[Tue Aug  4 10:09:56 2026] 127.0.0.1:65149 Accepted
+[Tue Aug  4 10:09:56 2026] 127.0.0.1:65149 Closing
+[Tue Aug  4 10:09:57 2026] 127.0.0.1:65151 Accepted
+[Tue Aug  4 10:09:57 2026] 127.0.0.1:65151 Closing
+[Tue Aug  4 10:09:57 2026] 127.0.0.1:65153 Accepted
+[Tue Aug  4 10:09:57 2026] 127.0.0.1:65153 Closing
+[Tue Aug  4 10:10:44 2026] 127.0.0.1:63901 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 10:10:44 2026] 127.0.0.1:63901 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:53329 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:52405 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:53329 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:52405 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:52405 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:54033 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:54033 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:54033 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63460 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63058 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:58104 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:58014 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63460 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63058 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:58104 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:58014 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63058 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:58104 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:58014 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63460 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63276 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63276 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:63276 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:53149 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:53149 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:53149 Closing
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:51928 Accepted
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:51928 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:11:14 2026] 127.0.0.1:51928 Closing
+[Tue Aug  4 10:11:15 2026] 127.0.0.1:60166 Accepted
+[Tue Aug  4 10:11:15 2026] 127.0.0.1:60166 [200]: GET /index.php?debugbar_time=1785834674.102648
+[Tue Aug  4 10:11:15 2026] 127.0.0.1:60166 Closing
+[Tue Aug  4 10:11:15 2026] 127.0.0.1:64740 Accepted
+[Tue Aug  4 10:11:15 2026] 127.0.0.1:64740 [200]: GET /favicon.ico
+[Tue Aug  4 10:11:15 2026] 127.0.0.1:64740 Closing
+[Tue Aug  4 10:11:15 2026] 127.0.0.1:51910 Accepted
+[Tue Aug  4 10:11:20 2026] 127.0.0.1:51910 Closing
+[Tue Aug  4 10:11:20 2026] 127.0.0.1:64447 Accepted
+[Tue Aug  4 10:11:20 2026] 127.0.0.1:64447 Closing
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:61878 Accepted
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:61878 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:61878 Closing
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:57739 Accepted
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:57739 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:57739 Closing
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:59110 Accepted
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:59110 [200]: GET /index.php?debugbar_time=1785834680.659366
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:59110 Closing
+[Tue Aug  4 10:11:21 2026] 127.0.0.1:62809 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:62809 Closing
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:58232 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:58232 Closing
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:51267 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:51267 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:63649 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:64859 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:63649 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:64859 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:51267 Closing
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:49840 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:54587 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:64859 Closing
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:56443 Accepted
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:49840 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:49840 Closing
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:54587 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:56443 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:54587 Closing
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:56443 Closing
+[Tue Aug  4 10:11:40 2026] 127.0.0.1:63649 Closing
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:56162 Accepted
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:56162 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:56162 Closing
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:51463 Accepted
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:51463 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:51463 Closing
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:58615 Accepted
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:58615 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:58615 Closing
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:57864 Accepted
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:57864 [200]: GET /index.php?debugbar_time=1785834700.339370
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:57864 Closing
+[Tue Aug  4 10:11:41 2026] 127.0.0.1:56400 Accepted
+[Tue Aug  4 10:11:43 2026] 127.0.0.1:56400 Closing
+[Tue Aug  4 10:11:43 2026] 127.0.0.1:62601 Accepted
+[Tue Aug  4 10:11:43 2026] 127.0.0.1:62601 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:11:43 2026] 127.0.0.1:62601 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:63705 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:58383 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:65408 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:59591 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:54410 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:63705 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:58383 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:65408 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:65408 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:59591 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:54410 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:58383 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:59591 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:54410 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:63705 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:64124 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:64124 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:64124 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:49677 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:49677 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:49677 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:49677 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:49677 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:49677 Closing
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:61593 Accepted
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:61593 [200]: GET /index.php?debugbar_time=1785834703.706920
+[Tue Aug  4 10:11:44 2026] 127.0.0.1:61593 Closing
+[Tue Aug  4 10:11:45 2026] 127.0.0.1:53253 Accepted
+[Tue Aug  4 10:12:00 2026] 127.0.0.1:53253 Closing
+[Tue Aug  4 10:12:55 2026] 127.0.0.1:56512 Accepted
+[Tue Aug  4 10:12:56 2026] 127.0.0.1:56512 Closing
+[Tue Aug  4 10:12:56 2026] 127.0.0.1:55670 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:55670 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:50668 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:50668 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:50668 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:59880 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:63905 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:61087 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:53077 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:63066 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:59880 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:63905 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:61087 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:61087 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:53077 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:63066 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:63905 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:53077 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:63066 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:59880 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:62598 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:62598 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:62598 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:58780 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:58780 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:58780 Closing
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:55148 Accepted
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:55148 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:13:06 2026] 127.0.0.1:55148 Closing
+[Tue Aug  4 10:13:07 2026] 127.0.0.1:53675 Accepted
+[Tue Aug  4 10:13:07 2026] 127.0.0.1:53675 [200]: GET /index.php?debugbar_time=1785834786.033622
+[Tue Aug  4 10:13:07 2026] 127.0.0.1:53675 Closing
+[Tue Aug  4 10:13:07 2026] 127.0.0.1:53822 Accepted
+[Tue Aug  4 10:13:07 2026] 127.0.0.1:53822 [200]: GET /favicon.ico
+[Tue Aug  4 10:13:07 2026] 127.0.0.1:53822 Closing
+[Tue Aug  4 10:13:07 2026] 127.0.0.1:59204 Accepted
+[Tue Aug  4 10:13:16 2026] 127.0.0.1:59204 Closing
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:58060 Accepted
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:58060 Closing
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:52875 Accepted
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:52875 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:52875 Closing
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:56666 Accepted
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:56666 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:14:50 2026] 127.0.0.1:56666 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:57991 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:56729 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:61239 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:63384 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:57991 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:56729 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:61239 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:63384 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:57991 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:61239 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:63384 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:56729 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:52064 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:52064 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:52064 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:54549 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:54549 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:54549 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:63154 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:63154 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:63154 Closing
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:53170 Accepted
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:53170 [200]: GET /index.php?debugbar_time=1785834890.703338
+[Tue Aug  4 10:14:51 2026] 127.0.0.1:53170 Closing
+[Tue Aug  4 10:14:52 2026] 127.0.0.1:63926 Accepted
+[Tue Aug  4 10:14:54 2026] 127.0.0.1:63926 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:59085 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:59085 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:59085 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:57324 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:57324 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:50130 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:58117 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:63429 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:56198 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:50130 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:58117 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:58117 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:63429 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:56198 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:50130 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:63429 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:56198 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:57324 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:52200 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:52200 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:52200 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:60315 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:60315 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:60315 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:52686 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:52686 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:52686 Closing
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:63978 Accepted
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:63978 [200]: GET /index.php?debugbar_time=1785834894.787823
+[Tue Aug  4 10:14:55 2026] 127.0.0.1:63978 Closing
+[Tue Aug  4 10:14:56 2026] 127.0.0.1:57260 Accepted
+[Tue Aug  4 10:16:12 2026] 127.0.0.1:57260 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 10:16:12 2026] 127.0.0.1:57260 Closing
+[Tue Aug  4 10:16:15 2026] 127.0.0.1:59018 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:59018 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63930 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63930 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63930 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:56692 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:56692 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:56692 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:52891 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:55511 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63934 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:49242 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:52891 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:55511 [200]: GET /index.php?debugbar
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:55511 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63934 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:49242 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63934 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:49242 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:52891 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63243 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63243 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:63243 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:53278 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:53278 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:53278 Closing
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:60656 Accepted
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:60656 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 10:16:16 2026] 127.0.0.1:60656 Closing
+[Tue Aug  4 10:16:17 2026] 127.0.0.1:63557 Accepted
+[Tue Aug  4 10:16:17 2026] 127.0.0.1:63557 [200]: GET /index.php?debugbar_time=1785834976.026830
+[Tue Aug  4 10:16:17 2026] 127.0.0.1:63557 Closing
+[Tue Aug  4 10:16:17 2026] 127.0.0.1:57397 Accepted
+[Tue Aug  4 10:29:53 2026] 127.0.0.1:57397 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 10:29:53 2026] 127.0.0.1:57397 Closing
+[Tue Aug  4 13:32:56 2026] 127.0.0.1:52104 Accepted
+[Tue Aug  4 13:32:56 2026] 127.0.0.1:50009 Accepted
+[Tue Aug  4 13:32:56 2026] 127.0.0.1:52104 Closing
+[Tue Aug  4 13:32:56 2026] 127.0.0.1:50009 Closing
+[Tue Aug  4 13:32:56 2026] 127.0.0.1:55215 Accepted
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:55215 [200]: GET /index.php?debugbar
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:55215 Closing
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:64135 Accepted
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:64135 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:64135 Closing
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:65067 Accepted
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:65067 [200]: GET /index.php?debugbar_time=1785846776.902224
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:65067 Closing
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:63689 Accepted
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:63689 [200]: GET /favicon.ico
+[Tue Aug  4 13:32:57 2026] 127.0.0.1:63689 Closing
+[Tue Aug  4 13:33:14 2026] 127.0.0.1:65456 Accepted
+[Tue Aug  4 13:33:14 2026] 127.0.0.1:54217 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:65456 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:54217 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:55938 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:55938 [200]: GET /index.php?debugbar
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:55938 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:56351 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:56965 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:60408 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:61057 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:53504 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:56351 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:56965 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:60408 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:61057 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:53504 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:56351 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:60408 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:61057 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:53504 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:56965 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:62407 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:62407 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:62407 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:51357 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:51357 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:51357 Closing
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:51218 Accepted
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:51218 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 13:33:15 2026] 127.0.0.1:51218 Closing
+[Tue Aug  4 13:33:16 2026] 127.0.0.1:64026 Accepted
+[Tue Aug  4 13:33:16 2026] 127.0.0.1:64026 [200]: GET /index.php?debugbar_time=1785846795.098354
+[Tue Aug  4 13:33:16 2026] 127.0.0.1:64026 Closing
+[Tue Aug  4 13:33:16 2026] 127.0.0.1:53174 Accepted
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:53174 Closing
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:57963 Accepted
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:57963 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:57963 Closing
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:52014 Accepted
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:54145 Accepted
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:49989 Accepted
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:54452 Accepted
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:52014 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:57211 Accepted
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:54145 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:49989 [200]: GET /index.php?debugbar
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:49989 Closing
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:54452 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:57211 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:54145 Closing
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:54452 Closing
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:57211 Closing
+[Tue Aug  4 13:33:18 2026] 127.0.0.1:52014 Closing
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:58449 Accepted
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:58449 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:58449 Closing
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:49757 Accepted
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:49757 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:49757 Closing
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:59404 Accepted
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:59404 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:59404 Closing
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:64181 Accepted
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:64181 [200]: GET /index.php?debugbar_time=1785846798.456538
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:64181 Closing
+[Tue Aug  4 13:33:19 2026] 127.0.0.1:50970 Accepted
+[Tue Aug  4 13:33:28 2026] 127.0.0.1:50970 Closing
+[Tue Aug  4 13:38:01 2026] 127.0.0.1:52528 Accepted
+[Tue Aug  4 13:38:46 2026] 127.0.0.1:52528 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 13:38:46 2026] 127.0.0.1:52528 Closing
+[Tue Aug  4 14:20:02 2026] 127.0.0.1:56106 Accepted
+[Tue Aug  4 14:20:02 2026] 127.0.0.1:49219 Accepted
+[Tue Aug  4 14:20:03 2026] 127.0.0.1:56106 Closing
+[Tue Aug  4 14:20:03 2026] 127.0.0.1:58927 Accepted
+[Tue Aug  4 14:20:03 2026] 127.0.0.1:49219 Closing
+[Tue Aug  4 14:20:03 2026] 127.0.0.1:58927 [200]: GET /index.php?debugbar_time=1785849603.457683
+[Tue Aug  4 14:20:03 2026] 127.0.0.1:58927 Closing
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:51570 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:49677 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:51570 Closing
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:49677 Closing
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:56810 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:56810 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:56810 Closing
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:63591 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:58717 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:60790 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:57593 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:51714 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:58811 Accepted
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:63591 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:58717 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:60790 [200]: GET /index.php?debugbar
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:60790 Closing
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:57593 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:51714 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 14:29:23 2026] 127.0.0.1:58811 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 14:29:24 2026] 127.0.0.1:58717 Closing
+[Tue Aug  4 14:29:24 2026] 127.0.0.1:57593 Closing
+[Tue Aug  4 14:29:24 2026] 127.0.0.1:51714 Closing
+[Tue Aug  4 14:29:24 2026] 127.0.0.1:58811 Closing
+[Tue Aug  4 14:29:24 2026] 127.0.0.1:63591 Closing
+[Tue Aug  4 14:29:26 2026] 127.0.0.1:55769 Accepted
+[Tue Aug  4 14:29:26 2026] 127.0.0.1:61645 Accepted
+[Tue Aug  4 14:29:26 2026] 127.0.0.1:55769 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff
+[Tue Aug  4 14:29:26 2026] 127.0.0.1:61645 [200]: GET /index.php?debugbar_time=1785850163.587274
+[Tue Aug  4 14:29:26 2026] 127.0.0.1:61645 Closing
+[Tue Aug  4 14:29:26 2026] 127.0.0.1:55769 Closing
+[Tue Aug  4 14:29:26 2026] 127.0.0.1:60429 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:60429 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:65229 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:65229 [200]: GET /assets/adminlte/plugins/fontawesome-free/css/all.min.css
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:65229 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:52153 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:49677 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:58454 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:50993 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:52551 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:52153 [200]: GET /assets/adminlte/dist/css/adminlte.min.css
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:49677 [200]: GET /assets/css/soft-ui.css
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:58454 [200]: GET /index.php?debugbar
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:58454 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:50993 [200]: GET /assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:52551 [200]: GET /assets/adminlte/plugins/jquery/jquery.min.js
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:49677 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:50993 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:52551 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:52153 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:56080 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:56080 [200]: GET /assets/adminlte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:56080 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:60354 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:60354 [200]: GET /assets/adminlte/dist/js/adminlte.min.js
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:60354 Closing
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:59216 Accepted
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:59216 [200]: GET /assets/jQuery/postpaid_particulier.Form.js
+[Tue Aug  4 14:29:32 2026] 127.0.0.1:59216 Closing
+[Tue Aug  4 14:29:33 2026] 127.0.0.1:63599 Accepted
+[Tue Aug  4 14:29:33 2026] 127.0.0.1:63599 [200]: GET /index.php?debugbar_time=1785850172.211346
+[Tue Aug  4 14:29:33 2026] 127.0.0.1:63599 Closing
+[Tue Aug  4 14:29:33 2026] 127.0.0.1:59409 Accepted
+[Tue Aug  4 14:31:15 2026] 127.0.0.1:59409 Closed without sending a request; it was probably just an unused speculative preconnection
+[Tue Aug  4 14:31:15 2026] 127.0.0.1:59409 Closing
+[Tue Aug  4 14:50:56 2026] 127.0.0.1:53602 Accepted
+[Tue Aug  4 14:50:56 2026] 127.0.0.1:49677 Accepted
+[Tue Aug  4 14:50:56 2026] 127.0.0.1:53602 Closing
+[Tue Aug  4 14:50:56 2026] 127.0.0.1:49677 Closing
+[Tue Aug  4 14:50:56 2026] 127.0.0.1:61543 Accepted
+[Tue Aug  4 14:50:56 2026] 127.0.0.1:61543 [200]: GET /index.php?debugbar_time=1785851456.766216
+[Tue Aug  4 14:50:56 2026] 127.0.0.1:61543 Closing
