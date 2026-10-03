@@ -1,0 +1,217 @@
+DEBUG - 2026-09-21 11:53:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-21 11:53:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-21 11:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-21 11:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-21 11:54:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-21 11:58:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-21 11:58:47 --> CSRF token verified.
+DEBUG - 2026-09-21 11:58:47 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-21 11:58:47 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_facture
+INFO - 2026-09-21 11:58:47 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-21 11:58:47 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-21 11:58:47 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-21 11:58:47 --> === START TRUNCATE truncate_6ab11bf7c09f96.04850663 ===
+DEBUG - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"input_received","type":"postpaid_particulier_facture"}
+DEBUG - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_tables_loaded","type":"postpaid_particulier_facture","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":53.6}
+INFO - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":50.9}
+INFO - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":61.3}
+INFO - 2026-09-21 11:58:47 --> {"trace_id":"truncate_6ab11bf7c09f96.04850663","step":"truncate_finished","type":"postpaid_particulier_facture","success":true,"duration_ms":166.5}
+INFO - 2026-09-21 11:58:47 --> === END TRUNCATE truncate_6ab11bf7c09f96.04850663 ===
+INFO - 2026-09-21 11:58:47 --> Import Excel démarré : type=postpaid_particulier_facture, fichier=php1pkPQk
+INFO - 2026-09-21 11:58:48 --> Import Excel terminé (type=postpaid_particulier_facture, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.17s : 373 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-21 11:58:48 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_facture","regroupName":"AKTIVCO","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":null,"dateFin":null,"file":{},"importStats":{"inserted":373,"skipped":0,"duplicates":0,"message":"373 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-21 11:58:48 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"AKTIVCO","DEBUT":null,"FIN":null}
+DEBUG - 2026-09-21 11:58:48 --> Lancement MemorySQLFactory pour type=postpaid_particulier_facture avec section=loading et params={"year":"2026","cycle":"8","regroup":"AKTIVCO","DEBUT":null,"FIN":null}
+DEBUG - 2026-09-21 11:58:48 --> Configuration pour le type 'postpaid_particulier_facture': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_FACTURE_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_WITH_FACTURE_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-21 11:58:48 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-21 11:58:48 --> Type général : facture
+INFO - 2026-09-21 11:58:48 --> Type émission : NULL
+INFO - 2026-09-21 11:58:48 --> Date début: , Date fin: 
+INFO - 2026-09-21 11:58:48 --> Retour vide (Facture sélectionné)
+DEBUG - 2026-09-21 11:58:48 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ parallel(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase,'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over (partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over (partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over (partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.num_rec
+                        JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                        LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        
+                )
+            
+DEBUG - 2026-09-21 11:58:49 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.num_rec
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-21 11:58:49 --> MemorySQLFactory terminé pour type=postpaid_particulier_facture, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-21 11:58:49 --> Configuration pour le type 'postpaid_particulier_facture': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_FACTURE_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_WITH_FACTURE_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-21 11:58:49 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-21 11:58:49 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-21 11:58:49 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-21 11:58:49 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-21 11:58:49 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_AKTIVCO_20260921_115849.xlsx
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 1 => HT: 8249858 | TVA: 1588098 | TTC: 9837956
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 45
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 45 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 46 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 47 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M48:O48
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 49 | Page 1/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M42 à O47
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 50
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 2 et ligne 64
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 2 => HT: 8479201 | TVA: 1632246 | TTC: 10111447
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 96
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 96 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 97 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 98 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M99:O99
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 100 | Page 2/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M93 à O98
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 101
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 3 et ligne 115
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 3 => HT: 9783896 | TVA: 1883400 | TTC: 11667296
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 147
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 147 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 148 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 149 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M150:O150
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 151 | Page 3/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M144 à O149
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 152
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 4 et ligne 166
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 4 => HT: 6983115 | TVA: 1344250 | TTC: 8327365
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 198
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 198 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 199 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 200 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M201:O201
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 202 | Page 4/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M195 à O200
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 203
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 5 et ligne 217
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 5 => HT: 7001586 | TVA: 1347808 | TTC: 8349394
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 249
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 249 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 250 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 251 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M252:O252
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 253 | Page 5/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M246 à O251
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 254
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 6 et ligne 268
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 6 => HT: 8050244 | TVA: 1549671 | TTC: 9599915
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 300
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 300 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 301 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 302 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M303:O303
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 304 | Page 6/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M297 à O302
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 305
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 7 et ligne 319
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 7 => HT: 8253405 | TVA: 1588780 | TTC: 9842185
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 351
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 351 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 352 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 353 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M354:O354
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 355 | Page 7/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M348 à O353
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 356
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 8 et ligne 370
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 8 => HT: 8593399 | TVA: 1654230 | TTC: 10247629
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 402
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 402 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 403 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 404 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M405:O405
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 406 | Page 8/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M399 à O404
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 407
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 9 et ligne 421
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 9 => HT: 7181775 | TVA: 1382493 | TTC: 8564268
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 453
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 453 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 454 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 455 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M456:O456
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 457 | Page 9/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M450 à O455
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 458
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 10 et ligne 472
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 10 => HT: 9176657 | TVA: 1766509 | TTC: 10943166
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 504
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 504 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 505 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 506 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M507:O507
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 508 | Page 10/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M501 à O506
+DEBUG - 2026-09-21 11:58:49 --> Ajout saut de page après ligne 509
+DEBUG - 2026-09-21 11:58:49 --> Insertion données page 11 et ligne 523
+DEBUG - 2026-09-21 11:58:49 --> Totaux page 11 => HT: 5391449 | TVA: 1037856 | TTC: 6429305
+DEBUG - 2026-09-21 11:58:49 --> ==============================
+DEBUG - 2026-09-21 11:58:49 --> TOTAL GLOBAL
+DEBUG - 2026-09-21 11:58:49 --> HT  = 87144585
+DEBUG - 2026-09-21 11:58:49 --> TVA = 16775341
+DEBUG - 2026-09-21 11:58:49 --> TTC = 103919926
+DEBUG - 2026-09-21 11:58:49 --> DUE = 102992101
+DEBUG - 2026-09-21 11:58:49 --> ==============================
+DEBUG - 2026-09-21 11:58:49 --> Insertion footer à partir de ligne 547
+DEBUG - 2026-09-21 11:58:49 --> Footer[0] ligne 547 : Bon à savoir / Good to know
+DEBUG - 2026-09-21 11:58:49 --> Footer[1] ligne 548 (fond vert)
+DEBUG - 2026-09-21 11:58:49 --> Footer[2] ligne 549 (italic bleu)
+DEBUG - 2026-09-21 11:58:49 --> Footer[3] ENERGIZING à M550:O550
+DEBUG - 2026-09-21 11:58:49 --> Footer[4] Pagination ligne 551 | Page 11/11
+DEBUG - 2026-09-21 11:58:49 --> Signature bloc de M544 à O549
+DEBUG - 2026-09-21 11:58:50 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_AKTIVCO_20260921_115849.xlsx

@@ -1,0 +1,622 @@
+/* ===============================================================
+   MYMEMO — SOFT UI DESIGN SYSTEM
+   Design tokens + component overrides on top of AdminLTE/Bootstrap.
+   Aucune règle ici ne touche à la logique métier : uniquement
+   présentation (couleurs, espacements, rayons, ombres, transitions).
+================================================================ */
+
+:root {
+  /* Palette douce (pas de rouge vif, pas de bleu agressif) */
+  --brand-50:  #f4f6fb;
+  --brand-100: #e9edf7;
+  --brand-500: #5b6b93;   /* bleu ardoise */
+  --brand-600: #4a597e;
+  --brand-700: #3c4a68;
+
+  --success-500: #5fa98a;  /* vert doux */
+  --success-100: #e7f3ee;
+
+  --warning-500: #d9a441;  /* ambre doux */
+  --warning-100: #faf1e2;
+
+  --danger-500:  #c66868;  /* rouge atténué */
+  --danger-100:  #f7e9e9;
+
+  --info-500:    #5b8db8;  /* bleu-gris doux */
+  --info-100:    #e9f1f7;
+
+  --accent-500:  #8f7fc4;  /* violet discret */
+  --accent-100:  #efecf8;
+
+  --secondary-500: #8a94a6;
+  --secondary-100: #eef0f3;
+
+  --bg-body:   #f7f8fa;    /* blanc cassé */
+  --bg-card:   #ffffff;
+  --bg-muted:  #f1f3f6;
+  --border-color: #e5e8ee;
+  --border-color-strong: #d7dce4;
+
+  --text-heading: #2d3748;
+  --text-body: #445067;
+  --text-muted: #7d8aa0;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(31, 41, 55, 0.04);
+  --shadow-sm: 0 2px 8px rgba(31, 41, 55, 0.05);
+  --shadow-md: 0 8px 24px rgba(31, 41, 55, 0.07);
+  --shadow-lg: 0 16px 40px rgba(31, 41, 55, 0.10);
+
+  --transition-fast: all .16s ease;
+  --transition-base: all .22s ease;
+}
+
+/* ===============================================================
+   THÈME SOMBRE
+   Ne redéfinit que les tokens de SURFACE/TEXTE (mêmes noms que
+   :root ci-dessus) : chaque composant les consomme déjà via var(...),
+   donc rien d'autre à modifier pour qu'ils suivent le thème. Les
+   teintes d'accent (--brand-500, --success-500...) et les fonds
+   pastel *-100 (utilisés par les badges, dont le texte a une couleur
+   fixe non tokenisée) restent identiques dans les deux thèmes : un
+   badge reste un petit chip coloré lisible, indépendant du thème
+   général — évite de dupliquer les règles de contraste des badges.
+================================================================ */
+[data-theme="dark"] {
+  --bg-body:   #191c26;
+  --bg-card:   #232733;
+  --bg-muted:  #2a2f3d;
+  --border-color: #333849;
+  --border-color-strong: #454b5e;
+
+  --text-heading: #eef1f7;
+  --text-body: #c7cdda;
+  --text-muted: #8b93a7;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.32);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.38);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ===============================================================
+   BASE / TYPOGRAPHIE
+================================================================ */
+body {
+  background: var(--bg-body);
+  color: var(--text-body);
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.card-title, .modal-title {
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.content-header h1 { font-size: 1.6rem; }
+.content-header p { color: var(--text-muted); }
+
+small, .text-muted { color: var(--text-muted) !important; }
+
+/* ===============================================================
+   LAYOUT / CONTENT WRAPPER
+================================================================ */
+.content-wrapper {
+  background: var(--bg-body);
+  padding: 1.75rem;
+}
+
+.content-wrapper > .content-header,
+.content-wrapper > .content {
+  animation: mm-fade-in .3s ease both;
+}
+
+@keyframes mm-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.main-header.navbar {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-xs);
+}
+
+.main-header .nav-link {
+  color: var(--text-body);
+  transition: var(--transition-fast);
+}
+
+.main-header .nav-link:hover {
+  color: var(--brand-600);
+}
+
+/* Lien de déconnexion : accent discret "action destructive" */
+.logout-link {
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.logout-link:hover {
+  color: var(--danger-500) !important;
+  background: var(--danger-100);
+}
+
+.logout-link:active {
+  transform: scale(0.96);
+}
+
+#logoutConfirmBtn.is-loading {
+  opacity: .75;
+  cursor: wait;
+  pointer-events: none;
+}
+
+.main-footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+
+/* ===============================================================
+   SIDEBAR / NAVIGATION
+================================================================ */
+.main-sidebar {
+  background: #2b3242 !important;
+  box-shadow: var(--shadow-md);
+}
+
+.brand-link {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.nav-sidebar .nav-link {
+  border-radius: var(--radius-sm);
+  margin: 2px 8px;
+  color: rgba(255, 255, 255, 0.82);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.nav-sidebar .nav-link:hover,
+.nav-sidebar .nav-link.handover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateX(2px);
+  color: #ffffff;
+}
+
+.nav-sidebar .nav-link.active {
+  background: rgba(91, 107, 147, 0.35);
+  border-left: 3px solid var(--brand-500);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.nav-sidebar .nav-treeview {
+  margin-left: 14px;
+  padding-left: 10px;
+  border-left: 1px dashed rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .3s ease;
+}
+
+.nav-sidebar .menu-open > .nav-treeview {
+  max-height: 1000px;
+}
+
+.nav-sidebar .nav-treeview .nav-link { font-size: .92rem; }
+.nav-sidebar .nav-treeview .nav-treeview .nav-link { font-size: .88rem; }
+
+.nav-sidebar .nav-icon {
+  width: 20px;
+  text-align: center;
+  opacity: .85;
+}
+
+.nav-sidebar .right { transition: transform .25s ease; }
+.nav-sidebar .menu-open > a .right { transform: rotate(-90deg); }
+
+.nav-sidebar .badge {
+  font-size: .65rem;
+  padding: 4px 6px;
+  margin-left: 8px;
+  border-radius: var(--radius-pill);
+}
+
+/* ===============================================================
+   CARDS
+================================================================ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm) !important;
+  transition: var(--transition-base);
+}
+
+.card.shadow-sm:hover,
+.card.card-soft:hover {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.card-header {
+  background: var(--bg-muted);
+  border-bottom: 1px solid var(--border-color);
+  border-top-left-radius: var(--radius-md) !important;
+  border-top-right-radius: var(--radius-md) !important;
+  padding: .9rem 1.25rem;
+}
+
+.card-header h5, .card-header h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.card-body { padding: 1.25rem; }
+
+.card-soft {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* Variantes AdminLTE (card-primary, card-success, ...) : on remplace les
+   aplats saturés par un liseré + fond très doux, plus proche des dashboards
+   type Stripe/Linear qu'un bandeau de couleur plein. */
+.card-primary > .card-header,
+.card-header.bg-gradient-info,
+.card-header[style*="background-color"] {
+  background: var(--brand-100) !important;
+  color: var(--brand-700) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+.card-primary { border-top: 3px solid var(--brand-500); }
+
+.card-success > .card-header {
+  background: var(--success-100) !important;
+  color: #2f5d49 !important;
+}
+.card-success { border-top: 3px solid var(--success-500); }
+
+.card-warning > .card-header {
+  background: var(--warning-100) !important;
+  color: #7a5a1e !important;
+}
+.card-warning { border-top: 3px solid var(--warning-500); }
+
+.card-info > .card-header {
+  background: var(--info-100) !important;
+  color: #2f5270 !important;
+}
+.card-info { border-top: 3px solid var(--info-500); }
+
+.card-secondary > .card-header {
+  background: var(--secondary-100) !important;
+  color: #4a5468 !important;
+}
+.card-secondary { border-top: 3px solid var(--secondary-500); }
+
+.card-danger > .card-header {
+  background: var(--danger-100) !important;
+  color: #7a3a3a !important;
+}
+.card-danger { border-top: 3px solid var(--danger-500); }
+
+/* Petits widgets tableau de bord (small-box) : on adoucit les aplats */
+.small-box {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+.small-box:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.small-box.bg-info { background: var(--info-500) !important; }
+.small-box.bg-success { background: var(--success-500) !important; }
+.small-box.bg-warning { background: var(--warning-500) !important; }
+.small-box.bg-danger { background: var(--danger-500) !important; }
+
+/* ===============================================================
+   BOUTONS
+================================================================ */
+.btn {
+  border-radius: var(--radius-sm);
+  padding: .5rem 1.1rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+  box-shadow: none;
+}
+
+.btn:focus, .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(91, 107, 147, 0.25);
+}
+
+.btn:disabled, .btn.disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-lg { padding: .7rem 1.4rem; border-radius: var(--radius-md); }
+.btn-sm { padding: .32rem .75rem; border-radius: var(--radius-sm); font-size: .82rem; }
+
+.btn-primary {
+  background: var(--brand-500);
+  border-color: var(--brand-500);
+}
+.btn-primary:hover, .btn-primary:not(:disabled):active {
+  background: var(--brand-600) !important;
+  border-color: var(--brand-600) !important;
+  transform: translateY(-1px);
+}
+
+.btn-success { background: var(--success-500); border-color: var(--success-500); }
+.btn-success:hover { background: #4d9077 !important; border-color: #4d9077 !important; transform: translateY(-1px); }
+
+.btn-warning { background: var(--warning-500); border-color: var(--warning-500); color: #fff; }
+.btn-warning:hover { background: #c4913a !important; border-color: #c4913a !important; color: #fff; transform: translateY(-1px); }
+
+.btn-danger { background: var(--danger-500); border-color: var(--danger-500); }
+.btn-danger:hover { background: #b25858 !important; border-color: #b25858 !important; transform: translateY(-1px); }
+
+.btn-info { background: var(--info-500); border-color: var(--info-500); }
+.btn-info:hover { background: #4b7ba3 !important; border-color: #4b7ba3 !important; transform: translateY(-1px); }
+
+.btn-outline-primary { color: var(--brand-600); border-color: var(--brand-500); }
+.btn-outline-primary:hover { background: var(--brand-500); border-color: var(--brand-500); transform: translateY(-1px); }
+
+.btn-outline-success { color: #2f5d49; border-color: var(--success-500); }
+.btn-outline-success:hover { background: var(--success-500); border-color: var(--success-500); transform: translateY(-1px); }
+
+.btn-outline-warning { color: #7a5a1e; border-color: var(--warning-500); }
+.btn-outline-warning:hover { background: var(--warning-500); border-color: var(--warning-500); color: #fff; transform: translateY(-1px); }
+
+.btn-outline-info { color: #2f5270; border-color: var(--info-500); }
+.btn-outline-info:hover { background: var(--info-500); border-color: var(--info-500); transform: translateY(-1px); }
+
+.btn-outline-secondary { color: var(--text-body); border-color: var(--border-color-strong); }
+.btn-outline-secondary:hover { background: var(--secondary-100); border-color: var(--secondary-500); color: var(--text-heading); transform: translateY(-1px); }
+
+/* ===============================================================
+   OPTION PILLS (radios/checkbox stylisés)
+================================================================ */
+.option-row {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+}
+
+.option-item input[type="radio"],
+.option-item input[type="checkbox"] {
+  margin: 0;
+  margin-right: .6rem;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.option-pill {
+  min-width: 16ch;
+  padding: .55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-color-strong);
+  background: var(--bg-card);
+  color: var(--text-body);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.option-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.option-pill.btn-selected,
+.option-item input:checked + .option-pill {
+  background: var(--brand-500);
+  color: #ffffff;
+  border-color: var(--brand-500);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.option-pill i { font-size: .95rem; opacity: .9; }
+
+@media (max-width: 576px) {
+  .option-row { flex-direction: column; gap: 1rem; align-items: center; }
+}
+
+/* ===============================================================
+   FORMULAIRES
+================================================================ */
+label {
+  font-weight: 600;
+  color: var(--text-heading);
+  font-size: .9rem;
+  margin-bottom: .4rem;
+}
+
+.form-control {
+  border: 1px solid var(--border-color-strong);
+  border-radius: var(--radius-sm);
+  padding: .55rem .85rem;
+  color: var(--text-body);
+  background: var(--bg-card);
+  transition: var(--transition-fast);
+}
+
+.form-control::placeholder { color: var(--text-muted); }
+
+.form-control:focus {
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 3px rgba(91, 107, 147, 0.15);
+}
+
+.form-control:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled {
+  background-color: var(--bg-muted) !important;
+  color: var(--text-muted) !important;
+  border-color: var(--border-color) !important;
+  cursor: not-allowed;
+  opacity: .65;
+}
+
+.input-group-text {
+  background: var(--bg-muted);
+  border: 1px solid var(--border-color-strong);
+  color: var(--text-muted);
+}
+
+.is-invalid, .form-control.is-invalid {
+  border-color: var(--danger-500);
+}
+.invalid-feedback { color: var(--danger-500); }
+
+/* ===============================================================
+   TABLEAUX / DATATABLES
+================================================================ */
+.table {
+  color: var(--text-body);
+}
+
+.table thead th {
+  background: var(--bg-muted);
+  color: var(--text-heading);
+  font-weight: 600;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.table td, .table th {
+  padding: .75rem 1rem;
+  vertical-align: middle;
+  border-color: var(--border-color);
+}
+
+.table-hover tbody tr {
+  transition: var(--transition-fast);
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--brand-50);
+}
+
+.table-bordered td, .table-bordered th {
+  border: 1px solid var(--border-color);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: var(--bg-muted);
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+  border: 1px solid var(--border-color-strong);
+  border-radius: var(--radius-sm);
+  padding: .35rem .6rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: var(--radius-sm) !important;
+  margin: 0 2px;
+  border: 1px solid transparent !important;
+  transition: var(--transition-fast);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: var(--brand-500) !important;
+  border-color: var(--brand-500) !important;
+  color: #ffffff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current) {
+  background: var(--brand-100) !important;
+  color: var(--brand-700) !important;
+}
+
+/* ===============================================================
+   BADGES
+================================================================ */
+.badge {
+  font-weight: 600;
+  padding: .38em .65em;
+  border-radius: var(--radius-sm);
+}
+
+.badge-success { background: var(--success-100); color: #2f5d49; }
+.badge-warning { background: var(--warning-100); color: #7a5a1e; }
+.badge-danger  { background: var(--danger-100); color: #7a3a3a; }
+.badge-info    { background: var(--info-100); color: #2f5270; }
+.badge-secondary { background: var(--secondary-100); color: #4a5468; }
+
+/* ===============================================================
+   MODALS
+================================================================ */
+.modal-content {
+  background: var(--bg-card);
+  color: var(--text-body);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.modal-header {
+  background: var(--brand-100) !important;
+  color: var(--brand-700) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header.bg-gradient-info {
+  background: var(--brand-100) !important;
+  color: var(--brand-700) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-muted);
+}
+
+/* ===============================================================
+   SPINNER OVERLAY (structure reprise du footer, esthétique douce)
+================================================================ */
+#overlay-spinner {
+  background: rgba(247, 248, 250, 0.92) !important;
+}
+
+#overlay-spinner .spinner-border {
+  color: var(--brand-500) !important;
+}
+
+#overlay-spinner-text {
+  color: var(--text-heading) !important;
+  font-weight: 500;
+}
+
+/* ===============================================================
+   RESPONSIVE
+================================================================ */
+@media (max-width: 768px) {
+  .content-wrapper { padding: 1rem; }
+  .card-body { padding: 1rem; }
+}

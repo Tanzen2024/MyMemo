@@ -1,0 +1,497 @@
+DEBUG - 2026-08-20 05:47:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:47:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:47:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:47:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:47:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:50:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:50:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:50:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:51:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:51:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 05:51:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 07:55:32 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 07:55:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 07:55:41 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 07:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:55:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:56:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 07:56:03 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 07:56:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:58:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:58:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:58:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:58:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:58:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 07:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:00:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 08:00:00 --> CSRF token verified.
+DEBUG - 2026-08-20 08:00:00 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 08:00:00 --> NLS error: La configuration Oracle ne définit ni DSN ni paire hostname/database.
+ERROR - 2026-08-20 08:00:00 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 08:00:00 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 08:00:00 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 08:00:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:00:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:00:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:00:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:01:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 08:01:29 --> CSRF token verified.
+DEBUG - 2026-08-20 08:01:29 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 08:01:29 --> NLS error: La configuration Oracle ne définit ni DSN ni paire hostname/database.
+ERROR - 2026-08-20 08:01:29 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 08:01:29 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 08:01:29 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 08:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:05:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 08:05:58 --> CSRF token verified.
+DEBUG - 2026-08-20 08:05:58 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 08:05:58 --> NLS error: La configuration Oracle ne définit ni DSN ni paire hostname/database.
+ERROR - 2026-08-20 08:05:58 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 08:05:58 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 08:05:58 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 08:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:07:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:07:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:07:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:07:36 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:07:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:07:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:07:55 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:07:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:08:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:08:25 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:08:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:09:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:10:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 08:10:55 --> CSRF token verified.
+DEBUG - 2026-08-20 08:10:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:11:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:11:33 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:11:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:11:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:11:45 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:11:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:12:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:12:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:12:18 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:12:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:13:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 08:13:25 --> CSRF token verified.
+DEBUG - 2026-08-20 08:13:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:13:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:29:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:30:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 08:30:15 --> CSRF token verified.
+DEBUG - 2026-08-20 08:30:15 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 08:30:15 --> NLS error: La configuration Oracle ne définit ni DSN ni paire hostname/database.
+ERROR - 2026-08-20 08:30:15 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 08:30:15 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 08:30:15 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 08:30:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:55:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:55:46 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:55:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:56:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:56:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 08:56:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 08:56:42 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 08:56:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:03:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:03:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:04:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:04:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:05:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:13:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:18:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:19:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-08-20 09:19:17 --> LDAP bind failed (code 49): Invalid credentials
+DEBUG - 2026-08-20 09:19:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:19:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:19:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:20:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:22:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:22:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 09:22:51 --> CSRF token verified.
+DEBUG - 2026-08-20 09:22:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:26:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:26:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:26:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:26:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:28:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:33:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:33:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:36:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:36:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:36:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:36:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:36:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:36:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:37:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:37:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:39:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:40:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:40:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:41:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:41:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:41:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:41:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:41:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:45:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 09:45:50 --> CSRF token verified.
+DEBUG - 2026-08-20 09:45:50 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 09:46:09 --> Error connecting to the database: ErrorException: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/ in /var/www/MyMemo/system/Database/OCI8/Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/MyMemo/system/Database/OCI8/Connection.php(150): oci_connect()
+#2 /var/www/MyMemo/system/Database/BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect()
+#3 /var/www/MyMemo/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/MyMemo/app/Services/OracleService.php(285): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/MyMemo/app/Controllers/MemoryController.php(125): App\Services\OracleService->setNumericCharacters()
+#6 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-08-20 09:46:09 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/
+ERROR - 2026-08-20 09:46:09 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 09:46:09 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 09:46:09 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 09:46:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:46:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 09:46:16 --> CSRF token verified.
+DEBUG - 2026-08-20 09:46:16 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 09:46:30 --> Error connecting to the database: ErrorException: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/ in /var/www/MyMemo/system/Database/OCI8/Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/MyMemo/system/Database/OCI8/Connection.php(150): oci_connect()
+#2 /var/www/MyMemo/system/Database/BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect()
+#3 /var/www/MyMemo/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/MyMemo/app/Services/OracleService.php(285): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/MyMemo/app/Controllers/MemoryController.php(125): App\Services\OracleService->setNumericCharacters()
+#6 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-08-20 09:46:30 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/
+ERROR - 2026-08-20 09:46:30 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 09:46:30 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 09:46:30 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 09:46:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:52:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 09:56:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-20 09:56:24 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: prepaid]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(479): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(58): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-08-20 09:56:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-20 09:56:34 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: prepaid]
+in SYSTEMPATH/Security/Security.php on line 262.
+ 1 SYSTEMPATH/Security/Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH/Filters/CSRF.php(52): CodeIgniter\Security\Security->verify()
+ 3 SYSTEMPATH/Filters/Filters.php(241): CodeIgniter\Filters\CSRF->before()
+ 4 SYSTEMPATH/Filters/Filters.php(221): CodeIgniter\Filters\Filters->runBefore()
+ 5 SYSTEMPATH/CodeIgniter.php(479): CodeIgniter\Filters\Filters->run()
+ 6 SYSTEMPATH/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+ 7 SYSTEMPATH/Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 9 FCPATH/index.php(58): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-08-20 10:00:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:02:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:02:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:03:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:07:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:11:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:11:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:11:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:11:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:12:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:13:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 10:13:15 --> CSRF token verified.
+DEBUG - 2026-08-20 10:13:15 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 10:14:06 --> Error connecting to the database: ErrorException: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/ in /var/www/MyMemo/system/Database/OCI8/Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/MyMemo/system/Database/OCI8/Connection.php(150): oci_connect()
+#2 /var/www/MyMemo/system/Database/BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect()
+#3 /var/www/MyMemo/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/MyMemo/app/Services/OracleService.php(285): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/MyMemo/app/Controllers/MemoryController.php(125): App\Services\OracleService->setNumericCharacters()
+#6 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-08-20 10:14:06 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/
+ERROR - 2026-08-20 10:14:06 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 10:14:06 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 10:14:06 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 10:14:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:18:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:18:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:21:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:22:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:32:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:32:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:32:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:33:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:33:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:33:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:33:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:34:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:35:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 10:35:19 --> CSRF token verified.
+DEBUG - 2026-08-20 10:35:19 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 10:35:53 --> Error connecting to the database: ErrorException: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/ in /var/www/MyMemo/system/Database/OCI8/Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/MyMemo/system/Database/OCI8/Connection.php(150): oci_connect()
+#2 /var/www/MyMemo/system/Database/BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect()
+#3 /var/www/MyMemo/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/MyMemo/app/Services/OracleService.php(285): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/MyMemo/app/Controllers/MemoryController.php(125): App\Services\OracleService->setNumericCharacters()
+#6 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-08-20 10:35:53 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/
+ERROR - 2026-08-20 10:35:53 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 10:35:53 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 10:35:53 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 10:35:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 10:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 11:21:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 11:21:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 11:21:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 11:21:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 11:22:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:37:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:38:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 12:38:48 --> CSRF token verified.
+DEBUG - 2026-08-20 12:38:48 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 12:39:22 --> Error connecting to the database: ErrorException: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/ in /var/www/MyMemo/system/Database/OCI8/Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/MyMemo/system/Database/OCI8/Connection.php(150): oci_connect()
+#2 /var/www/MyMemo/system/Database/BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect()
+#3 /var/www/MyMemo/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/MyMemo/app/Services/OracleService.php(285): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/MyMemo/app/Controllers/MemoryController.php(125): App\Services\OracleService->setNumericCharacters()
+#6 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-08-20 12:39:22 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/
+ERROR - 2026-08-20 12:39:22 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 12:39:22 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 12:39:22 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 12:39:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 12:40:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 12:40:08 --> CSRF token verified.
+DEBUG - 2026-08-20 12:40:08 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 12:40:30 --> Error connecting to the database: ErrorException: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/ in /var/www/MyMemo/system/Database/OCI8/Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/MyMemo/system/Database/OCI8/Connection.php(150): oci_connect()
+#2 /var/www/MyMemo/system/Database/BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect()
+#3 /var/www/MyMemo/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/MyMemo/app/Services/OracleService.php(285): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/MyMemo/app/Controllers/MemoryController.php(125): App\Services\OracleService->setNumericCharacters()
+#6 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-08-20 12:40:30 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/
+ERROR - 2026-08-20 12:40:30 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 12:40:30 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 12:40:30 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 12:40:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 13:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 13:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 13:38:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 13:38:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 13:38:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-20 13:38:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-08-20 13:38:51 --> CSRF token verified.
+DEBUG - 2026-08-20 13:38:51 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+ERROR - 2026-08-20 13:39:41 --> Error connecting to the database: ErrorException: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/ in /var/www/MyMemo/system/Database/OCI8/Connection.php:150
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler()
+#1 /var/www/MyMemo/system/Database/OCI8/Connection.php(150): oci_connect()
+#2 /var/www/MyMemo/system/Database/BaseConnection.php(419): CodeIgniter\Database\OCI8\Connection->connect()
+#3 /var/www/MyMemo/system/Database/BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#4 /var/www/MyMemo/app/Services/OracleService.php(285): CodeIgniter\Database\BaseConnection->query()
+#5 /var/www/MyMemo/app/Controllers/MemoryController.php(125): App\Services\OracleService->setNumericCharacters()
+#6 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#7 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#8 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#9 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#11 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#12 {main}
+ERROR - 2026-08-20 13:39:41 --> NLS error: Unable to connect to the database.
+Main connection [OCI8]: oci_connect(): ORA-12154: Cannot connect to database. Cannot find alias cmsprod in /opt/oracle/instantclient_23_26/network/admin/tnsnames.ora.
+Help: https://docs.oracle.com/error-help/db/ora-12154/
+ERROR - 2026-08-20 13:39:41 --> Impossible de définir NLS_NUMERIC_CHARACTERS pour cette session.
+ERROR - 2026-08-20 13:39:41 --> MEMORY_GENERATION_FAILED : ORA-00000 Impossible d'initialiser la session Oracle.
+ERROR - 2026-08-20 13:39:41 --> Trace de l'exception : #0 /var/www/MyMemo/system/CodeIgniter.php(933): App\Controllers\MemoryController->importAndExport()
+#1 /var/www/MyMemo/system/CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController()
+#2 /var/www/MyMemo/system/CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest()
+#3 /var/www/MyMemo/system/Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 /var/www/MyMemo/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#5 /var/www/MyMemo/public/index.php(58): CodeIgniter\Boot::bootWeb()
+#6 {main}
+DEBUG - 2026-08-20 13:39:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -1,0 +1,967 @@
+DEBUG - 2026-09-28 11:58:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-28 11:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-28 11:59:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-28 11:59:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-28 11:59:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-09-28 12:00:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:00:30 --> CSRF token verified.
+DEBUG - 2026-09-28 12:00:30 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:00:30 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:00:30 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:00:30 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:00:30 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:00:30 --> === START TRUNCATE truncate_6aba56de875087.76939987 ===
+DEBUG - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":64}
+INFO - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":66.9}
+INFO - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":99.5}
+INFO - 2026-09-28 12:00:30 --> {"trace_id":"truncate_6aba56de875087.76939987","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":231.1}
+INFO - 2026-09-28 12:00:30 --> === END TRUNCATE truncate_6aba56de875087.76939987 ===
+INFO - 2026-09-28 12:00:30 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=php6wLeio
+INFO - 2026-09-28 12:00:30 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.06s : 57 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:00:30 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM CS","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":57,"skipped":0,"duplicates":0,"message":"57 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:00:30 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:00:30 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:00:30 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:00:30 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:00:30 --> Type général : contrat
+INFO - 2026-09-28 12:00:30 --> Type émission : emission
+INFO - 2026-09-28 12:00:30 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:00:30 --> Type général : contrat
+INFO - 2026-09-28 12:00:30 --> Type émission : emission
+INFO - 2026-09-28 12:00:30 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:00:31 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:00:54 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:00:54 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:00:54 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:00:54 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:00:54 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:00:55 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:00:55 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:00:55 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120055.xlsx
+DEBUG - 2026-09-28 12:00:55 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:00:55 --> Totaux page 1 => HT: 7935947 | TVA: 1527670 | TTC: 9463617
+DEBUG - 2026-09-28 12:00:55 --> Insertion footer à partir de ligne 45
+DEBUG - 2026-09-28 12:00:55 --> Footer[0] ligne 45 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:00:55 --> Footer[1] ligne 46 (fond vert)
+DEBUG - 2026-09-28 12:00:55 --> Footer[2] ligne 47 (italic bleu)
+DEBUG - 2026-09-28 12:00:55 --> Footer[3] ENERGIZING à M48:O48
+DEBUG - 2026-09-28 12:00:55 --> Footer[4] Pagination ligne 49 | Page 1/3
+DEBUG - 2026-09-28 12:00:55 --> Signature bloc de M42 à O47
+DEBUG - 2026-09-28 12:00:55 --> Ajout saut de page après ligne 50
+DEBUG - 2026-09-28 12:00:55 --> Insertion données page 2 et ligne 64
+DEBUG - 2026-09-28 12:00:55 --> Totaux page 2 => HT: 7436507 | TVA: 1431528 | TTC: 8868035
+DEBUG - 2026-09-28 12:00:55 --> Insertion footer à partir de ligne 96
+DEBUG - 2026-09-28 12:00:55 --> Footer[0] ligne 96 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:00:55 --> Footer[1] ligne 97 (fond vert)
+DEBUG - 2026-09-28 12:00:55 --> Footer[2] ligne 98 (italic bleu)
+DEBUG - 2026-09-28 12:00:55 --> Footer[3] ENERGIZING à M99:O99
+DEBUG - 2026-09-28 12:00:55 --> Footer[4] Pagination ligne 100 | Page 2/3
+DEBUG - 2026-09-28 12:00:55 --> Signature bloc de M93 à O98
+DEBUG - 2026-09-28 12:00:55 --> Ajout saut de page après ligne 101
+DEBUG - 2026-09-28 12:00:55 --> Insertion données page 3 et ligne 115
+DEBUG - 2026-09-28 12:00:55 --> Totaux page 3 => HT: 199364 | TVA: 38378 | TTC: 237742
+DEBUG - 2026-09-28 12:00:55 --> ==============================
+DEBUG - 2026-09-28 12:00:55 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:00:55 --> HT  = 15571818
+DEBUG - 2026-09-28 12:00:55 --> TVA = 2997576
+DEBUG - 2026-09-28 12:00:55 --> TTC = 18569394
+DEBUG - 2026-09-28 12:00:55 --> DUE = 18568392
+DEBUG - 2026-09-28 12:00:55 --> ==============================
+DEBUG - 2026-09-28 12:00:55 --> Insertion footer à partir de ligne 122
+DEBUG - 2026-09-28 12:00:55 --> Footer[0] ligne 122 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:00:55 --> Footer[1] ligne 123 (fond vert)
+DEBUG - 2026-09-28 12:00:55 --> Footer[2] ligne 124 (italic bleu)
+DEBUG - 2026-09-28 12:00:55 --> Footer[3] ENERGIZING à M125:O125
+DEBUG - 2026-09-28 12:00:55 --> Footer[4] Pagination ligne 126 | Page 3/3
+DEBUG - 2026-09-28 12:00:55 --> Signature bloc de M119 à O124
+DEBUG - 2026-09-28 12:00:55 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120055.xlsx
+DEBUG - 2026-09-28 12:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:01:10 --> CSRF token verified.
+DEBUG - 2026-09-28 12:01:10 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:01:11 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:01:11 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:01:11 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:01:11 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:01:11 --> === START TRUNCATE truncate_6aba57070ac602.94638504 ===
+DEBUG - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":41.4}
+INFO - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":28.8}
+INFO - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":44.699999999999996}
+INFO - 2026-09-28 12:01:11 --> {"trace_id":"truncate_6aba57070ac602.94638504","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":115.6}
+INFO - 2026-09-28 12:01:11 --> === END TRUNCATE truncate_6aba57070ac602.94638504 ===
+INFO - 2026-09-28 12:01:11 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=phpQZkBe2
+INFO - 2026-09-28 12:01:11 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.01s : 57 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:01:11 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM CS","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":57,"skipped":0,"duplicates":0,"message":"57 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:01:11 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:01:11 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:01:11 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:01:11 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:01:11 --> Type général : contrat
+INFO - 2026-09-28 12:01:11 --> Type émission : emission
+INFO - 2026-09-28 12:01:11 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:01:11 --> Type général : contrat
+INFO - 2026-09-28 12:01:11 --> Type émission : emission
+INFO - 2026-09-28 12:01:11 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:01:11 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:01:36 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:01:36 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:01:36 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:01:36 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:01:36 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:01:36 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:01:36 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:01:36 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120136.xlsx
+DEBUG - 2026-09-28 12:01:36 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:01:36 --> Totaux page 1 => HT: 7548700 | TVA: 1453126 | TTC: 9001826
+DEBUG - 2026-09-28 12:01:36 --> Insertion footer à partir de ligne 45
+DEBUG - 2026-09-28 12:01:36 --> Footer[0] ligne 45 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:01:36 --> Footer[1] ligne 46 (fond vert)
+DEBUG - 2026-09-28 12:01:36 --> Footer[2] ligne 47 (italic bleu)
+DEBUG - 2026-09-28 12:01:36 --> Footer[3] ENERGIZING à M48:O48
+DEBUG - 2026-09-28 12:01:36 --> Footer[4] Pagination ligne 49 | Page 1/3
+DEBUG - 2026-09-28 12:01:36 --> Signature bloc de M42 à O47
+DEBUG - 2026-09-28 12:01:36 --> Ajout saut de page après ligne 50
+DEBUG - 2026-09-28 12:01:36 --> Insertion données page 2 et ligne 64
+DEBUG - 2026-09-28 12:01:36 --> Totaux page 2 => HT: 7331366 | TVA: 1411288 | TTC: 8742654
+DEBUG - 2026-09-28 12:01:36 --> Insertion footer à partir de ligne 96
+DEBUG - 2026-09-28 12:01:36 --> Footer[0] ligne 96 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:01:36 --> Footer[1] ligne 97 (fond vert)
+DEBUG - 2026-09-28 12:01:36 --> Footer[2] ligne 98 (italic bleu)
+DEBUG - 2026-09-28 12:01:36 --> Footer[3] ENERGIZING à M99:O99
+DEBUG - 2026-09-28 12:01:36 --> Footer[4] Pagination ligne 100 | Page 2/3
+DEBUG - 2026-09-28 12:01:36 --> Signature bloc de M93 à O98
+DEBUG - 2026-09-28 12:01:36 --> Ajout saut de page après ligne 101
+DEBUG - 2026-09-28 12:01:36 --> Insertion données page 3 et ligne 115
+DEBUG - 2026-09-28 12:01:36 --> Totaux page 3 => HT: 691752 | TVA: 133162 | TTC: 824914
+DEBUG - 2026-09-28 12:01:36 --> ==============================
+DEBUG - 2026-09-28 12:01:36 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:01:36 --> HT  = 15571818
+DEBUG - 2026-09-28 12:01:36 --> TVA = 2997576
+DEBUG - 2026-09-28 12:01:36 --> TTC = 18569394
+DEBUG - 2026-09-28 12:01:36 --> DUE = 18568392
+DEBUG - 2026-09-28 12:01:36 --> ==============================
+DEBUG - 2026-09-28 12:01:36 --> Insertion footer à partir de ligne 122
+DEBUG - 2026-09-28 12:01:36 --> Footer[0] ligne 122 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:01:36 --> Footer[1] ligne 123 (fond vert)
+DEBUG - 2026-09-28 12:01:36 --> Footer[2] ligne 124 (italic bleu)
+DEBUG - 2026-09-28 12:01:36 --> Footer[3] ENERGIZING à M125:O125
+DEBUG - 2026-09-28 12:01:36 --> Footer[4] Pagination ligne 126 | Page 3/3
+DEBUG - 2026-09-28 12:01:36 --> Signature bloc de M119 à O124
+DEBUG - 2026-09-28 12:01:36 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120136.xlsx
+DEBUG - 2026-09-28 12:04:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:04:32 --> CSRF token verified.
+DEBUG - 2026-09-28 12:04:32 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:04:32 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:04:32 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:04:32 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:04:32 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:04:32 --> === START TRUNCATE truncate_6aba57d030bb85.44489616 ===
+DEBUG - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":40.5}
+INFO - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":38.9}
+INFO - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":35.1}
+INFO - 2026-09-28 12:04:32 --> {"trace_id":"truncate_6aba57d030bb85.44489616","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":115.6}
+INFO - 2026-09-28 12:04:32 --> === END TRUNCATE truncate_6aba57d030bb85.44489616 ===
+INFO - 2026-09-28 12:04:32 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=phpp8EGc7
+INFO - 2026-09-28 12:04:32 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.01s : 10 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:04:32 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM CS","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":10,"skipped":0,"duplicates":0,"message":"10 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:04:32 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:04:32 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:04:32 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:04:32 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:04:32 --> Type général : contrat
+INFO - 2026-09-28 12:04:32 --> Type émission : emission
+INFO - 2026-09-28 12:04:32 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:04:32 --> Type général : contrat
+INFO - 2026-09-28 12:04:32 --> Type émission : emission
+INFO - 2026-09-28 12:04:32 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:04:32 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:04:44 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:04:44 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:04:44 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:04:44 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:04:44 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:04:44 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:04:44 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:04:44 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120444.xlsx
+DEBUG - 2026-09-28 12:04:44 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:04:44 --> Totaux page 1 => HT: 1889209 | TVA: 363673 | TTC: 2252882
+DEBUG - 2026-09-28 12:04:44 --> ==============================
+DEBUG - 2026-09-28 12:04:44 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:04:44 --> HT  = 1889209
+DEBUG - 2026-09-28 12:04:44 --> TVA = 363673
+DEBUG - 2026-09-28 12:04:44 --> TTC = 2252882
+DEBUG - 2026-09-28 12:04:44 --> DUE = 2252882
+DEBUG - 2026-09-28 12:04:44 --> ==============================
+DEBUG - 2026-09-28 12:04:44 --> Insertion footer à partir de ligne 29
+DEBUG - 2026-09-28 12:04:44 --> Footer[0] ligne 29 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:04:44 --> Footer[1] ligne 30 (fond vert)
+DEBUG - 2026-09-28 12:04:44 --> Footer[2] ligne 31 (italic bleu)
+DEBUG - 2026-09-28 12:04:44 --> Footer[3] ENERGIZING à M32:O32
+DEBUG - 2026-09-28 12:04:44 --> Footer[4] Pagination ligne 33 | Page 1/1
+DEBUG - 2026-09-28 12:04:44 --> Signature bloc de M26 à O31
+DEBUG - 2026-09-28 12:04:44 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120444.xlsx
+DEBUG - 2026-09-28 12:05:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:05:08 --> CSRF token verified.
+DEBUG - 2026-09-28 12:05:08 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:05:08 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:05:08 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:05:08 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:05:08 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:05:08 --> === START TRUNCATE truncate_6aba57f4b480b6.81984525 ===
+DEBUG - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":39.1}
+INFO - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":34.1}
+INFO - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":32.4}
+INFO - 2026-09-28 12:05:08 --> {"trace_id":"truncate_6aba57f4b480b6.81984525","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":106.30000000000001}
+INFO - 2026-09-28 12:05:08 --> === END TRUNCATE truncate_6aba57f4b480b6.81984525 ===
+INFO - 2026-09-28 12:05:08 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=phpFkSnko
+INFO - 2026-09-28 12:05:08 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.01s : 10 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:05:08 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM CS","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":10,"skipped":0,"duplicates":0,"message":"10 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:05:08 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:05:08 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM CS","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:05:08 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:05:08 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:05:08 --> Type général : contrat
+INFO - 2026-09-28 12:05:08 --> Type émission : emission
+INFO - 2026-09-28 12:05:08 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:05:08 --> Type général : contrat
+INFO - 2026-09-28 12:05:08 --> Type émission : emission
+INFO - 2026-09-28 12:05:08 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:05:09 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:05:19 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:05:19 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:05:19 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:05:19 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:05:19 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:05:19 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:05:19 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:05:19 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120519.xlsx
+DEBUG - 2026-09-28 12:05:19 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:05:19 --> Totaux page 1 => HT: 1889209 | TVA: 363673 | TTC: 2252882
+DEBUG - 2026-09-28 12:05:19 --> ==============================
+DEBUG - 2026-09-28 12:05:19 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:05:19 --> HT  = 1889209
+DEBUG - 2026-09-28 12:05:19 --> TVA = 363673
+DEBUG - 2026-09-28 12:05:19 --> TTC = 2252882
+DEBUG - 2026-09-28 12:05:19 --> DUE = 2252882
+DEBUG - 2026-09-28 12:05:19 --> ==============================
+DEBUG - 2026-09-28 12:05:19 --> Insertion footer à partir de ligne 29
+DEBUG - 2026-09-28 12:05:19 --> Footer[0] ligne 29 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:05:19 --> Footer[1] ligne 30 (fond vert)
+DEBUG - 2026-09-28 12:05:19 --> Footer[2] ligne 31 (italic bleu)
+DEBUG - 2026-09-28 12:05:19 --> Footer[3] ENERGIZING à M32:O32
+DEBUG - 2026-09-28 12:05:19 --> Footer[4] Pagination ligne 33 | Page 1/1
+DEBUG - 2026-09-28 12:05:19 --> Signature bloc de M26 à O31
+DEBUG - 2026-09-28 12:05:19 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_CS_20260928_120519.xlsx
+DEBUG - 2026-09-28 12:08:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:08:15 --> CSRF token verified.
+DEBUG - 2026-09-28 12:08:15 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:08:15 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:08:15 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:08:15 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:08:15 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:08:15 --> === START TRUNCATE truncate_6aba58af5f40f1.13535837 ===
+DEBUG - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":44.1}
+INFO - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":69.2}
+INFO - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":89.30000000000001}
+INFO - 2026-09-28 12:08:15 --> {"trace_id":"truncate_6aba58af5f40f1.13535837","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":203.5}
+INFO - 2026-09-28 12:08:15 --> === END TRUNCATE truncate_6aba58af5f40f1.13535837 ===
+INFO - 2026-09-28 12:08:15 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=phplAUnsY
+INFO - 2026-09-28 12:08:15 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.01s : 10 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:08:15 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM EST","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":10,"skipped":0,"duplicates":0,"message":"10 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:08:15 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM EST","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:08:15 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM EST","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:08:15 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:08:15 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:08:15 --> Type général : contrat
+INFO - 2026-09-28 12:08:15 --> Type émission : emission
+INFO - 2026-09-28 12:08:15 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:08:15 --> Type général : contrat
+INFO - 2026-09-28 12:08:15 --> Type émission : emission
+INFO - 2026-09-28 12:08:15 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:08:16 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:08:27 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:08:27 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:08:27 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:08:27 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:08:27 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:08:27 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:08:27 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:08:27 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_EST_20260928_120827.xlsx
+DEBUG - 2026-09-28 12:08:27 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:08:27 --> Totaux page 1 => HT: 1228259 | TVA: 236439 | TTC: 1464698
+DEBUG - 2026-09-28 12:08:27 --> ==============================
+DEBUG - 2026-09-28 12:08:27 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:08:27 --> HT  = 1228259
+DEBUG - 2026-09-28 12:08:27 --> TVA = 236439
+DEBUG - 2026-09-28 12:08:27 --> TTC = 1464698
+DEBUG - 2026-09-28 12:08:27 --> DUE = 1464698
+DEBUG - 2026-09-28 12:08:27 --> ==============================
+DEBUG - 2026-09-28 12:08:27 --> Insertion footer à partir de ligne 29
+DEBUG - 2026-09-28 12:08:27 --> Footer[0] ligne 29 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:08:27 --> Footer[1] ligne 30 (fond vert)
+DEBUG - 2026-09-28 12:08:27 --> Footer[2] ligne 31 (italic bleu)
+DEBUG - 2026-09-28 12:08:27 --> Footer[3] ENERGIZING à M32:O32
+DEBUG - 2026-09-28 12:08:27 --> Footer[4] Pagination ligne 33 | Page 1/1
+DEBUG - 2026-09-28 12:08:27 --> Signature bloc de M26 à O31
+DEBUG - 2026-09-28 12:08:27 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_EST_20260928_120827.xlsx
+DEBUG - 2026-09-28 12:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:10:54 --> CSRF token verified.
+DEBUG - 2026-09-28 12:10:54 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:10:54 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:10:54 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:10:54 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:10:54 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:10:54 --> === START TRUNCATE truncate_6aba594e7610a7.50298903 ===
+DEBUG - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":45.8}
+INFO - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":49.099999999999994}
+INFO - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":49.9}
+INFO - 2026-09-28 12:10:54 --> {"trace_id":"truncate_6aba594e7610a7.50298903","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":145.5}
+INFO - 2026-09-28 12:10:54 --> === END TRUNCATE truncate_6aba594e7610a7.50298903 ===
+INFO - 2026-09-28 12:10:54 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=php6tUMFg
+INFO - 2026-09-28 12:10:54 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.02s : 55 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:10:54 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM LSO","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":55,"skipped":0,"duplicates":0,"message":"55 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:10:54 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM LSO","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:10:54 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM LSO","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:10:54 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:10:54 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:10:54 --> Type général : contrat
+INFO - 2026-09-28 12:10:54 --> Type émission : emission
+INFO - 2026-09-28 12:10:54 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:10:54 --> Type général : contrat
+INFO - 2026-09-28 12:10:54 --> Type émission : emission
+INFO - 2026-09-28 12:10:54 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:10:55 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:11:11 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:11:11 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:11:11 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:11:11 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:11:11 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:11:11 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:11:11 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:11:11 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_LSO_20260928_121111.xlsx
+DEBUG - 2026-09-28 12:11:11 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:11:11 --> Totaux page 1 => HT: 8792628 | TVA: 1692581 | TTC: 10485209
+DEBUG - 2026-09-28 12:11:11 --> Insertion footer à partir de ligne 45
+DEBUG - 2026-09-28 12:11:11 --> Footer[0] ligne 45 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:11:11 --> Footer[1] ligne 46 (fond vert)
+DEBUG - 2026-09-28 12:11:11 --> Footer[2] ligne 47 (italic bleu)
+DEBUG - 2026-09-28 12:11:11 --> Footer[3] ENERGIZING à M48:O48
+DEBUG - 2026-09-28 12:11:11 --> Footer[4] Pagination ligne 49 | Page 1/2
+DEBUG - 2026-09-28 12:11:11 --> Signature bloc de M42 à O47
+DEBUG - 2026-09-28 12:11:11 --> Ajout saut de page après ligne 50
+DEBUG - 2026-09-28 12:11:11 --> Insertion données page 2 et ligne 64
+DEBUG - 2026-09-28 12:11:11 --> Totaux page 2 => HT: 7863726 | TVA: 1513766 | TTC: 9377492
+DEBUG - 2026-09-28 12:11:11 --> ==============================
+DEBUG - 2026-09-28 12:11:11 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:11:11 --> HT  = 16656354
+DEBUG - 2026-09-28 12:11:11 --> TVA = 3206347
+DEBUG - 2026-09-28 12:11:11 --> TTC = 19862701
+DEBUG - 2026-09-28 12:11:11 --> DUE = 19862701
+DEBUG - 2026-09-28 12:11:11 --> ==============================
+DEBUG - 2026-09-28 12:11:11 --> Insertion footer à partir de ligne 97
+DEBUG - 2026-09-28 12:11:11 --> Footer[0] ligne 97 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:11:11 --> Footer[1] ligne 98 (fond vert)
+DEBUG - 2026-09-28 12:11:11 --> Footer[2] ligne 99 (italic bleu)
+DEBUG - 2026-09-28 12:11:11 --> Footer[3] ENERGIZING à M100:O100
+DEBUG - 2026-09-28 12:11:11 --> Footer[4] Pagination ligne 101 | Page 2/2
+DEBUG - 2026-09-28 12:11:11 --> Signature bloc de M94 à O99
+DEBUG - 2026-09-28 12:11:11 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_LSO_20260928_121111.xlsx
+DEBUG - 2026-09-28 12:13:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:13:33 --> CSRF token verified.
+DEBUG - 2026-09-28 12:13:33 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:13:33 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:13:33 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:13:33 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:13:33 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:13:33 --> === START TRUNCATE truncate_6aba59ed9223a0.98028275 ===
+DEBUG - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":44.699999999999996}
+INFO - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":45.900000000000006}
+INFO - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":30.599999999999998}
+INFO - 2026-09-28 12:13:33 --> {"trace_id":"truncate_6aba59ed9223a0.98028275","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":121.89999999999999}
+INFO - 2026-09-28 12:13:33 --> === END TRUNCATE truncate_6aba59ed9223a0.98028275 ===
+INFO - 2026-09-28 12:13:33 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=phpE1Y7EF
+INFO - 2026-09-28 12:13:33 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.01s : 17 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:13:33 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM NEA","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":17,"skipped":0,"duplicates":0,"message":"17 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:13:33 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM NEA","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:13:33 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM NEA","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:13:33 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:13:33 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:13:33 --> Type général : contrat
+INFO - 2026-09-28 12:13:33 --> Type émission : emission
+INFO - 2026-09-28 12:13:33 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:13:33 --> Type général : contrat
+INFO - 2026-09-28 12:13:33 --> Type émission : emission
+INFO - 2026-09-28 12:13:33 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:13:34 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:13:45 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:13:45 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:13:45 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:13:45 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:13:45 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:13:45 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:13:45 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:13:45 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_NEA_20260928_121345.xlsx
+DEBUG - 2026-09-28 12:13:45 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:13:45 --> Totaux page 1 => HT: 2791988 | TVA: 536995 | TTC: 3328983
+DEBUG - 2026-09-28 12:13:45 --> ==============================
+DEBUG - 2026-09-28 12:13:45 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:13:45 --> HT  = 2791988
+DEBUG - 2026-09-28 12:13:45 --> TVA = 536995
+DEBUG - 2026-09-28 12:13:45 --> TTC = 3328983
+DEBUG - 2026-09-28 12:13:45 --> DUE = 3328983
+DEBUG - 2026-09-28 12:13:45 --> ==============================
+DEBUG - 2026-09-28 12:13:45 --> Insertion footer à partir de ligne 36
+DEBUG - 2026-09-28 12:13:45 --> Footer[0] ligne 36 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:13:45 --> Footer[1] ligne 37 (fond vert)
+DEBUG - 2026-09-28 12:13:45 --> Footer[2] ligne 38 (italic bleu)
+DEBUG - 2026-09-28 12:13:45 --> Footer[3] ENERGIZING à M39:O39
+DEBUG - 2026-09-28 12:13:45 --> Footer[4] Pagination ligne 40 | Page 1/1
+DEBUG - 2026-09-28 12:13:45 --> Signature bloc de M33 à O38
+DEBUG - 2026-09-28 12:13:45 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_NEA_20260928_121345.xlsx
+DEBUG - 2026-09-28 12:15:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-09-28 12:15:36 --> CSRF token verified.
+DEBUG - 2026-09-28 12:15:36 --> MemoryController initialisé avec les types : agents_cde_camwater_contrat, bureaux_cde_camwater_contrat, agents_globeleq_contrat, bureaux_globeleq_contrat, grands_comptes_contrat, regions_contrat, agents_cde_camwater_facture, bureaux_cde_camwater_facture, agents_globeleq_facture, bureaux_globeleq_facture, grands_comptes_facture, regions_facture, postpaid_particulier_contrat, postpaid_particulier_facture, etat_bt_contrat, etat_bt_facture, etat_mt_contrat, etat_mt_facture, prepaid_contrat, prepaid_recu
+DEBUG - 2026-09-28 12:15:36 --> Contexte en cours = postpaid_particulier, Type référentiel = postpaid_particulier_contrat
+INFO - 2026-09-28 12:15:36 --> Table à tronquer : CMSREPORT.TMP_REF_CONFACRESU
+INFO - 2026-09-28 12:15:36 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES
+INFO - 2026-09-28 12:15:36 --> Table à tronquer : CMSREPORT.TB_FACTURES_MEMOIRES_INFOS
+INFO - 2026-09-28 12:15:36 --> === START TRUNCATE truncate_6aba5a6850dea2.27340559 ===
+DEBUG - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"input_received","type":"postpaid_particulier_contrat"}
+DEBUG - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"config_loaded","available_types":["agents_cde_camwater_contrat","bureaux_cde_camwater_contrat","agents_globeleq_contrat","bureaux_globeleq_contrat","grands_comptes_contrat","regions_contrat","agents_cde_camwater_facture","bureaux_cde_camwater_facture","agents_globeleq_facture","bureaux_globeleq_facture","grands_comptes_facture","regions_facture","postpaid_particulier_contrat","postpaid_particulier_facture","etat_bt_contrat","etat_bt_facture","etat_mt_contrat","etat_mt_facture","prepaid_contrat","prepaid_recu"]}
+DEBUG - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_tables_loaded","type":"postpaid_particulier_contrat","tables":["CMSREPORT.TMP_REF_CONFACRESU","CMSREPORT.TB_FACTURES_MEMOIRES","CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"]}
+INFO - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_start","index":1,"table":"CMSREPORT.TMP_REF_CONFACRESU"}
+DEBUG - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_result","table":"CMSREPORT.TMP_REF_CONFACRESU","success":true,"time_ms":48.599999999999994}
+INFO - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_start","index":2,"table":"CMSREPORT.TB_FACTURES_MEMOIRES"}
+DEBUG - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES","success":true,"time_ms":38.3}
+INFO - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_start","index":3,"table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS"}
+DEBUG - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_result","table":"CMSREPORT.TB_FACTURES_MEMOIRES_INFOS","success":true,"time_ms":31.2}
+INFO - 2026-09-28 12:15:36 --> {"trace_id":"truncate_6aba5a6850dea2.27340559","step":"truncate_finished","type":"postpaid_particulier_contrat","success":true,"duration_ms":119.1}
+INFO - 2026-09-28 12:15:36 --> === END TRUNCATE truncate_6aba5a6850dea2.27340559 ===
+INFO - 2026-09-28 12:15:36 --> Import Excel démarré : type=postpaid_particulier_contrat, fichier=phpt8gsvz
+INFO - 2026-09-28 12:15:36 --> Import Excel terminé (type=postpaid_particulier_contrat, table=CMSREPORT.TMP_REF_CONFACRESU) en 0.01s : 27 ligne(s) importée(s), 0 rejetée(s), 0 doublon(s) ignoré(s).
+DEBUG - 2026-09-28 12:15:36 --> Import terminé : {"context":"postpaid_particulier","type":"postpaid_particulier_contrat","regroupName":"TECAM ONO","year":"2026","cycle":"8","documentTypes":["memoires"],"dateDebut":"05\/08\/2026","dateFin":"04\/09\/2026","file":{},"importStats":{"inserted":27,"skipped":0,"duplicates":0,"message":"27 ligne(s) import\u00e9e(s), 0 rejet\u00e9e(s), 0 doublon(s) ignor\u00e9(s)."}}
+DEBUG - 2026-09-28 12:15:36 --> Démarrage du processus mémoire avec les paramètres : {"year":"2026","cycle":"8","regroup":"TECAM ONO","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:15:36 --> Lancement MemorySQLFactory pour type=postpaid_particulier_contrat avec section=loading et params={"year":"2026","cycle":"8","regroup":"TECAM ONO","DEBUT":"05\/08\/2026","FIN":"04\/09\/2026"}
+DEBUG - 2026-09-28 12:15:36 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:15:36 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+INFO - 2026-09-28 12:15:36 --> Type général : contrat
+INFO - 2026-09-28 12:15:36 --> Type émission : emission
+INFO - 2026-09-28 12:15:36 --> Date début: 05/08/2026, Date fin: 04/09/2026
+INFO - 2026-09-28 12:15:36 --> Type général : contrat
+INFO - 2026-09-28 12:15:36 --> Type émission : emission
+INFO - 2026-09-28 12:15:36 --> Date début: 05/08/2026, Date fin: 04/09/2026
+DEBUG - 2026-09-28 12:15:36 --> Requête #0 exécutée avec succès : 
+                INSERT /*+ APPEND PARALLEL(t) */ INTO cmsreport.tb_factures_memoires t (
+                    SELECT /*+ PARALLEL(8) */ DISTINCT
+                        'CENTRALIZED LV' AS region,
+                        s.nom_area AS cms_region,
+                        s.nom_unicom,
+                        :year: AS calendar_year,
+                        :cycle: AS reading_cycle,
+                        :regroupName: AS regroup_id,
+                        :regroupName: AS regroup_name,
+                        r.nis_rad,
+                        NVL(TRIM(s.ape1_cli), TRIM(s.cust_name)) AS cust_name,
+                        s.pk_cust_id,
+                        s.meter_no,
+                        DECODE(s.tip_fase, 'FA001', 2, 4) AS number_wires,
+                        s.pot_max_admis,
+                        sum(case when not regexp_like(codigo(i.co_concepto), 'FIXED PREMIUM CHARGE|COMPENSATION|OVERLOAD CHARGE') then i.csmo_fact else 0 end) over(partition by r.num_rec) csmo_total_fact,
+                        r.num_rec,
+                        r.f_fact,
+                        r.f_prev_puesta,
+                        r.imp_tot_rec,
+                        r.imp_tot_rec - r.imp_cta AS due_amount,
+                        r.est_act,
+                        s.tip_contr,
+                        r.ind_conversion,
+                        r.cod_cta_pago,
+                        r.num_rec_anul,
+                        s.cod_cnae,
+                        s.co_an_vip,
+                        sum (case when i.co_concepto not like 'CT%' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) amount_without_vat,
+                        trunc ((sum (case when i.co_concepto not like 'CT%' then -i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:)) + r.imp_tot_rec) amount_vat,
+                        sum (case when i.co_concepto in ('CC119', 'CC118') then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_cont_without_vat,
+                        sum (case when i.co_concepto = 'CT841' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) govern_vat,
+                        sum (case when i.co_concepto = 'CC101' then i.imp_concepto else 0 end) over(partition by r.num_rec, :regroupName:) meter_rent
+                    FROM cmsreport.tmp_ref_confacresu t
+                    JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                    JOIN cmsreport.tb_customers_infos s ON r.nis_rad = s.nis_rad
+                    LEFT JOIN cmsadmin.imp_concepto i ON r.num_rec = i.num_rec
+                    WHERE r.tip_rec = 'TR010' AND r.est_act NOT IN ('ER010', 'ER015', 'ER018', 'ER915', 'ER600')
+                        AND r.f_prev_puesta BETWEEN TO_DATE(:dateDebut:, 'YYYY-MM-DD') AND TO_DATE(:dateFin:, 'YYYY-MM-DD')
+                )
+            
+DEBUG - 2026-09-28 12:15:49 --> Requête #1 exécutée avec succès : 
+                INSERT /*+ append parallel(t) */ INTO cmsreport.tb_factures_memoires_infos t (
+                    SELECT /*+ parallel(12) */ DISTINCT
+                        t.confacresu AS nis_rad,
+                        r.num_rec,
+                        rd.prev_billed_index,
+                        rd.curr_billed_index,
+                        NVL((MAX(ac.cte_apa) KEEP (DENSE_RANK LAST ORDER BY ac.f_lect, ac.f_actual) OVER (PARTITION BY r.num_rec)), 1) AS coeff
+                    FROM cmsreport.tmp_ref_confacresu t
+                        JOIN cmsadmin.recibos r ON t.confacresu = r.nis_rad
+                        LEFT JOIN cmsadmin.bill_extraction_list b ON r.num_rec = b.num_rec
+                        LEFT JOIN cmsadmin.rel_rec_csmo rc ON r.num_rec = rc.num_rec
+                        LEFT JOIN cmsadmin.apmedida_co ac ON rc.id_apco_ant = ac.id_reg
+                        LEFT JOIN cmsreport.tb_rdd_billed_index rd ON rd.num_rec = r.num_rec
+                )
+            
+DEBUG - 2026-09-28 12:15:49 --> MemorySQLFactory terminé pour type=postpaid_particulier_contrat, section=loading : 2/2 réussies, 0 échouées
+DEBUG - 2026-09-28 12:15:49 --> Configuration pour le type 'postpaid_particulier_contrat': {"model":"App\\Models\\SQL\\LoadingQueriesForMemoryPostpaidModel","loading":["LOADING_TB_FACTURES_MEMOIRES_ONLY_WITH_CONTRAT_PARTICULIER","LOADING_TB_FACTURES_MEMOIRES_INFOS_ONLY_WITH_CONTRAT_PARTICULIER"],"generation":["generateDatasMemoire","generateMemoire"]}
+DEBUG - 2026-09-28 12:15:49 --> Modèle utilisé : App\Models\SQL\LoadingQueriesForMemoryPostpaidModel
+DEBUG - 2026-09-28 12:15:49 --> Répertoire d'exportation vérifié : /var/www/MyMemo/writable/exports/
+DEBUG - 2026-09-28 12:15:49 --> Requête exécutée pour Mémoire : {"sql":"\n            SELECT \/*+ parallel(8) *\/ DISTINCT\n                r.cust_name AS customer_name,\n                r.nom_unicom AS agency,\n                r.nis_rad AS service_no,\n                TO_CHAR(r.f_fact, 'dd\/mm\/yyyy') AS billing_date,\n                r.num_rec AS bill_no,\n                r.meter_no,\n                c.prev_actual_read,\n                c.hht_current_index,\n                TRUNC(r.csmo_total_fact) AS consumption_billed,\n                c.coeff,\n                r.meter_rent,\n                r.amount_without_vat,\n                r.amount_vat,\n                TRUNC(r.imp_tot_rec) AS amount_with_tax,\n                r.due_amount,        \n                r.region,\n                r.calendar_year,\n                r.reading_cycle,\n                r.regroup_id,\n                r.regroup_name              \n            FROM cmsreport.tb_factures_memoires r\n            LEFT JOIN cmsreport.tb_factures_memoires_infos c ON r.num_rec = c.num_rec\n        ","binds":[]}
+DEBUG - 2026-09-28 12:15:49 --> Header keys retrieved: CUSTOMER_NAME,AGENCY,SERVICE_NO,BILLING_DATE,BILL_NO,METER_NO,PREV_ACTUAL_READ,HHT_CURRENT_INDEX,CONSUMPTION_BILLED,COEFF,METER_RENT,AMOUNT_WITHOUT_VAT,AMOUNT_VAT,AMOUNT_WITH_TAX,DUE_AMOUNT,REGION,CALENDAR_YEAR,READING_CYCLE,REGROUP_ID,REGROUP_NAME
+DEBUG - 2026-09-28 12:15:49 --> Nom fichier mémoire généré : /var/www/MyMemo/writable/exports/Memoire_TECAM_ONO_20260928_121549.xlsx
+DEBUG - 2026-09-28 12:15:49 --> Insertion données page 1 et ligne 13
+DEBUG - 2026-09-28 12:15:49 --> Totaux page 1 => HT: 4189289 | TVA: 805672 | TTC: 4994961
+DEBUG - 2026-09-28 12:15:49 --> ==============================
+DEBUG - 2026-09-28 12:15:49 --> TOTAL GLOBAL
+DEBUG - 2026-09-28 12:15:49 --> HT  = 4189289
+DEBUG - 2026-09-28 12:15:49 --> TVA = 805672
+DEBUG - 2026-09-28 12:15:49 --> TTC = 4994961
+DEBUG - 2026-09-28 12:15:49 --> DUE = 4994961
+DEBUG - 2026-09-28 12:15:49 --> ==============================
+DEBUG - 2026-09-28 12:15:49 --> Insertion footer à partir de ligne 46
+DEBUG - 2026-09-28 12:15:49 --> Footer[0] ligne 46 : Bon à savoir / Good to know
+DEBUG - 2026-09-28 12:15:49 --> Footer[1] ligne 47 (fond vert)
+DEBUG - 2026-09-28 12:15:49 --> Footer[2] ligne 48 (italic bleu)
+DEBUG - 2026-09-28 12:15:49 --> Footer[3] ENERGIZING à M49:O49
+DEBUG - 2026-09-28 12:15:49 --> Footer[4] Pagination ligne 50 | Page 1/1
+DEBUG - 2026-09-28 12:15:49 --> Signature bloc de M43 à O48
+DEBUG - 2026-09-28 12:15:49 --> Fichier généré pour Mémoire : /var/www/MyMemo/writable/exports/Memoire_TECAM_ONO_20260928_121549.xlsx
