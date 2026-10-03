@@ -81,6 +81,48 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.32);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.38);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.45);
+
+  /* Cause racine du texte illisible en mode sombre (cf. diagnostic) : Bootstrap
+     5.3 pilote nativement .card/.card-title/.form-select/.table/.dropdown-menu
+     via ses PROPRES variables --bs-body-color/--bs-body-bg/--bs-secondary-color
+     etc. — jamais lues par notre attribut data-theme (Bootstrap a son propre
+     [data-bs-theme], qu'on n'utilise pas). Sans ce pont, ces composants restent
+     figés sur leurs couleurs clair par défaut quel que soit le thème MyMemo,
+     produisant par exemple un texte sombre hérité sur un fond de carte devenu
+     sombre. Un seul pont vers les tokens déjà existants, pas de nouveau token,
+     pas de sélecteur par composant (cf. principe de correction par tokens). */
+  --bs-body-color: var(--text-body);
+  --bs-body-bg: var(--bg-body);
+  --bs-emphasis-color: var(--text-heading);
+  --bs-secondary-color: var(--text-muted);
+  --bs-tertiary-color: var(--text-muted);
+  --bs-tertiary-bg: var(--bg-muted);
+  --bs-border-color: var(--border-color);
+  --bs-border-color-translucent: var(--border-color);
+}
+
+/* Barre supérieure (topbar) en mode sombre : cause différente du pont
+   ci-dessus. AdminLTE fixe .navbar-light .navbar-nav .nav-link directement
+   en rgba(0,0,0,.5) littéral (CSS pré-existant, hérité de Bootstrap 4, jamais
+   réécrit avec des variables) — cette règle NE LIT AUCUNE variable Bootstrap,
+   donc aucun pont de variables ne peut la corriger. Sa spécificité
+   (.navbar-light .navbar-nav .nav-link, 3 classes) dépasse déjà celle de
+   .main-header .nav-link ci-dessous (2 classes), qui perd systématiquement
+   quel que soit l'ordre de chargement des feuilles de style. Seule option
+   restante : un sélecteur scopé à [data-theme="dark"] avec au moins autant de
+   spécificité, conformément au principe « sélecteur scopé seulement si la
+   règle du framework ne peut pas être corrigée autrement ». */
+[data-theme="dark"] .main-header.navbar .navbar-nav .nav-link {
+  color: var(--text-body);
+}
+
+[data-theme="dark"] .main-header.navbar .navbar-nav .nav-link:hover,
+[data-theme="dark"] .main-header.navbar .navbar-nav .nav-link:focus {
+  color: var(--text-heading);
+}
+
+[data-theme="dark"] .main-header.navbar .navbar-nav .nav-link.active {
+  color: var(--text-heading);
 }
 
 /* ===============================================================
